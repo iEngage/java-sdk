@@ -1,4 +1,4 @@
-# java-sdk
+# java-sdk (Beta)
 
 Example to call authenticate service
 
