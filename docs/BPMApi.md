@@ -24,9 +24,17 @@ Assign BPM task, It will return task object
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.BPMApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 BPMApi apiInstance = new BPMApi();
 Long assigneeUserId = 789L; // Long | assigneeUserId - assign to this user
@@ -65,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -83,9 +91,17 @@ Complete BPM task, It will return task object
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.BPMApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 BPMApi apiInstance = new BPMApi();
 Long userId = 789L; // Long | userId whose task want to complete
@@ -124,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -142,9 +158,17 @@ Return the BPM task
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.BPMApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 BPMApi apiInstance = new BPMApi();
 Long userId = 789L; // Long | userId
@@ -179,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -197,9 +221,17 @@ Return the list of BPM task
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.BPMApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 BPMApi apiInstance = new BPMApi();
 Long userId = 789L; // Long | userId
@@ -246,7 +278,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -264,9 +296,17 @@ Return the list of BPM task
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.BPMApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 BPMApi apiInstance = new BPMApi();
 Long userId = 789L; // Long | userId whose task want to see
@@ -309,7 +349,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -327,9 +367,17 @@ Return the list of BPM task
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.BPMApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 BPMApi apiInstance = new BPMApi();
 Long userId = 789L; // Long | userId whose task want to see
@@ -372,7 +420,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -390,9 +438,17 @@ Return the list of BPM task
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.BPMApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 BPMApi apiInstance = new BPMApi();
 Long userId = 789L; // Long | userId whose task want to see
@@ -435,7 +491,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 

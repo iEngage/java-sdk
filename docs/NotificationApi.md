@@ -21,9 +21,17 @@ Return the list of notifications
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.NotificationApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 NotificationApi apiInstance = new NotificationApi();
 String type = "ALL"; // String | Type of count<br/> 1) UNREAD <br/> 2) READ <br/> 3)ALL
@@ -60,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -78,9 +86,17 @@ Allows the user to mark all the notification as read
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.NotificationApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 NotificationApi apiInstance = new NotificationApi();
 String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
@@ -109,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -127,9 +143,17 @@ Allows the user to mark the notification as read
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.NotificationApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 NotificationApi apiInstance = new NotificationApi();
 Long notificationId = 789L; // Long | notification Id
@@ -160,7 +184,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -178,9 +202,17 @@ Returns the notification count
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.NotificationApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 NotificationApi apiInstance = new NotificationApi();
 String type = "ALL"; // String | Type of count<br/> 1) UNREAD <br/> 2) READ <br/> 3)ALL
@@ -211,7 +243,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 

@@ -29,9 +29,17 @@ Allows the user to add friend. Returns true if successful
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.SocialApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 SocialApi apiInstance = new SocialApi();
 String id1 = "id1_example"; // String | Enter userId/mailId of the person who wants to add a friend
@@ -64,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -82,9 +90,17 @@ Allows the user to confirm/ignore friend request. Returns true if successful
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.SocialApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 SocialApi apiInstance = new SocialApi();
 Long userId = 789L; // Long | userId of user who sent friend request
@@ -117,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -135,9 +151,17 @@ Allows to follow a user. Returns true if successful
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.SocialApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 SocialApi apiInstance = new SocialApi();
 String follower = "follower_example"; // String | Enter the userId/mailId of the follower
@@ -170,7 +194,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -188,9 +212,17 @@ Returns the user.
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.SocialApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 SocialApi apiInstance = new SocialApi();
 Long userId = 789L; // Long | User Id
@@ -223,7 +255,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -241,9 +273,17 @@ Returns the user details.
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.SocialApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 SocialApi apiInstance = new SocialApi();
 Long userId = 789L; // Long | Enter user Id whose details you need
@@ -274,7 +314,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -292,9 +332,17 @@ Returns the list of followers
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.SocialApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 SocialApi apiInstance = new SocialApi();
 Long userId = 789L; // Long | userId
@@ -327,7 +375,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -345,9 +393,17 @@ Returns the list of users that are being followed
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.SocialApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 SocialApi apiInstance = new SocialApi();
 Long userId = 789L; // Long | userId
@@ -380,7 +436,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -398,9 +454,17 @@ Returns the list of friends
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.SocialApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 SocialApi apiInstance = new SocialApi();
 Long userId = 789L; // Long | userId
@@ -433,7 +497,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -451,9 +515,17 @@ Allows the user to remove friend. Returns true if successful
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.SocialApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 SocialApi apiInstance = new SocialApi();
 String id1 = "id1_example"; // String | Enter userId/mailId of the person who wants to remove from friend
@@ -486,7 +558,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -504,9 +576,17 @@ Allows user to send a friend request. Returns true if successful
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.SocialApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 SocialApi apiInstance = new SocialApi();
 Long userId = 789L; // Long | Enter userId /mailId you want to send friend request
@@ -537,7 +617,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -555,9 +635,17 @@ Returns the list of friend requests
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.SocialApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 SocialApi apiInstance = new SocialApi();
 String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
@@ -586,7 +674,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -604,9 +692,17 @@ Allows to unfollow user. Returns true if successful
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.SocialApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 SocialApi apiInstance = new SocialApi();
 String unfollower = "unfollower_example"; // String | Enter the userId/mailId of the unfollower
@@ -639,7 +735,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 

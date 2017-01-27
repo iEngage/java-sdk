@@ -28,9 +28,17 @@ Allows the uer to create a group. Returns the created group
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.GroupApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 GroupApi apiInstance = new GroupApi();
 Long organizationId = 789L; // Long | organization Id
@@ -69,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -87,9 +95,17 @@ Allows the user to delete a group. Returns the deleted group
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.GroupApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 GroupApi apiInstance = new GroupApi();
 Long groupId = 789L; // Long | groupId
@@ -122,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -140,9 +156,17 @@ Allows the user to follow a group. Returns the followed group
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.GroupApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 GroupApi apiInstance = new GroupApi();
 Long groupId = 789L; // Long | groupId
@@ -175,7 +199,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -193,9 +217,17 @@ Returns the list of followers for the group
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.GroupApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 GroupApi apiInstance = new GroupApi();
 Long groupId = 789L; // Long | groupId
@@ -232,7 +264,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -250,9 +282,17 @@ Returns the list of all ideas in a group
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.GroupApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 GroupApi apiInstance = new GroupApi();
 Long groupId = 789L; // Long | groupId
@@ -289,7 +329,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -307,9 +347,17 @@ Returns the list of groups
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.GroupApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 GroupApi apiInstance = new GroupApi();
 Integer start = 56; // Integer | start, initial value start from 0
@@ -344,7 +392,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -362,9 +410,17 @@ Returns the list of recommended groups
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.GroupApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 GroupApi apiInstance = new GroupApi();
 Integer start = 56; // Integer | start, initial value start from 0
@@ -399,7 +455,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -417,9 +473,17 @@ Returns the list of groups the user is following
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.GroupApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 GroupApi apiInstance = new GroupApi();
 Long userId = 789L; // Long | userId
@@ -456,7 +520,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -474,9 +538,17 @@ Returns the list of matching group
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.GroupApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 GroupApi apiInstance = new GroupApi();
 String query = "query_example"; // String | query
@@ -513,7 +585,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -531,9 +603,17 @@ Allows the user to unfollow a group. Returns the unfollowed group
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.GroupApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 GroupApi apiInstance = new GroupApi();
 Long groupId = 789L; // Long | groupId
@@ -566,7 +646,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -584,9 +664,17 @@ Allows the user to update the group. Returns the updated group
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.GroupApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 GroupApi apiInstance = new GroupApi();
 Long groupId = 789L; // Long | groupId
@@ -623,7 +711,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 

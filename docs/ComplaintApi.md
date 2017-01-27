@@ -47,9 +47,17 @@ Allows the user to share complaint. Returns complaint
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Long categoryId = 789L; // Long | categoryId
@@ -84,7 +92,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -102,9 +110,17 @@ Allows the user to share complaints. Returns the complaint object
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Long body = 789L; // Long | categoryId
@@ -141,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -159,9 +175,17 @@ Allows the user to share a solution on complaint
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Long complaintId = 789L; // Long | complaintId
@@ -196,7 +220,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -214,9 +238,17 @@ Allows the user to create complaint category. Returns the created complaint cate
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 String name = "name_example"; // String | Name
@@ -253,7 +285,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -271,9 +303,17 @@ Allows the user to delete complaint. Returns the deleted complaint
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Long complaintId = 789L; // Long | complaintId
@@ -306,7 +346,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -324,9 +364,17 @@ Returns the deleted complaint category
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Long categoryId = 789L; // Long | categoryId
@@ -359,7 +407,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -377,9 +425,17 @@ Allows the user to delete solution. Returns the deleted solution
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Long solutionId = 789L; // Long | solutionId
@@ -412,7 +468,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -430,9 +486,17 @@ Allows the user to dislike the solution. Returns the disliked solution
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Long complaintId = 789L; // Long | complaintId
@@ -467,7 +531,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -485,9 +549,17 @@ Returns the complaint by id
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Long complaintId = 789L; // Long | complaintId
@@ -520,7 +592,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -538,9 +610,17 @@ Returns the list of complaint category
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Integer start = 56; // Integer | start, initial value start from 0
@@ -575,7 +655,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -593,9 +673,17 @@ Returns the list of all complaints visible for user
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 String complaintStatus = "complaintStatus_example"; // String | Complaint status <br/> 1) ALL <br/> 2)  UNREPLIED <br/> 3)  REPLIED <br/> 4)  CLOSED
@@ -634,7 +722,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -652,9 +740,17 @@ Returns the list of complaints shared by friends
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 String complaintStatus = "complaintStatus_example"; // String | Complaint status <br/> 1) ALL <br/> 2)  UNREPLIED <br/> 3)  REPLIED <br/> 4)  CLOSED
@@ -693,7 +789,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -711,9 +807,17 @@ Returns the list of recommended complaints
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Integer start = 56; // Integer | start, initial value start from 0
@@ -748,7 +852,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -766,9 +870,17 @@ Returns the list of recommended complaints from DB
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Long userId = 789L; // Long | userId
@@ -805,7 +917,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -823,9 +935,17 @@ Returns the list of recommended users from DB
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Long complaintId = 789L; // Long | complaintId
@@ -862,7 +982,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -880,9 +1000,17 @@ Return the list of solutions
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Long complaintId = 789L; // Long | complaintId
@@ -919,7 +1047,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -937,9 +1065,17 @@ Returns the list of complaints shared by the user himself
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Long userId = 789L; // Long | userId
@@ -980,7 +1116,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -998,9 +1134,17 @@ Returns the list of complaint categories subscribed by user himself
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Long userId = 789L; // Long | userId
@@ -1037,7 +1181,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -1055,9 +1199,17 @@ Returns the list of complaints subscribed by user himself
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Long userId = 789L; // Long | userId
@@ -1098,7 +1250,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -1116,9 +1268,17 @@ Allows the user to like the solution. Returns the liked solution
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Long complaintId = 789L; // Long | complaintId
@@ -1153,7 +1313,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -1171,9 +1331,17 @@ Allows the user to mark a solution. This means user is satisfied with the soluti
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Long complaintId = 789L; // Long | complaintId
@@ -1208,7 +1376,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -1226,9 +1394,17 @@ Returns the list of matching complaints
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 String searchText = "searchText_example"; // String | Enter text to be searched
@@ -1267,7 +1443,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -1285,9 +1461,17 @@ Allows the user to subscribe a complaint. Returns the subscibed complaint
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Long complaintId = 789L; // Long | complaintId
@@ -1320,7 +1504,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -1338,9 +1522,17 @@ Allows the user to subscribe complaint category. Returns the subscribed complain
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Long categoryId = 789L; // Long | categoryId
@@ -1373,7 +1565,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -1391,9 +1583,17 @@ Allows the user to unmark a solution. This will remove the marked solution.
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Long complaintId = 789L; // Long | complaintId
@@ -1428,7 +1628,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -1446,9 +1646,17 @@ Allows the user to unsubscribe complaint. Returns the unsubscribed complaint
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Long complaintId = 789L; // Long | complaintId
@@ -1481,7 +1689,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -1499,9 +1707,17 @@ Allows the user to unsubscribe complaint category. Returns the unsubscribed comp
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Long categoryId = 789L; // Long | categoryId
@@ -1534,7 +1750,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -1552,9 +1768,17 @@ Allows the user to update complaint. Returns the updated complaint
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Long complaintId = 789L; // Long | complaintId
@@ -1591,7 +1815,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -1609,9 +1833,17 @@ Returns the updated complaint category
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Long categoryId = 789L; // Long | categoryId
@@ -1648,7 +1880,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
@@ -1666,9 +1898,17 @@ Allows the user to update solution. Returns the updated solution
 ### Example
 ```java
 // Import classes:
+//import com.iengage.ApiClient;
 //import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
 //import com.iengage.service.ComplaintApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
 
 ComplaintApi apiInstance = new ComplaintApi();
 Long solutionId = 789L; // Long | solutionId
@@ -1703,7 +1943,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[default](../README.md#default)
 
 ### HTTP request headers
 
