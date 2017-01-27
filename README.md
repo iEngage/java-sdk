@@ -430,7 +430,7 @@ It's recommended to create an instance of `ApiClient` per thread in a multithrea
 
 ## Author
 
-iEngage.io (Aikon Labs Pvt Ltd)
+[iEngage.io](http://iengage.io/) [Aikon Labs Pvt Ltd](http://aikonlabs.com)
 
 
 
