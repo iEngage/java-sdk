@@ -25,12 +25,29 @@ Refer to the [official documentation](https://maven.apache.org/plugins/maven-dep
 Add this dependency to your project's POM:
 
 ```xml
+
 <dependency>
     <groupId>io.iengage</groupId>
     <artifactId>iengage-java-client</artifactId>
     <version>1.0.0</version>
     <scope>compile</scope>
 </dependency>
+<dependency>
+      <groupId>com.squareup.okhttp</groupId>
+      <artifactId>logging-interceptor</artifactId>
+      <version>2.7.5</version>
+</dependency>
+<dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.6.2</version>
+</dependency>
+<dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+      <version>2.9.3</version>
+</dependency>
+    
 ```
 
 ### Gradle users
@@ -38,7 +55,13 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
+
 compile "io.iengage:iengage-java-client:1.0.0"
+compile "com.squareup.okhttp:okhttp:2.7.5"
+compile "com.squareup.okhttp:logging-interceptor:2.7.5"
+compile "com.google.code.gson:gson:2.6.2"
+compile "joda-time:joda-time:2.9.3"
+    
 ```
 
 ### Others
@@ -406,6 +429,8 @@ Authentication schemes defined for the API:
 It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issues.
 
 ## Author
+
+iEngage.io (Aikon Labs Pvt Ltd)
 
 
 
