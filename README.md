@@ -104,7 +104,7 @@ public class AugmentedIntelligenceApiExample {
         String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
         String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
         try {
-            VerveResponseNLCList result = apiInstance.getInteraction(text, loggedInUserId, accessToken, clientToken);
+            VerveResponseFlowFinder result = apiInstance.getInteraction(text, loggedInUserId, accessToken, clientToken);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AugmentedIntelligenceApi#getInteraction");
@@ -325,7 +325,6 @@ Class | Method | HTTP request | Description
  - [Answer](docs/Answer.md)
  - [Attachment](docs/Attachment.md)
  - [Blog](docs/Blog.md)
- - [Bucket](docs/Bucket.md)
  - [CommandInfo](docs/CommandInfo.md)
  - [Comment](docs/Comment.md)
  - [Complaint](docs/Complaint.md)
@@ -337,6 +336,7 @@ Class | Method | HTTP request | Description
  - [Discussion](docs/Discussion.md)
  - [Entity](docs/Entity.md)
  - [EntitySentiment](docs/EntitySentiment.md)
+ - [FlowFinder](docs/FlowFinder.md)
  - [Group](docs/Group.md)
  - [Idea](docs/Idea.md)
  - [IdeaUserRating](docs/IdeaUserRating.md)
@@ -345,13 +345,12 @@ Class | Method | HTTP request | Description
  - [InteractionCategory](docs/InteractionCategory.md)
  - [InteractionResponse](docs/InteractionResponse.md)
  - [MediaType](docs/MediaType.md)
+ - [Milestone](docs/Milestone.md)
  - [Multimedia](docs/Multimedia.md)
  - [NER](docs/NER.md)
- - [NLC](docs/NLC.md)
  - [Notification](docs/Notification.md)
  - [Organization](docs/Organization.md)
  - [OutputStream](docs/OutputStream.md)
- - [ProjectManagement](docs/ProjectManagement.md)
  - [Question](docs/Question.md)
  - [QuestionCategory](docs/QuestionCategory.md)
  - [RequestForMe](docs/RequestForMe.md)
@@ -376,6 +375,7 @@ Class | Method | HTTP request | Description
  - [VerveResponseDiscussion](docs/VerveResponseDiscussion.md)
  - [VerveResponseDiscussionList](docs/VerveResponseDiscussionList.md)
  - [VerveResponseEntitySentimentList](docs/VerveResponseEntitySentimentList.md)
+ - [VerveResponseFlowFinder](docs/VerveResponseFlowFinder.md)
  - [VerveResponseGroup](docs/VerveResponseGroup.md)
  - [VerveResponseGroupList](docs/VerveResponseGroupList.md)
  - [VerveResponseIdea](docs/VerveResponseIdea.md)
@@ -389,7 +389,6 @@ Class | Method | HTTP request | Description
  - [VerveResponseInteractionResponseList](docs/VerveResponseInteractionResponseList.md)
  - [VerveResponseMilestone](docs/VerveResponseMilestone.md)
  - [VerveResponseMilestoneList](docs/VerveResponseMilestoneList.md)
- - [VerveResponseNLCList](docs/VerveResponseNLCList.md)
  - [VerveResponseNotificationList](docs/VerveResponseNotificationList.md)
  - [VerveResponseOrganizationList](docs/VerveResponseOrganizationList.md)
  - [VerveResponseQuestion](docs/VerveResponseQuestion.md)
@@ -417,7 +416,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Authorization
 
 Authentication schemes defined for the API:
-### default 
+### default
 
 - **Type**: OAuth
 - **Flow**: implicit
