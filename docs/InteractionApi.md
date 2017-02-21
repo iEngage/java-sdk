@@ -98,8 +98,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json, application/xml
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
 
 <a name="addInteraction_0"></a>
 # **addInteraction_0**
@@ -228,12 +228,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json, application/x-www-form-urlencoded
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
 
 <a name="createInteractionCategory"></a>
 # **createInteractionCategory**
-> VerveResponseInteractionCategory createInteractionCategory(interactionType, name, description, loggedInUserId, accessToken, clientToken, organizationId, fields)
+> VerveResponseInteractionCategory createInteractionCategory(interactionType, name, loggedInUserId, accessToken, clientToken, organizationId, description, fields)
 
 Create interaction category
 
@@ -257,14 +257,14 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 InteractionApi apiInstance = new InteractionApi();
 String interactionType = "interactionType_example"; // String | Interaction Type
 String name = "name_example"; // String | Name
-String description = "description_example"; // String | description
 String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 Long organizationId = 789L; // Long | OrganizationId
+String description = "description_example"; // String | description
 String fields = "categoryId,categoryName,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)categoryId<br/>2)categoryName<br/>3)interactionType<br/><b>A) Available values -</b> <br/>1)categoryId<br/>2)categoryName<br/>3)categoryDescription<br/>4)createdDate<br/>5)isSubscribed<br/>6)interactionType
 try {
-    VerveResponseInteractionCategory result = apiInstance.createInteractionCategory(interactionType, name, description, loggedInUserId, accessToken, clientToken, organizationId, fields);
+    VerveResponseInteractionCategory result = apiInstance.createInteractionCategory(interactionType, name, loggedInUserId, accessToken, clientToken, organizationId, description, fields);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#createInteractionCategory");
@@ -278,11 +278,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **interactionType** | **String**| Interaction Type |
  **name** | **String**| Name |
- **description** | **String**| description |
  **loggedInUserId** | **String**| User id of logged / authenticated user |
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **organizationId** | **Long**| OrganizationId | [optional]
+ **description** | **String**| description | [optional]
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)interactionType&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)categoryDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)isSubscribed&lt;br/&gt;6)interactionType | [optional] [default to categoryId,categoryName,interactionType]
 
 ### Return type
@@ -295,8 +295,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json, application/x-www-form-urlencoded
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
 
 <a name="deleteInteraction"></a>
 # **deleteInteraction**
@@ -356,8 +356,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json, application/x-www-form-urlencoded
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
 
 <a name="deleteInteractionCategory"></a>
 # **deleteInteractionCategory**
@@ -417,8 +417,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json, application/x-www-form-urlencoded
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
 
 <a name="deleteResponse"></a>
 # **deleteResponse**
@@ -478,8 +478,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json, application/x-www-form-urlencoded
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
 
 <a name="dislikeResponse"></a>
 # **dislikeResponse**
@@ -541,8 +541,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json, application/x-www-form-urlencoded
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
 
 <a name="getFriendsInteractions"></a>
 # **getFriendsInteractions**
@@ -875,7 +875,7 @@ Name | Type | Description  | Notes
 
 <a name="getRecommendedInteractinsFromDB"></a>
 # **getRecommendedInteractinsFromDB**
-> VerveResponseInteractionList getRecommendedInteractinsFromDB(userId, start, end, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseInteractionList getRecommendedInteractinsFromDB(userId, start, end, loggedInUserId, accessToken, clientToken, interactionType, fields)
 
 Get list of recommended interactions from DB
 
@@ -903,9 +903,10 @@ Integer end = 56; // Integer | end
 String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String interactionType = "interactionType_example"; // String | Interaction Type
 String fields = "interactionId,interactionTitle,interactionDescription,createdDate,,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType
 try {
-    VerveResponseInteractionList result = apiInstance.getRecommendedInteractinsFromDB(userId, start, end, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseInteractionList result = apiInstance.getRecommendedInteractinsFromDB(userId, start, end, loggedInUserId, accessToken, clientToken, interactionType, fields);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#getRecommendedInteractinsFromDB");
@@ -923,6 +924,7 @@ Name | Type | Description  | Notes
  **loggedInUserId** | **String**| User id of logged / authenticated user |
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **interactionType** | **String**| Interaction Type | [optional]
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,,interactionType]
 
 ### Return type
@@ -1337,8 +1339,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json, application/xml
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
 
 <a name="markAsAnResponse"></a>
 # **markAsAnResponse**
@@ -1400,8 +1402,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json, application/x-www-form-urlencoded
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
 
 <a name="searchInteractions"></a>
 # **searchInteractions**
@@ -1530,8 +1532,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json, application/x-www-form-urlencoded
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
 
 <a name="subscribeInteraction"></a>
 # **subscribeInteraction**
@@ -1591,8 +1593,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json, application/x-www-form-urlencoded
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
 
 <a name="unmarkAsAnResponse"></a>
 # **unmarkAsAnResponse**
@@ -1654,8 +1656,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json, application/x-www-form-urlencoded
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
 
 <a name="unsubscribeInteractinCategory"></a>
 # **unsubscribeInteractinCategory**
@@ -1715,8 +1717,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json, application/x-www-form-urlencoded
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
 
 <a name="unsubscribeInteraction"></a>
 # **unsubscribeInteraction**
@@ -1776,12 +1778,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json, application/x-www-form-urlencoded
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
 
 <a name="updateInteraction"></a>
 # **updateInteraction**
-> VerveResponseInteraction updateInteraction(interactionId, interactionTitle, interactionDescription, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseInteraction updateInteraction(interactionId, interactionTitle, loggedInUserId, accessToken, clientToken, interactionDescription, fields)
 
 Update interaction
 
@@ -1805,13 +1807,13 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 InteractionApi apiInstance = new InteractionApi();
 Long interactionId = 789L; // Long | interactionId
 String interactionTitle = "interactionTitle_example"; // String | Interaction Title
-String interactionDescription = "interactionDescription_example"; // String | Describe Interaction
 String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String interactionDescription = "interactionDescription_example"; // String | Describe Interaction
 String fields = "interactionId,interactionTitle,interactionDescription,createdDate,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType
 try {
-    VerveResponseInteraction result = apiInstance.updateInteraction(interactionId, interactionTitle, interactionDescription, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseInteraction result = apiInstance.updateInteraction(interactionId, interactionTitle, loggedInUserId, accessToken, clientToken, interactionDescription, fields);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#updateInteraction");
@@ -1825,10 +1827,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **interactionId** | **Long**| interactionId |
  **interactionTitle** | **String**| Interaction Title |
- **interactionDescription** | **String**| Describe Interaction |
  **loggedInUserId** | **String**| User id of logged / authenticated user |
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **interactionDescription** | **String**| Describe Interaction | [optional]
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType]
 
 ### Return type
@@ -1841,12 +1843,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json, application/xml
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
 
 <a name="updateInteractionCategory"></a>
 # **updateInteractionCategory**
-> VerveResponseInteractionCategory updateInteractionCategory(categoryId, categoryName, categoryDescription, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseInteractionCategory updateInteractionCategory(categoryId, categoryName, loggedInUserId, accessToken, clientToken, categoryDescription, fields)
 
 Update interaction category
 
@@ -1870,13 +1872,13 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 InteractionApi apiInstance = new InteractionApi();
 Long categoryId = 789L; // Long | categoryId
 String categoryName = "categoryName_example"; // String | Category Name
-String categoryDescription = "categoryDescription_example"; // String | Describe category
 String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String categoryDescription = "categoryDescription_example"; // String | Describe category
 String fields = "categoryId,categoryName,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)categoryId<br/>2)categoryName<br/>3)interactionType<br/><b>A) Available values -</b> <br/>1)categoryId<br/>2)categoryName<br/>3)categoryDescription<br/>4)createdDate<br/>5)isSubscribed<br/>6)interactionType
 try {
-    VerveResponseInteractionCategory result = apiInstance.updateInteractionCategory(categoryId, categoryName, categoryDescription, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseInteractionCategory result = apiInstance.updateInteractionCategory(categoryId, categoryName, loggedInUserId, accessToken, clientToken, categoryDescription, fields);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#updateInteractionCategory");
@@ -1890,10 +1892,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **categoryId** | **Long**| categoryId |
  **categoryName** | **String**| Category Name |
- **categoryDescription** | **String**| Describe category |
  **loggedInUserId** | **String**| User id of logged / authenticated user |
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **categoryDescription** | **String**| Describe category | [optional]
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)interactionType&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)categoryDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)isSubscribed&lt;br/&gt;6)interactionType | [optional] [default to categoryId,categoryName,interactionType]
 
 ### Return type
@@ -1906,8 +1908,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json, application/xml
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
 
 <a name="updateResponse"></a>
 # **updateResponse**
@@ -1969,6 +1971,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded
- - **Accept**: application/json, application/xml
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
 

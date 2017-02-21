@@ -15,7 +15,7 @@ package com.iengage.service;
 
 import com.iengage.ApiException;
 import com.iengage.client.model.VerveResponseEntitySentimentList;
-import com.iengage.client.model.VerveResponseNLCList;
+import com.iengage.client.model.VerveResponseFlowFinder;
 import com.iengage.client.model.VerveResponseSentimentAnalytics;
 import com.iengage.client.model.VerveResponseTagList;
 import org.junit.Test;
@@ -49,7 +49,7 @@ public class AugmentedIntelligenceApiTest {
         String loggedInUserId = null;
         String accessToken = null;
         String clientToken = null;
-        VerveResponseNLCList response = api.getInteraction(text, loggedInUserId, accessToken, clientToken);
+        VerveResponseFlowFinder response = api.getInteraction(text, loggedInUserId, accessToken, clientToken);
 
         // TODO: test validations
     }

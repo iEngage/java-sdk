@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **mimeType** | **String** |  |  [optional]
 **humanPresentableName** | **String** |  |  [optional]
+**primaryType** | **String** |  |  [optional]
+**subType** | **String** |  |  [optional]
 **defaultRepresentationClassAsString** | **String** |  |  [optional]
 **flavorJavaFileListType** | **Boolean** |  |  [optional]
 **flavorRemoteObjectType** | **Boolean** |  |  [optional]
@@ -18,8 +20,6 @@ Name | Type | Description | Notes
 **representationClassReader** | **Boolean** |  |  [optional]
 **representationClassRemote** | **Boolean** |  |  [optional]
 **representationClassSerializable** | **Boolean** |  |  [optional]
-**primaryType** | **String** |  |  [optional]
-**subType** | **String** |  |  [optional]
 
 
 

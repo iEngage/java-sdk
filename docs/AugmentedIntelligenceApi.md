@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="getInteraction"></a>
 # **getInteraction**
-> VerveResponseNLCList getInteraction(text, loggedInUserId, accessToken, clientToken)
+> VerveResponseFlowFinder getInteraction(text, loggedInUserId, accessToken, clientToken)
 
 Get the type of interaction
 
@@ -39,7 +39,7 @@ String loggedInUserId = "loggedInUserId_example"; // String | User id of logged 
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 try {
-    VerveResponseNLCList result = apiInstance.getInteraction(text, loggedInUserId, accessToken, clientToken);
+    VerveResponseFlowFinder result = apiInstance.getInteraction(text, loggedInUserId, accessToken, clientToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AugmentedIntelligenceApi#getInteraction");
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**VerveResponseNLCList**](VerveResponseNLCList.md)
+[**VerveResponseFlowFinder**](VerveResponseFlowFinder.md)
 
 ### Authorization
 

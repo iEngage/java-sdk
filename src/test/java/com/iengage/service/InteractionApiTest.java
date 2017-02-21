@@ -13,7 +13,10 @@
 
 package com.iengage.service;
 
+import com.iengage.ApiClient;
 import com.iengage.ApiException;
+import com.iengage.Configuration;
+import com.iengage.auth.OAuth;
 import com.iengage.client.model.Attachment;
 import com.iengage.client.model.VerveResponseInteraction;
 import com.iengage.client.model.VerveResponseInteractionCategory;
@@ -33,7 +36,7 @@ import java.util.Map;
 /**
  * API tests for InteractionApi
  */
-@Ignore
+
 public class InteractionApiTest {
 
     private final InteractionApi api = new InteractionApi();
@@ -49,15 +52,24 @@ public class InteractionApiTest {
      */
     @Test
     public void addInteractionTest() throws ApiException {
-        String interactionTitle = null;
-        String loggedInUserId = null;
-        String accessToken = null;
-        String clientToken = null;
+    	ApiClient defaultClient = Configuration.getDefaultApiClient();
+    	OAuth defaultAuth = (OAuth) defaultClient.getAuthentication("default");
+    	defaultAuth.setAccessToken("");
+        String loggedInUserId = "";
+        String accessToken = "";
+        String clientToken = "";
+        
+        String interactionTitle = "How are you? How is going?";
         Long categoryId = null;
         String interactionType = null;
-        String interactionDescription = null;
-        VerveResponseInteraction response = api.addInteraction(interactionTitle, loggedInUserId, accessToken, clientToken, categoryId, interactionType, interactionDescription);
+        String interactionDescription = "This is not working fine for me... how I will do it.........";
+        try{
+        	 VerveResponseInteraction response = api.addInteraction(interactionTitle, loggedInUserId, accessToken, clientToken, categoryId, interactionType, interactionDescription);
 
+             System.out.println("response>>>>>>>>>>>>>>>>>>>>>>>>"+response);
+        }catch(Exception ex){
+        	ex.printStackTrace();
+        }
         // TODO: test validations
     }
     
@@ -95,12 +107,12 @@ public class InteractionApiTest {
     @Test
     public void addResponseTest() throws ApiException {
         Long interactionId = null;
-        String response = null;
+        String responseText = null;
         String loggedInUserId = null;
         String accessToken = null;
         String clientToken = null;
         String fields = null;
-        VerveResponseInteractionResponse result = api.addResponse(interactionId, response, loggedInUserId, accessToken, clientToken, fields);
+        VerveResponseInteractionResponse response = api.addResponse(interactionId, responseText, loggedInUserId, accessToken, clientToken, fields);
 
         // TODO: test validations
     }
@@ -117,13 +129,13 @@ public class InteractionApiTest {
     public void createInteractionCategoryTest() throws ApiException {
         String interactionType = null;
         String name = null;
-        String description = null;
         String loggedInUserId = null;
         String accessToken = null;
         String clientToken = null;
         Long organizationId = null;
+        String description = null;
         String fields = null;
-        VerveResponseInteractionCategory response = api.createInteractionCategory(interactionType, name, description, loggedInUserId, accessToken, clientToken, organizationId, fields);
+        VerveResponseInteractionCategory response = api.createInteractionCategory(interactionType, name, loggedInUserId, accessToken, clientToken, organizationId, description, fields);
 
         // TODO: test validations
     }
@@ -337,8 +349,9 @@ public class InteractionApiTest {
         String loggedInUserId = null;
         String accessToken = null;
         String clientToken = null;
+        String interactionType = null;
         String fields = null;
-        VerveResponseInteractionList response = api.getRecommendedInteractinsFromDB(userId, start, end, loggedInUserId, accessToken, clientToken, fields);
+        VerveResponseInteractionList response = api.getRecommendedInteractinsFromDB(userId, start, end, loggedInUserId, accessToken, clientToken, interactionType, fields);
 
         // TODO: test validations
     }
@@ -639,12 +652,12 @@ public class InteractionApiTest {
     public void updateInteractionTest() throws ApiException {
         Long interactionId = null;
         String interactionTitle = null;
-        String interactionDescription = null;
         String loggedInUserId = null;
         String accessToken = null;
         String clientToken = null;
+        String interactionDescription = null;
         String fields = null;
-        VerveResponseInteraction response = api.updateInteraction(interactionId, interactionTitle, interactionDescription, loggedInUserId, accessToken, clientToken, fields);
+        VerveResponseInteraction response = api.updateInteraction(interactionId, interactionTitle, loggedInUserId, accessToken, clientToken, interactionDescription, fields);
 
         // TODO: test validations
     }
@@ -661,12 +674,12 @@ public class InteractionApiTest {
     public void updateInteractionCategoryTest() throws ApiException {
         Long categoryId = null;
         String categoryName = null;
-        String categoryDescription = null;
         String loggedInUserId = null;
         String accessToken = null;
         String clientToken = null;
+        String categoryDescription = null;
         String fields = null;
-        VerveResponseInteractionCategory response = api.updateInteractionCategory(categoryId, categoryName, categoryDescription, loggedInUserId, accessToken, clientToken, fields);
+        VerveResponseInteractionCategory response = api.updateInteractionCategory(categoryId, categoryName, loggedInUserId, accessToken, clientToken, categoryDescription, fields);
 
         // TODO: test validations
     }
@@ -682,12 +695,12 @@ public class InteractionApiTest {
     @Test
     public void updateResponseTest() throws ApiException {
         Long responseId = null;
-        String response = null;
+        String responseText = null;
         String loggedInUserId = null;
         String accessToken = null;
         String clientToken = null;
         String fields = null;
-        VerveResponseInteractionResponse result = api.updateResponse(responseId, response, loggedInUserId, accessToken, clientToken, fields);
+        VerveResponseInteractionResponse response = api.updateResponse(responseId, responseText, loggedInUserId, accessToken, clientToken, fields);
 
         // TODO: test validations
     }

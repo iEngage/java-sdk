@@ -13,7 +13,6 @@
 
 package com.iengage.service;
 
-import com.iengage.ApiClient;
 import com.iengage.ApiException;
 import com.iengage.client.model.User;
 import com.iengage.client.model.VerveResponseOrganizationList;
@@ -29,7 +28,7 @@ import java.util.Map;
 /**
  * API tests for UserAuthenticationApi
  */
-
+@Ignore
 public class UserAuthenticationApiTest {
 
     private final UserAuthenticationApi api = new UserAuthenticationApi();
@@ -89,18 +88,13 @@ public class UserAuthenticationApiTest {
      * @throws ApiException
      *          if the Api call fails
      */
-    @Ignore
+    @Test
     public void authenticateTest() throws ApiException {
-    	String userName = "";
-        String password = "";
-        String clientToken = "";
-        ApiClient apiClient = api.getApiClient();
-        apiClient.setAccessToken("");
-        api.setApiClient(apiClient);
+        String userName = null;
+        String password = null;
+        String clientToken = null;
         User response = api.authenticate(userName, password, clientToken);
-        System.out.println("Access token::"+response.getAccessToken());
-        System.out.println("User ID::"+response.getUserId());
-        
+
         // TODO: test validations
     }
     
@@ -151,14 +145,11 @@ public class UserAuthenticationApiTest {
      */
     @Test
     public void getOrganizationsTest() throws ApiException {
-        String loggedInUserId = "";
-        String accessToken = "";
-        String clientToken = "";
-        ApiClient apiClient = api.getApiClient();
-        apiClient.setAccessToken("");
-        api.setApiClient(apiClient);
+        String loggedInUserId = null;
+        String accessToken = null;
+        String clientToken = null;
         VerveResponseOrganizationList response = api.getOrganizations(loggedInUserId, accessToken, clientToken);
-        System.out.println("response.getRecords:::"+response.getRecords());
+
         // TODO: test validations
     }
     

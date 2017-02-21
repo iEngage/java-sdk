@@ -28,7 +28,7 @@ import java.io.IOException;
 
 
 import com.iengage.client.model.VerveResponseEntitySentimentList;
-import com.iengage.client.model.VerveResponseNLCList;
+import com.iengage.client.model.VerveResponseFlowFinder;
 import com.iengage.client.model.VerveResponseSentimentAnalytics;
 import com.iengage.client.model.VerveResponseTagList;
 
@@ -102,7 +102,7 @@ public class AugmentedIntelligenceApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -146,11 +146,11 @@ public class AugmentedIntelligenceApi {
      * @param loggedInUserId User id of logged / authenticated user (required)
      * @param accessToken Unique session token for user. To get access token user will have to authenticate (required)
      * @param clientToken Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs (required)
-     * @return VerveResponseNLCList
+     * @return VerveResponseFlowFinder
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public VerveResponseNLCList getInteraction(String text, String loggedInUserId, String accessToken, String clientToken) throws ApiException {
-        ApiResponse<VerveResponseNLCList> resp = getInteractionWithHttpInfo(text, loggedInUserId, accessToken, clientToken);
+    public VerveResponseFlowFinder getInteraction(String text, String loggedInUserId, String accessToken, String clientToken) throws ApiException {
+        ApiResponse<VerveResponseFlowFinder> resp = getInteractionWithHttpInfo(text, loggedInUserId, accessToken, clientToken);
         return resp.getData();
     }
 
@@ -161,12 +161,12 @@ public class AugmentedIntelligenceApi {
      * @param loggedInUserId User id of logged / authenticated user (required)
      * @param accessToken Unique session token for user. To get access token user will have to authenticate (required)
      * @param clientToken Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs (required)
-     * @return ApiResponse&lt;VerveResponseNLCList&gt;
+     * @return ApiResponse&lt;VerveResponseFlowFinder&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<VerveResponseNLCList> getInteractionWithHttpInfo(String text, String loggedInUserId, String accessToken, String clientToken) throws ApiException {
+    public ApiResponse<VerveResponseFlowFinder> getInteractionWithHttpInfo(String text, String loggedInUserId, String accessToken, String clientToken) throws ApiException {
         com.squareup.okhttp.Call call = getInteractionValidateBeforeCall(text, loggedInUserId, accessToken, clientToken, null, null);
-        Type localVarReturnType = new TypeToken<VerveResponseNLCList>(){}.getType();
+        Type localVarReturnType = new TypeToken<VerveResponseFlowFinder>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -181,7 +181,7 @@ public class AugmentedIntelligenceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getInteractionAsync(String text, String loggedInUserId, String accessToken, String clientToken, final ApiCallback<VerveResponseNLCList> callback) throws ApiException {
+    public com.squareup.okhttp.Call getInteractionAsync(String text, String loggedInUserId, String accessToken, String clientToken, final ApiCallback<VerveResponseFlowFinder> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -203,7 +203,7 @@ public class AugmentedIntelligenceApi {
         }
 
         com.squareup.okhttp.Call call = getInteractionValidateBeforeCall(text, loggedInUserId, accessToken, clientToken, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<VerveResponseNLCList>(){}.getType();
+        Type localVarReturnType = new TypeToken<VerveResponseFlowFinder>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -264,7 +264,7 @@ public class AugmentedIntelligenceApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -453,7 +453,7 @@ public class AugmentedIntelligenceApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -629,7 +629,7 @@ public class AugmentedIntelligenceApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     

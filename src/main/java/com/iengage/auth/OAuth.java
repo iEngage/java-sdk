@@ -13,12 +13,11 @@
 
 package com.iengage.auth;
 
+import java.util.List;
+import java.util.Map;
+
 import com.iengage.Pair;
 
-import java.util.Map;
-import java.util.List;
-
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-01-24T14:38:21.881+05:30")
 public class OAuth implements Authentication {
   private String accessToken;
 
@@ -31,10 +30,7 @@ public class OAuth implements Authentication {
   }
 
   @Override
-  public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams) {
-	  
-	  System.out.println("OAuth:::Apply param::::::accessToken>>>"+accessToken);
-	  
+  public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams) {	  
     if (accessToken != null) {
       headerParams.put("Authorization", "Bearer " + accessToken);
     }

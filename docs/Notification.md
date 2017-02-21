@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **byUser** | [**User**](User.md) |  |  [optional]
 **entity** | [**Entity**](Entity.md) |  |  [optional]
 **parentEntity** | [**Entity**](Entity.md) |  |  [optional]
+**extraData** | **String** |  |  [optional]
 **read** | **Boolean** |  |  [optional]
 
 

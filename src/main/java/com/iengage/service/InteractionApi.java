@@ -89,13 +89,13 @@ public class InteractionApi {
         localVarFormParams.put("interactionDescription", interactionDescription);
 
         final String[] localVarAccepts = {
-            "application/json", "application/xml"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/x-www-form-urlencoded"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -112,7 +112,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -269,7 +269,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -411,13 +411,13 @@ public class InteractionApi {
         localVarFormParams.put("fields", fields);
 
         final String[] localVarAccepts = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/x-www-form-urlencoded"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -434,7 +434,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -551,7 +551,7 @@ public class InteractionApi {
         return call;
     }
     /* Build call for createInteractionCategory */
-    private com.squareup.okhttp.Call createInteractionCategoryCall(String interactionType, String name, String description, String loggedInUserId, String accessToken, String clientToken, Long organizationId, String fields, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call createInteractionCategoryCall(String interactionType, String name, String loggedInUserId, String accessToken, String clientToken, Long organizationId, String description, String fields, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -580,13 +580,13 @@ public class InteractionApi {
         localVarFormParams.put("fields", fields);
 
         final String[] localVarAccepts = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/x-www-form-urlencoded"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -603,12 +603,12 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call createInteractionCategoryValidateBeforeCall(String interactionType, String name, String description, String loggedInUserId, String accessToken, String clientToken, Long organizationId, String fields, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call createInteractionCategoryValidateBeforeCall(String interactionType, String name, String loggedInUserId, String accessToken, String clientToken, Long organizationId, String description, String fields, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'interactionType' is set
         if (interactionType == null) {
@@ -618,11 +618,6 @@ public class InteractionApi {
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling createInteractionCategory(Async)");
-        }
-        
-        // verify the required parameter 'description' is set
-        if (description == null) {
-            throw new ApiException("Missing the required parameter 'description' when calling createInteractionCategory(Async)");
         }
         
         // verify the required parameter 'loggedInUserId' is set
@@ -641,7 +636,7 @@ public class InteractionApi {
         }
         
         
-        com.squareup.okhttp.Call call = createInteractionCategoryCall(interactionType, name, description, loggedInUserId, accessToken, clientToken, organizationId, fields, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = createInteractionCategoryCall(interactionType, name, loggedInUserId, accessToken, clientToken, organizationId, description, fields, progressListener, progressRequestListener);
         return call;
 
         
@@ -655,17 +650,17 @@ public class InteractionApi {
      * Creates a interaction category. Returns the created interaction category
      * @param interactionType Interaction Type (required)
      * @param name Name (required)
-     * @param description description (required)
      * @param loggedInUserId User id of logged / authenticated user (required)
      * @param accessToken Unique session token for user. To get access token user will have to authenticate (required)
      * @param clientToken Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs (required)
      * @param organizationId OrganizationId (optional)
+     * @param description description (optional)
      * @param fields Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)interactionType&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)categoryDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)isSubscribed&lt;br/&gt;6)interactionType (optional, default to categoryId,categoryName,interactionType)
      * @return VerveResponseInteractionCategory
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public VerveResponseInteractionCategory createInteractionCategory(String interactionType, String name, String description, String loggedInUserId, String accessToken, String clientToken, Long organizationId, String fields) throws ApiException {
-        ApiResponse<VerveResponseInteractionCategory> resp = createInteractionCategoryWithHttpInfo(interactionType, name, description, loggedInUserId, accessToken, clientToken, organizationId, fields);
+    public VerveResponseInteractionCategory createInteractionCategory(String interactionType, String name, String loggedInUserId, String accessToken, String clientToken, Long organizationId, String description, String fields) throws ApiException {
+        ApiResponse<VerveResponseInteractionCategory> resp = createInteractionCategoryWithHttpInfo(interactionType, name, loggedInUserId, accessToken, clientToken, organizationId, description, fields);
         return resp.getData();
     }
 
@@ -674,17 +669,17 @@ public class InteractionApi {
      * Creates a interaction category. Returns the created interaction category
      * @param interactionType Interaction Type (required)
      * @param name Name (required)
-     * @param description description (required)
      * @param loggedInUserId User id of logged / authenticated user (required)
      * @param accessToken Unique session token for user. To get access token user will have to authenticate (required)
      * @param clientToken Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs (required)
      * @param organizationId OrganizationId (optional)
+     * @param description description (optional)
      * @param fields Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)interactionType&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)categoryDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)isSubscribed&lt;br/&gt;6)interactionType (optional, default to categoryId,categoryName,interactionType)
      * @return ApiResponse&lt;VerveResponseInteractionCategory&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<VerveResponseInteractionCategory> createInteractionCategoryWithHttpInfo(String interactionType, String name, String description, String loggedInUserId, String accessToken, String clientToken, Long organizationId, String fields) throws ApiException {
-        com.squareup.okhttp.Call call = createInteractionCategoryValidateBeforeCall(interactionType, name, description, loggedInUserId, accessToken, clientToken, organizationId, fields, null, null);
+    public ApiResponse<VerveResponseInteractionCategory> createInteractionCategoryWithHttpInfo(String interactionType, String name, String loggedInUserId, String accessToken, String clientToken, Long organizationId, String description, String fields) throws ApiException {
+        com.squareup.okhttp.Call call = createInteractionCategoryValidateBeforeCall(interactionType, name, loggedInUserId, accessToken, clientToken, organizationId, description, fields, null, null);
         Type localVarReturnType = new TypeToken<VerveResponseInteractionCategory>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -694,17 +689,17 @@ public class InteractionApi {
      * Creates a interaction category. Returns the created interaction category
      * @param interactionType Interaction Type (required)
      * @param name Name (required)
-     * @param description description (required)
      * @param loggedInUserId User id of logged / authenticated user (required)
      * @param accessToken Unique session token for user. To get access token user will have to authenticate (required)
      * @param clientToken Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs (required)
      * @param organizationId OrganizationId (optional)
+     * @param description description (optional)
      * @param fields Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)interactionType&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)categoryDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)isSubscribed&lt;br/&gt;6)interactionType (optional, default to categoryId,categoryName,interactionType)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call createInteractionCategoryAsync(String interactionType, String name, String description, String loggedInUserId, String accessToken, String clientToken, Long organizationId, String fields, final ApiCallback<VerveResponseInteractionCategory> callback) throws ApiException {
+    public com.squareup.okhttp.Call createInteractionCategoryAsync(String interactionType, String name, String loggedInUserId, String accessToken, String clientToken, Long organizationId, String description, String fields, final ApiCallback<VerveResponseInteractionCategory> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -725,7 +720,7 @@ public class InteractionApi {
             };
         }
 
-        com.squareup.okhttp.Call call = createInteractionCategoryValidateBeforeCall(interactionType, name, description, loggedInUserId, accessToken, clientToken, organizationId, fields, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = createInteractionCategoryValidateBeforeCall(interactionType, name, loggedInUserId, accessToken, clientToken, organizationId, description, fields, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<VerveResponseInteractionCategory>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -753,13 +748,13 @@ public class InteractionApi {
         localVarFormParams.put("fields", fields);
 
         final String[] localVarAccepts = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/x-www-form-urlencoded"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -776,7 +771,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -907,13 +902,13 @@ public class InteractionApi {
         localVarFormParams.put("fields", fields);
 
         final String[] localVarAccepts = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/x-www-form-urlencoded"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -930,7 +925,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -1061,13 +1056,13 @@ public class InteractionApi {
         localVarFormParams.put("fields", fields);
 
         final String[] localVarAccepts = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/x-www-form-urlencoded"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -1084,7 +1079,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -1216,13 +1211,13 @@ public class InteractionApi {
         localVarFormParams.put("fields", fields);
 
         final String[] localVarAccepts = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/x-www-form-urlencoded"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -1239,7 +1234,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -1410,7 +1405,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -1586,7 +1581,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -1745,7 +1740,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -1919,7 +1914,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -2100,7 +2095,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -2220,7 +2215,7 @@ public class InteractionApi {
         return call;
     }
     /* Build call for getRecommendedInteractinsFromDB */
-    private com.squareup.okhttp.Call getRecommendedInteractinsFromDBCall(Long userId, Integer start, Integer end, String loggedInUserId, String accessToken, String clientToken, String fields, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getRecommendedInteractinsFromDBCall(Long userId, Integer start, Integer end, String loggedInUserId, String accessToken, String clientToken, String interactionType, String fields, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -2228,6 +2223,8 @@ public class InteractionApi {
         .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(userId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (interactionType != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "interactionType", interactionType));
         if (start != null)
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "start", start));
         if (end != null)
@@ -2269,12 +2266,12 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getRecommendedInteractinsFromDBValidateBeforeCall(Long userId, Integer start, Integer end, String loggedInUserId, String accessToken, String clientToken, String fields, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getRecommendedInteractinsFromDBValidateBeforeCall(Long userId, Integer start, Integer end, String loggedInUserId, String accessToken, String clientToken, String interactionType, String fields, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'userId' is set
         if (userId == null) {
@@ -2307,7 +2304,7 @@ public class InteractionApi {
         }
         
         
-        com.squareup.okhttp.Call call = getRecommendedInteractinsFromDBCall(userId, start, end, loggedInUserId, accessToken, clientToken, fields, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getRecommendedInteractinsFromDBCall(userId, start, end, loggedInUserId, accessToken, clientToken, interactionType, fields, progressListener, progressRequestListener);
         return call;
 
         
@@ -2325,12 +2322,13 @@ public class InteractionApi {
      * @param loggedInUserId User id of logged / authenticated user (required)
      * @param accessToken Unique session token for user. To get access token user will have to authenticate (required)
      * @param clientToken Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs (required)
+     * @param interactionType Interaction Type (optional)
      * @param fields Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType (optional, default to interactionId,interactionTitle,interactionDescription,createdDate,,interactionType)
      * @return VerveResponseInteractionList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public VerveResponseInteractionList getRecommendedInteractinsFromDB(Long userId, Integer start, Integer end, String loggedInUserId, String accessToken, String clientToken, String fields) throws ApiException {
-        ApiResponse<VerveResponseInteractionList> resp = getRecommendedInteractinsFromDBWithHttpInfo(userId, start, end, loggedInUserId, accessToken, clientToken, fields);
+    public VerveResponseInteractionList getRecommendedInteractinsFromDB(Long userId, Integer start, Integer end, String loggedInUserId, String accessToken, String clientToken, String interactionType, String fields) throws ApiException {
+        ApiResponse<VerveResponseInteractionList> resp = getRecommendedInteractinsFromDBWithHttpInfo(userId, start, end, loggedInUserId, accessToken, clientToken, interactionType, fields);
         return resp.getData();
     }
 
@@ -2343,12 +2341,13 @@ public class InteractionApi {
      * @param loggedInUserId User id of logged / authenticated user (required)
      * @param accessToken Unique session token for user. To get access token user will have to authenticate (required)
      * @param clientToken Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs (required)
+     * @param interactionType Interaction Type (optional)
      * @param fields Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType (optional, default to interactionId,interactionTitle,interactionDescription,createdDate,,interactionType)
      * @return ApiResponse&lt;VerveResponseInteractionList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<VerveResponseInteractionList> getRecommendedInteractinsFromDBWithHttpInfo(Long userId, Integer start, Integer end, String loggedInUserId, String accessToken, String clientToken, String fields) throws ApiException {
-        com.squareup.okhttp.Call call = getRecommendedInteractinsFromDBValidateBeforeCall(userId, start, end, loggedInUserId, accessToken, clientToken, fields, null, null);
+    public ApiResponse<VerveResponseInteractionList> getRecommendedInteractinsFromDBWithHttpInfo(Long userId, Integer start, Integer end, String loggedInUserId, String accessToken, String clientToken, String interactionType, String fields) throws ApiException {
+        com.squareup.okhttp.Call call = getRecommendedInteractinsFromDBValidateBeforeCall(userId, start, end, loggedInUserId, accessToken, clientToken, interactionType, fields, null, null);
         Type localVarReturnType = new TypeToken<VerveResponseInteractionList>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -2362,12 +2361,13 @@ public class InteractionApi {
      * @param loggedInUserId User id of logged / authenticated user (required)
      * @param accessToken Unique session token for user. To get access token user will have to authenticate (required)
      * @param clientToken Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs (required)
+     * @param interactionType Interaction Type (optional)
      * @param fields Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType (optional, default to interactionId,interactionTitle,interactionDescription,createdDate,,interactionType)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getRecommendedInteractinsFromDBAsync(Long userId, Integer start, Integer end, String loggedInUserId, String accessToken, String clientToken, String fields, final ApiCallback<VerveResponseInteractionList> callback) throws ApiException {
+    public com.squareup.okhttp.Call getRecommendedInteractinsFromDBAsync(Long userId, Integer start, Integer end, String loggedInUserId, String accessToken, String clientToken, String interactionType, String fields, final ApiCallback<VerveResponseInteractionList> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2388,7 +2388,7 @@ public class InteractionApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getRecommendedInteractinsFromDBValidateBeforeCall(userId, start, end, loggedInUserId, accessToken, clientToken, fields, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getRecommendedInteractinsFromDBValidateBeforeCall(userId, start, end, loggedInUserId, accessToken, clientToken, interactionType, fields, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<VerveResponseInteractionList>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -2443,7 +2443,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -2617,7 +2617,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -2797,7 +2797,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -2986,7 +2986,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -3174,7 +3174,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -3336,13 +3336,13 @@ public class InteractionApi {
         localVarFormParams.put("fields", fields);
 
         final String[] localVarAccepts = {
-            "application/json", "application/xml"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/x-www-form-urlencoded"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -3359,7 +3359,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -3499,13 +3499,13 @@ public class InteractionApi {
         localVarFormParams.put("fields", fields);
 
         final String[] localVarAccepts = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/x-www-form-urlencoded"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -3522,7 +3522,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -3693,7 +3693,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -3851,13 +3851,13 @@ public class InteractionApi {
         localVarFormParams.put("fields", fields);
 
         final String[] localVarAccepts = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/x-www-form-urlencoded"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -3874,7 +3874,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -4005,13 +4005,13 @@ public class InteractionApi {
         localVarFormParams.put("fields", fields);
 
         final String[] localVarAccepts = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/x-www-form-urlencoded"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -4028,7 +4028,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -4160,13 +4160,13 @@ public class InteractionApi {
         localVarFormParams.put("fields", fields);
 
         final String[] localVarAccepts = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/x-www-form-urlencoded"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -4183,7 +4183,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -4322,13 +4322,13 @@ public class InteractionApi {
         localVarFormParams.put("fields", fields);
 
         final String[] localVarAccepts = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/x-www-form-urlencoded"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -4345,7 +4345,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -4476,13 +4476,13 @@ public class InteractionApi {
         localVarFormParams.put("fields", fields);
 
         final String[] localVarAccepts = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/x-www-form-urlencoded"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -4499,7 +4499,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
@@ -4608,7 +4608,7 @@ public class InteractionApi {
         return call;
     }
     /* Build call for updateInteraction */
-    private com.squareup.okhttp.Call updateInteractionCall(Long interactionId, String interactionTitle, String interactionDescription, String loggedInUserId, String accessToken, String clientToken, String fields, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call updateInteractionCall(Long interactionId, String interactionTitle, String loggedInUserId, String accessToken, String clientToken, String interactionDescription, String fields, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -4634,13 +4634,13 @@ public class InteractionApi {
         localVarFormParams.put("fields", fields);
 
         final String[] localVarAccepts = {
-            "application/json", "application/xml"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/x-www-form-urlencoded"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -4657,12 +4657,12 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call updateInteractionValidateBeforeCall(Long interactionId, String interactionTitle, String interactionDescription, String loggedInUserId, String accessToken, String clientToken, String fields, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call updateInteractionValidateBeforeCall(Long interactionId, String interactionTitle, String loggedInUserId, String accessToken, String clientToken, String interactionDescription, String fields, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'interactionId' is set
         if (interactionId == null) {
@@ -4672,11 +4672,6 @@ public class InteractionApi {
         // verify the required parameter 'interactionTitle' is set
         if (interactionTitle == null) {
             throw new ApiException("Missing the required parameter 'interactionTitle' when calling updateInteraction(Async)");
-        }
-        
-        // verify the required parameter 'interactionDescription' is set
-        if (interactionDescription == null) {
-            throw new ApiException("Missing the required parameter 'interactionDescription' when calling updateInteraction(Async)");
         }
         
         // verify the required parameter 'loggedInUserId' is set
@@ -4695,7 +4690,7 @@ public class InteractionApi {
         }
         
         
-        com.squareup.okhttp.Call call = updateInteractionCall(interactionId, interactionTitle, interactionDescription, loggedInUserId, accessToken, clientToken, fields, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = updateInteractionCall(interactionId, interactionTitle, loggedInUserId, accessToken, clientToken, interactionDescription, fields, progressListener, progressRequestListener);
         return call;
 
         
@@ -4709,16 +4704,16 @@ public class InteractionApi {
      * Allows the user to update interaction. Returns the updated interaction
      * @param interactionId interactionId (required)
      * @param interactionTitle Interaction Title (required)
-     * @param interactionDescription Describe Interaction (required)
      * @param loggedInUserId User id of logged / authenticated user (required)
      * @param accessToken Unique session token for user. To get access token user will have to authenticate (required)
      * @param clientToken Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs (required)
+     * @param interactionDescription Describe Interaction (optional)
      * @param fields Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType (optional, default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType)
      * @return VerveResponseInteraction
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public VerveResponseInteraction updateInteraction(Long interactionId, String interactionTitle, String interactionDescription, String loggedInUserId, String accessToken, String clientToken, String fields) throws ApiException {
-        ApiResponse<VerveResponseInteraction> resp = updateInteractionWithHttpInfo(interactionId, interactionTitle, interactionDescription, loggedInUserId, accessToken, clientToken, fields);
+    public VerveResponseInteraction updateInteraction(Long interactionId, String interactionTitle, String loggedInUserId, String accessToken, String clientToken, String interactionDescription, String fields) throws ApiException {
+        ApiResponse<VerveResponseInteraction> resp = updateInteractionWithHttpInfo(interactionId, interactionTitle, loggedInUserId, accessToken, clientToken, interactionDescription, fields);
         return resp.getData();
     }
 
@@ -4727,16 +4722,16 @@ public class InteractionApi {
      * Allows the user to update interaction. Returns the updated interaction
      * @param interactionId interactionId (required)
      * @param interactionTitle Interaction Title (required)
-     * @param interactionDescription Describe Interaction (required)
      * @param loggedInUserId User id of logged / authenticated user (required)
      * @param accessToken Unique session token for user. To get access token user will have to authenticate (required)
      * @param clientToken Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs (required)
+     * @param interactionDescription Describe Interaction (optional)
      * @param fields Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType (optional, default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType)
      * @return ApiResponse&lt;VerveResponseInteraction&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<VerveResponseInteraction> updateInteractionWithHttpInfo(Long interactionId, String interactionTitle, String interactionDescription, String loggedInUserId, String accessToken, String clientToken, String fields) throws ApiException {
-        com.squareup.okhttp.Call call = updateInteractionValidateBeforeCall(interactionId, interactionTitle, interactionDescription, loggedInUserId, accessToken, clientToken, fields, null, null);
+    public ApiResponse<VerveResponseInteraction> updateInteractionWithHttpInfo(Long interactionId, String interactionTitle, String loggedInUserId, String accessToken, String clientToken, String interactionDescription, String fields) throws ApiException {
+        com.squareup.okhttp.Call call = updateInteractionValidateBeforeCall(interactionId, interactionTitle, loggedInUserId, accessToken, clientToken, interactionDescription, fields, null, null);
         Type localVarReturnType = new TypeToken<VerveResponseInteraction>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -4746,16 +4741,16 @@ public class InteractionApi {
      * Allows the user to update interaction. Returns the updated interaction
      * @param interactionId interactionId (required)
      * @param interactionTitle Interaction Title (required)
-     * @param interactionDescription Describe Interaction (required)
      * @param loggedInUserId User id of logged / authenticated user (required)
      * @param accessToken Unique session token for user. To get access token user will have to authenticate (required)
      * @param clientToken Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs (required)
+     * @param interactionDescription Describe Interaction (optional)
      * @param fields Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType (optional, default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call updateInteractionAsync(Long interactionId, String interactionTitle, String interactionDescription, String loggedInUserId, String accessToken, String clientToken, String fields, final ApiCallback<VerveResponseInteraction> callback) throws ApiException {
+    public com.squareup.okhttp.Call updateInteractionAsync(Long interactionId, String interactionTitle, String loggedInUserId, String accessToken, String clientToken, String interactionDescription, String fields, final ApiCallback<VerveResponseInteraction> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -4776,13 +4771,13 @@ public class InteractionApi {
             };
         }
 
-        com.squareup.okhttp.Call call = updateInteractionValidateBeforeCall(interactionId, interactionTitle, interactionDescription, loggedInUserId, accessToken, clientToken, fields, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = updateInteractionValidateBeforeCall(interactionId, interactionTitle, loggedInUserId, accessToken, clientToken, interactionDescription, fields, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<VerveResponseInteraction>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for updateInteractionCategory */
-    private com.squareup.okhttp.Call updateInteractionCategoryCall(Long categoryId, String categoryName, String categoryDescription, String loggedInUserId, String accessToken, String clientToken, String fields, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call updateInteractionCategoryCall(Long categoryId, String categoryName, String loggedInUserId, String accessToken, String clientToken, String categoryDescription, String fields, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -4808,13 +4803,13 @@ public class InteractionApi {
         localVarFormParams.put("fields", fields);
 
         final String[] localVarAccepts = {
-            "application/json", "application/xml"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/x-www-form-urlencoded"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -4831,12 +4826,12 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call updateInteractionCategoryValidateBeforeCall(Long categoryId, String categoryName, String categoryDescription, String loggedInUserId, String accessToken, String clientToken, String fields, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call updateInteractionCategoryValidateBeforeCall(Long categoryId, String categoryName, String loggedInUserId, String accessToken, String clientToken, String categoryDescription, String fields, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'categoryId' is set
         if (categoryId == null) {
@@ -4846,11 +4841,6 @@ public class InteractionApi {
         // verify the required parameter 'categoryName' is set
         if (categoryName == null) {
             throw new ApiException("Missing the required parameter 'categoryName' when calling updateInteractionCategory(Async)");
-        }
-        
-        // verify the required parameter 'categoryDescription' is set
-        if (categoryDescription == null) {
-            throw new ApiException("Missing the required parameter 'categoryDescription' when calling updateInteractionCategory(Async)");
         }
         
         // verify the required parameter 'loggedInUserId' is set
@@ -4869,7 +4859,7 @@ public class InteractionApi {
         }
         
         
-        com.squareup.okhttp.Call call = updateInteractionCategoryCall(categoryId, categoryName, categoryDescription, loggedInUserId, accessToken, clientToken, fields, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = updateInteractionCategoryCall(categoryId, categoryName, loggedInUserId, accessToken, clientToken, categoryDescription, fields, progressListener, progressRequestListener);
         return call;
 
         
@@ -4883,16 +4873,16 @@ public class InteractionApi {
      * Allows the user to update the interaction category. Returns the updated interaction category
      * @param categoryId categoryId (required)
      * @param categoryName Category Name (required)
-     * @param categoryDescription Describe category (required)
      * @param loggedInUserId User id of logged / authenticated user (required)
      * @param accessToken Unique session token for user. To get access token user will have to authenticate (required)
      * @param clientToken Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs (required)
+     * @param categoryDescription Describe category (optional)
      * @param fields Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)interactionType&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)categoryDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)isSubscribed&lt;br/&gt;6)interactionType (optional, default to categoryId,categoryName,interactionType)
      * @return VerveResponseInteractionCategory
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public VerveResponseInteractionCategory updateInteractionCategory(Long categoryId, String categoryName, String categoryDescription, String loggedInUserId, String accessToken, String clientToken, String fields) throws ApiException {
-        ApiResponse<VerveResponseInteractionCategory> resp = updateInteractionCategoryWithHttpInfo(categoryId, categoryName, categoryDescription, loggedInUserId, accessToken, clientToken, fields);
+    public VerveResponseInteractionCategory updateInteractionCategory(Long categoryId, String categoryName, String loggedInUserId, String accessToken, String clientToken, String categoryDescription, String fields) throws ApiException {
+        ApiResponse<VerveResponseInteractionCategory> resp = updateInteractionCategoryWithHttpInfo(categoryId, categoryName, loggedInUserId, accessToken, clientToken, categoryDescription, fields);
         return resp.getData();
     }
 
@@ -4901,16 +4891,16 @@ public class InteractionApi {
      * Allows the user to update the interaction category. Returns the updated interaction category
      * @param categoryId categoryId (required)
      * @param categoryName Category Name (required)
-     * @param categoryDescription Describe category (required)
      * @param loggedInUserId User id of logged / authenticated user (required)
      * @param accessToken Unique session token for user. To get access token user will have to authenticate (required)
      * @param clientToken Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs (required)
+     * @param categoryDescription Describe category (optional)
      * @param fields Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)interactionType&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)categoryDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)isSubscribed&lt;br/&gt;6)interactionType (optional, default to categoryId,categoryName,interactionType)
      * @return ApiResponse&lt;VerveResponseInteractionCategory&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<VerveResponseInteractionCategory> updateInteractionCategoryWithHttpInfo(Long categoryId, String categoryName, String categoryDescription, String loggedInUserId, String accessToken, String clientToken, String fields) throws ApiException {
-        com.squareup.okhttp.Call call = updateInteractionCategoryValidateBeforeCall(categoryId, categoryName, categoryDescription, loggedInUserId, accessToken, clientToken, fields, null, null);
+    public ApiResponse<VerveResponseInteractionCategory> updateInteractionCategoryWithHttpInfo(Long categoryId, String categoryName, String loggedInUserId, String accessToken, String clientToken, String categoryDescription, String fields) throws ApiException {
+        com.squareup.okhttp.Call call = updateInteractionCategoryValidateBeforeCall(categoryId, categoryName, loggedInUserId, accessToken, clientToken, categoryDescription, fields, null, null);
         Type localVarReturnType = new TypeToken<VerveResponseInteractionCategory>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -4920,16 +4910,16 @@ public class InteractionApi {
      * Allows the user to update the interaction category. Returns the updated interaction category
      * @param categoryId categoryId (required)
      * @param categoryName Category Name (required)
-     * @param categoryDescription Describe category (required)
      * @param loggedInUserId User id of logged / authenticated user (required)
      * @param accessToken Unique session token for user. To get access token user will have to authenticate (required)
      * @param clientToken Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs (required)
+     * @param categoryDescription Describe category (optional)
      * @param fields Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)interactionType&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)categoryDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)isSubscribed&lt;br/&gt;6)interactionType (optional, default to categoryId,categoryName,interactionType)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call updateInteractionCategoryAsync(Long categoryId, String categoryName, String categoryDescription, String loggedInUserId, String accessToken, String clientToken, String fields, final ApiCallback<VerveResponseInteractionCategory> callback) throws ApiException {
+    public com.squareup.okhttp.Call updateInteractionCategoryAsync(Long categoryId, String categoryName, String loggedInUserId, String accessToken, String clientToken, String categoryDescription, String fields, final ApiCallback<VerveResponseInteractionCategory> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -4950,7 +4940,7 @@ public class InteractionApi {
             };
         }
 
-        com.squareup.okhttp.Call call = updateInteractionCategoryValidateBeforeCall(categoryId, categoryName, categoryDescription, loggedInUserId, accessToken, clientToken, fields, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = updateInteractionCategoryValidateBeforeCall(categoryId, categoryName, loggedInUserId, accessToken, clientToken, categoryDescription, fields, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<VerveResponseInteractionCategory>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -4980,13 +4970,13 @@ public class InteractionApi {
         localVarFormParams.put("fields", fields);
 
         final String[] localVarAccepts = {
-            "application/json", "application/xml"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json", "application/x-www-form-urlencoded"
+            "application/x-www-form-urlencoded"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -5003,7 +4993,7 @@ public class InteractionApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "default" };
         return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
