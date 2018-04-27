@@ -1,10 +1,11 @@
 
-# Sentiment
+# TextClassification
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sentiment** | **Double** |  |  [optional]
+**confidence** | **String** |  |  [optional]
+**name** | **String** |  |  [optional]
 
 
 

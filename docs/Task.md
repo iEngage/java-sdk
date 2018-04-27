@@ -13,6 +13,9 @@ Name | Type | Description | Notes
 **milestoneName** | **String** |  |  [optional]
 **groupType** | **String** |  |  [optional]
 **groupName** | **String** |  |  [optional]
+**assigneeUserId** | **Long** |  |  [optional]
+**neverDue** | **Boolean** |  |  [optional]
+**user** | [**User**](User.md) |  |  [optional]
 
 
 

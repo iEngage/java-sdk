@@ -17,6 +17,10 @@ Name | Type | Description | Notes
 **followersCount** | **Long** |  |  [optional]
 **participantsCount** | **Long** |  |  [optional]
 **friendsParticipantsCount** | **Long** |  |  [optional]
+**association** | **Long** |  |  [optional]
+**accessType** | **String** |  |  [optional]
+**managerId** | **List&lt;Long&gt;** |  |  [optional]
+**user** | [**User**](User.md) |  |  [optional]
 
 
 

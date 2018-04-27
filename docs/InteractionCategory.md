@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **modifiedDate** | [**DateTime**](DateTime.md) |  |  [optional]
 **status** | **Integer** |  |  [optional]
 **isSubscribed** | **Boolean** |  |  [optional]
+**associationId** | **String** |  |  [optional]
+**user** | [**User**](User.md) |  |  [optional]
 
 
 

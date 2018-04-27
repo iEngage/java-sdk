@@ -1,18 +1,78 @@
 # NotificationApi
 
-All URIs are relative to *https://api.iengage.io:8243/api/1.0*
+All URIs are relative to *https://api.iengage.io:8243/api/2.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**addNotification**](NotificationApi.md#addNotification) | **POST** /notifications | Create custom notification
 [**getNotifications**](NotificationApi.md#getNotifications) | **GET** /notifications | Get list of notifications
 [**markAllNotificationAsRead**](NotificationApi.md#markAllNotificationAsRead) | **POST** /notifications/read/all | Mark all notification as read
 [**markNotificationAsRead**](NotificationApi.md#markNotificationAsRead) | **POST** /notifications/read/{notificationId} | Mark notification as read
 [**notificationCount**](NotificationApi.md#notificationCount) | **GET** /notifications/count | Get notifications count
 
 
+<a name="addNotification"></a>
+# **addNotification**
+> Boolean addNotification(requesterId, clientToken, body, accessToken)
+
+Create custom notification
+
+This service allows a user to create a notification. The following fields(key:value) are required to be present in the Notification JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API.&lt;/br&gt;&lt;b&gt;Required fields &lt;/br&gt;1. title &lt;/br&gt;2. body &lt;/br&gt;3. extraData &lt;/br&gt;4. roleName OR toUser: { emailId }
+
+### Example
+```java
+// Import classes:
+//import com.iengage.ApiClient;
+//import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
+//import com.iengage.service.NotificationApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
+
+NotificationApi apiInstance = new NotificationApi();
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
+String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+Notification body = new Notification(); // Notification | 
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+try {
+    Boolean result = apiInstance.addNotification(requesterId, clientToken, body, accessToken);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling NotificationApi#addNotification");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requesterId** | **String**| requesterId can be user id OR email address. |
+ **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **body** | [**Notification**](Notification.md)|  | [optional]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
+
+### Return type
+
+**Boolean**
+
+### Authorization
+
+[default](../README.md#default)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/x-www-form-urlencoded
+ - **Accept**: application/json
+
 <a name="getNotifications"></a>
 # **getNotifications**
-> VerveResponseNotificationList getNotifications(type, start, end, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseNotificationList getNotifications(type, start, end, requesterId, clientToken, fields, accessToken)
 
 Get list of notifications
 
@@ -37,12 +97,12 @@ NotificationApi apiInstance = new NotificationApi();
 String type = "ALL"; // String | Type of count<br/> 1) UNREAD <br/> 2) READ <br/> 3)ALL
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "notificationId,message,isRead,date"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)notificationId<br/>2)message<br/>3)isRead<br/>4)date<br/><b>A) Available values-</b><br/>1)notificationId<br/>2)message<br/>3)isRead<br/>4)date<br/>5)type<br/>6)byUser<br/>7)entity<br/>8)parentEntity
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseNotificationList result = apiInstance.getNotifications(type, start, end, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseNotificationList result = apiInstance.getNotifications(type, start, end, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling NotificationApi#getNotifications");
@@ -57,10 +117,10 @@ Name | Type | Description  | Notes
  **type** | **String**| Type of count&lt;br/&gt; 1) UNREAD &lt;br/&gt; 2) READ &lt;br/&gt; 3)ALL | [default to ALL]
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)notificationId&lt;br/&gt;2)message&lt;br/&gt;3)isRead&lt;br/&gt;4)date&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)notificationId&lt;br/&gt;2)message&lt;br/&gt;3)isRead&lt;br/&gt;4)date&lt;br/&gt;5)type&lt;br/&gt;6)byUser&lt;br/&gt;7)entity&lt;br/&gt;8)parentEntity | [optional] [default to notificationId,message,isRead,date]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -77,7 +137,7 @@ Name | Type | Description  | Notes
 
 <a name="markAllNotificationAsRead"></a>
 # **markAllNotificationAsRead**
-> Boolean markAllNotificationAsRead(loggedInUserId, accessToken, clientToken)
+> Boolean markAllNotificationAsRead(requesterId, clientToken, accessToken)
 
 Mark all notification as read
 
@@ -99,11 +159,11 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 NotificationApi apiInstance = new NotificationApi();
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    Boolean result = apiInstance.markAllNotificationAsRead(loggedInUserId, accessToken, clientToken);
+    Boolean result = apiInstance.markAllNotificationAsRead(requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling NotificationApi#markAllNotificationAsRead");
@@ -115,9 +175,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -134,7 +194,7 @@ Name | Type | Description  | Notes
 
 <a name="markNotificationAsRead"></a>
 # **markNotificationAsRead**
-> Boolean markNotificationAsRead(notificationId, loggedInUserId, accessToken, clientToken)
+> Boolean markNotificationAsRead(notificationId, requesterId, clientToken, accessToken)
 
 Mark notification as read
 
@@ -157,11 +217,11 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 NotificationApi apiInstance = new NotificationApi();
 Long notificationId = 789L; // Long | notification Id
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    Boolean result = apiInstance.markNotificationAsRead(notificationId, loggedInUserId, accessToken, clientToken);
+    Boolean result = apiInstance.markNotificationAsRead(notificationId, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling NotificationApi#markNotificationAsRead");
@@ -174,9 +234,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **notificationId** | **Long**| notification Id |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -193,7 +253,7 @@ Name | Type | Description  | Notes
 
 <a name="notificationCount"></a>
 # **notificationCount**
-> Long notificationCount(type, loggedInUserId, accessToken, clientToken)
+> Long notificationCount(type, requesterId, clientToken, accessToken)
 
 Get notifications count
 
@@ -216,11 +276,11 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 NotificationApi apiInstance = new NotificationApi();
 String type = "ALL"; // String | Type of count<br/> 1) UNREAD <br/> 2) READ <br/> 3)ALL
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    Long result = apiInstance.notificationCount(type, loggedInUserId, accessToken, clientToken);
+    Long result = apiInstance.notificationCount(type, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling NotificationApi#notificationCount");
@@ -233,9 +293,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **type** | **String**| Type of count&lt;br/&gt; 1) UNREAD &lt;br/&gt; 2) READ &lt;br/&gt; 3)ALL | [default to ALL]
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 

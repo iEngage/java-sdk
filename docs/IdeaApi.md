@@ -1,6 +1,6 @@
 # IdeaApi
 
-All URIs are relative to *https://api.iengage.io:8243/api/1.0*
+All URIs are relative to *https://api.iengage.io:8243/api/2.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -32,7 +32,7 @@ Method | HTTP request | Description
 
 <a name="deleteComment"></a>
 # **deleteComment**
-> VerveResponseComment deleteComment(commentId, loggedInUserId, accessToken, clientToken)
+> VerveResponseComment deleteComment(commentId, requesterId, clientToken, accessToken)
 
 Delete comment
 
@@ -55,11 +55,11 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 IdeaApi apiInstance = new IdeaApi();
 Long commentId = 789L; // Long | Comment Id
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseComment result = apiInstance.deleteComment(commentId, loggedInUserId, accessToken, clientToken);
+    VerveResponseComment result = apiInstance.deleteComment(commentId, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdeaApi#deleteComment");
@@ -72,9 +72,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commentId** | **Long**| Comment Id |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteIdea"></a>
 # **deleteIdea**
-> VerveResponseIdea deleteIdea(ideaId, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseIdea deleteIdea(ideaId, requesterId, clientToken, file, fields, accessToken)
 
 Delete idea
 
@@ -114,12 +114,13 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 IdeaApi apiInstance = new IdeaApi();
 Long ideaId = 789L; // Long | ideaId
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+File file = new File("/path/to/file.txt"); // File | file
 String fields = "ideaId,ideaTitle,ideaDescription,ideaCreationDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)ideaId<br/>2)ideaTitle<br/>3)ideaDescription<br/>4)ideaCreationDate<br/><b>A) Available values-</b><br/>1)ideaId<br/>2)ideaTitle<br/>3)group<br/>4)ideaDescription<br/>5)ideator<br/>6)ideaCreationDate<br/>7)lastModifiedDate<br/>8)ideaStage<br/>9)domain<br/>10)technology<br/>11)accessType<br/>12)videoId<br/>13)activeStatus<br/>14)teamStatus<br/>15)projectStatus<br/>16)totalFollowers<br/>17)totalComments<br/>18)totalBlogs<br/>19)averageRatingScore<br/>20)numberOfRatings<br/>21)currentUserFollowing<br/>22)currentUserRating<br/>23)ideaFileURL<br/>24)sentiment</br>25)entity
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseIdea result = apiInstance.deleteIdea(ideaId, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseIdea result = apiInstance.deleteIdea(ideaId, requesterId, clientToken, file, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdeaApi#deleteIdea");
@@ -132,10 +133,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ideaId** | **Long**| ideaId |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **file** | **File**| file |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)ideaDescription&lt;br/&gt;4)ideaCreationDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)group&lt;br/&gt;4)ideaDescription&lt;br/&gt;5)ideator&lt;br/&gt;6)ideaCreationDate&lt;br/&gt;7)lastModifiedDate&lt;br/&gt;8)ideaStage&lt;br/&gt;9)domain&lt;br/&gt;10)technology&lt;br/&gt;11)accessType&lt;br/&gt;12)videoId&lt;br/&gt;13)activeStatus&lt;br/&gt;14)teamStatus&lt;br/&gt;15)projectStatus&lt;br/&gt;16)totalFollowers&lt;br/&gt;17)totalComments&lt;br/&gt;18)totalBlogs&lt;br/&gt;19)averageRatingScore&lt;br/&gt;20)numberOfRatings&lt;br/&gt;21)currentUserFollowing&lt;br/&gt;22)currentUserRating&lt;br/&gt;23)ideaFileURL&lt;br/&gt;24)sentiment&lt;/br&gt;25)entity | [optional] [default to ideaId,ideaTitle,ideaDescription,ideaCreationDate]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -152,7 +154,7 @@ Name | Type | Description  | Notes
 
 <a name="followIdea"></a>
 # **followIdea**
-> VerveResponseIdea followIdea(ideaId, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseIdea followIdea(ideaId, requesterId, clientToken, fields, accessToken)
 
 Follow idea
 
@@ -175,12 +177,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 IdeaApi apiInstance = new IdeaApi();
 Long ideaId = 789L; // Long | idea Id
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "ideaId,ideaTitle,ideaDescription,ideaCreationDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)ideaId<br/>2)ideaTitle<br/>3)ideaDescription<br/>4)ideaCreationDate<br/><b>A) Available values-</b><br/>1)ideaId<br/>2)ideaTitle<br/>3)group<br/>4)ideaDescription<br/>5)ideator<br/>6)ideaCreationDate<br/>7)lastModifiedDate<br/>8)ideaStage<br/>9)domain<br/>10)technology<br/>11)accessType<br/>12)videoId<br/>13)activeStatus<br/>14)teamStatus<br/>15)projectStatus<br/>16)totalFollowers<br/>17)totalComments<br/>18)totalBlogs<br/>19)averageRatingScore<br/>20)numberOfRatings<br/>21)currentUserFollowing<br/>22)currentUserRating<br/>23)ideaFileURL<br/>24)sentiment</br>25)entity
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseIdea result = apiInstance.followIdea(ideaId, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseIdea result = apiInstance.followIdea(ideaId, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdeaApi#followIdea");
@@ -193,10 +195,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ideaId** | **Long**| idea Id |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)ideaDescription&lt;br/&gt;4)ideaCreationDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)group&lt;br/&gt;4)ideaDescription&lt;br/&gt;5)ideator&lt;br/&gt;6)ideaCreationDate&lt;br/&gt;7)lastModifiedDate&lt;br/&gt;8)ideaStage&lt;br/&gt;9)domain&lt;br/&gt;10)technology&lt;br/&gt;11)accessType&lt;br/&gt;12)videoId&lt;br/&gt;13)activeStatus&lt;br/&gt;14)teamStatus&lt;br/&gt;15)projectStatus&lt;br/&gt;16)totalFollowers&lt;br/&gt;17)totalComments&lt;br/&gt;18)totalBlogs&lt;br/&gt;19)averageRatingScore&lt;br/&gt;20)numberOfRatings&lt;br/&gt;21)currentUserFollowing&lt;br/&gt;22)currentUserRating&lt;br/&gt;23)ideaFileURL&lt;br/&gt;24)sentiment&lt;/br&gt;25)entity | [optional] [default to ideaId,ideaTitle,ideaDescription,ideaCreationDate]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -213,7 +215,7 @@ Name | Type | Description  | Notes
 
 <a name="getAllIdeas"></a>
 # **getAllIdeas**
-> VerveResponseIdeaList getAllIdeas(start, end, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseIdeaList getAllIdeas(start, end, requesterId, clientToken, fields, accessToken)
 
 Get list of Ideas
 
@@ -237,12 +239,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 IdeaApi apiInstance = new IdeaApi();
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "ideaId,ideaTitle,ideaDescription,ideaCreationDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)ideaId<br/>2)ideaTitle<br/>3)ideaDescription<br/>4)ideaCreationDate<br/><b>A) Available values-</b><br/>1)ideaId<br/>2)ideaTitle<br/>3)group<br/>4)ideaDescription<br/>5)ideator<br/>6)ideaCreationDate<br/>7)lastModifiedDate<br/>8)ideaStage<br/>9)domain<br/>10)technology<br/>11)accessType<br/>12)videoId<br/>13)activeStatus<br/>14)teamStatus<br/>15)projectStatus<br/>16)totalFollowers<br/>17)totalComments<br/>18)totalBlogs<br/>19)averageRatingScore<br/>20)numberOfRatings<br/>21)currentUserFollowing<br/>22)currentUserRating<br/>23)ideaFileURL<br/>24)sentiment</br>25)entity
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseIdeaList result = apiInstance.getAllIdeas(start, end, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseIdeaList result = apiInstance.getAllIdeas(start, end, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdeaApi#getAllIdeas");
@@ -256,10 +258,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)ideaDescription&lt;br/&gt;4)ideaCreationDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)group&lt;br/&gt;4)ideaDescription&lt;br/&gt;5)ideator&lt;br/&gt;6)ideaCreationDate&lt;br/&gt;7)lastModifiedDate&lt;br/&gt;8)ideaStage&lt;br/&gt;9)domain&lt;br/&gt;10)technology&lt;br/&gt;11)accessType&lt;br/&gt;12)videoId&lt;br/&gt;13)activeStatus&lt;br/&gt;14)teamStatus&lt;br/&gt;15)projectStatus&lt;br/&gt;16)totalFollowers&lt;br/&gt;17)totalComments&lt;br/&gt;18)totalBlogs&lt;br/&gt;19)averageRatingScore&lt;br/&gt;20)numberOfRatings&lt;br/&gt;21)currentUserFollowing&lt;br/&gt;22)currentUserRating&lt;br/&gt;23)ideaFileURL&lt;br/&gt;24)sentiment&lt;/br&gt;25)entity | [optional] [default to ideaId,ideaTitle,ideaDescription,ideaCreationDate]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -276,7 +278,7 @@ Name | Type | Description  | Notes
 
 <a name="getFollowingIdeas"></a>
 # **getFollowingIdeas**
-> VerveResponseIdeaList getFollowingIdeas(userId, start, end, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseIdeaList getFollowingIdeas(userId, start, end, requesterId, clientToken, fields, accessToken)
 
 Get list of ideas that users are following
 
@@ -298,15 +300,15 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 IdeaApi apiInstance = new IdeaApi();
-Long userId = 789L; // Long | userId
+Long userId = 789L; // Long | User Id whose followed ideas want to get.
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "ideaId,ideaTitle,ideaDescription,ideaCreationDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)ideaId<br/>2)ideaTitle<br/>3)ideaDescription<br/>4)ideaCreationDate<br/><b>A) Available values-</b><br/>1)ideaId<br/>2)ideaTitle<br/>3)group<br/>4)ideaDescription<br/>5)ideator<br/>6)ideaCreationDate<br/>7)lastModifiedDate<br/>8)ideaStage<br/>9)domain<br/>10)technology<br/>11)accessType<br/>12)videoId<br/>13)activeStatus<br/>14)teamStatus<br/>15)projectStatus<br/>16)totalFollowers<br/>17)totalComments<br/>18)totalBlogs<br/>19)averageRatingScore<br/>20)numberOfRatings<br/>21)currentUserFollowing<br/>22)currentUserRating<br/>23)ideaFileURL<br/>24)sentiment</br>25)entity
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseIdeaList result = apiInstance.getFollowingIdeas(userId, start, end, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseIdeaList result = apiInstance.getFollowingIdeas(userId, start, end, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdeaApi#getFollowingIdeas");
@@ -318,13 +320,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **Long**| userId |
+ **userId** | **Long**| User Id whose followed ideas want to get. |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)ideaDescription&lt;br/&gt;4)ideaCreationDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)group&lt;br/&gt;4)ideaDescription&lt;br/&gt;5)ideator&lt;br/&gt;6)ideaCreationDate&lt;br/&gt;7)lastModifiedDate&lt;br/&gt;8)ideaStage&lt;br/&gt;9)domain&lt;br/&gt;10)technology&lt;br/&gt;11)accessType&lt;br/&gt;12)videoId&lt;br/&gt;13)activeStatus&lt;br/&gt;14)teamStatus&lt;br/&gt;15)projectStatus&lt;br/&gt;16)totalFollowers&lt;br/&gt;17)totalComments&lt;br/&gt;18)totalBlogs&lt;br/&gt;19)averageRatingScore&lt;br/&gt;20)numberOfRatings&lt;br/&gt;21)currentUserFollowing&lt;br/&gt;22)currentUserRating&lt;br/&gt;23)ideaFileURL&lt;br/&gt;24)sentiment&lt;/br&gt;25)entity | [optional] [default to ideaId,ideaTitle,ideaDescription,ideaCreationDate]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -341,7 +343,7 @@ Name | Type | Description  | Notes
 
 <a name="getGroupIdeas"></a>
 # **getGroupIdeas**
-> VerveResponseIdeaList getGroupIdeas(userId, groupId, start, end, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseIdeaList getGroupIdeas(userId, groupId, start, end, requesterId, clientToken, fields, accessToken)
 
 Get list of ideas in group
 
@@ -367,12 +369,12 @@ Long userId = 789L; // Long | user Id
 Long groupId = 789L; // Long | group Id
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "ideaId,ideaTitle,ideaDescription,ideaCreationDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)ideaId<br/>2)ideaTitle<br/>3)ideaDescription<br/>4)ideaCreationDate<br/><b>A) Available values-</b><br/>1)ideaId<br/>2)ideaTitle<br/>3)group<br/>4)ideaDescription<br/>5)ideator<br/>6)ideaCreationDate<br/>7)lastModifiedDate<br/>8)ideaStage<br/>9)domain<br/>10)technology<br/>11)accessType<br/>12)videoId<br/>13)activeStatus<br/>14)teamStatus<br/>15)projectStatus<br/>16)totalFollowers<br/>17)totalComments<br/>18)totalBlogs<br/>19)averageRatingScore<br/>20)numberOfRatings<br/>21)currentUserFollowing<br/>22)currentUserRating<br/>23)ideaFileURL<br/>24)sentiment</br>25)entity
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseIdeaList result = apiInstance.getGroupIdeas(userId, groupId, start, end, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseIdeaList result = apiInstance.getGroupIdeas(userId, groupId, start, end, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdeaApi#getGroupIdeas");
@@ -388,10 +390,10 @@ Name | Type | Description  | Notes
  **groupId** | **Long**| group Id |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)ideaDescription&lt;br/&gt;4)ideaCreationDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)group&lt;br/&gt;4)ideaDescription&lt;br/&gt;5)ideator&lt;br/&gt;6)ideaCreationDate&lt;br/&gt;7)lastModifiedDate&lt;br/&gt;8)ideaStage&lt;br/&gt;9)domain&lt;br/&gt;10)technology&lt;br/&gt;11)accessType&lt;br/&gt;12)videoId&lt;br/&gt;13)activeStatus&lt;br/&gt;14)teamStatus&lt;br/&gt;15)projectStatus&lt;br/&gt;16)totalFollowers&lt;br/&gt;17)totalComments&lt;br/&gt;18)totalBlogs&lt;br/&gt;19)averageRatingScore&lt;br/&gt;20)numberOfRatings&lt;br/&gt;21)currentUserFollowing&lt;br/&gt;22)currentUserRating&lt;br/&gt;23)ideaFileURL&lt;br/&gt;24)sentiment&lt;/br&gt;25)entity | [optional] [default to ideaId,ideaTitle,ideaDescription,ideaCreationDate]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -408,7 +410,7 @@ Name | Type | Description  | Notes
 
 <a name="getIdea"></a>
 # **getIdea**
-> VerveResponseIdea getIdea(ideaId, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseIdea getIdea(ideaId, requesterId, clientToken, fields, accessToken)
 
 Get idea by id
 
@@ -431,12 +433,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 IdeaApi apiInstance = new IdeaApi();
 Long ideaId = 789L; // Long | idea Id
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "ideaId,ideaTitle,ideaDescription,ideaCreationDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)ideaId<br/>2)ideaTitle<br/>3)ideaDescription<br/>4)ideaCreationDate<br/><b>A) Available values-</b><br/>1)ideaId<br/>2)ideaTitle<br/>3)group<br/>4)ideaDescription<br/>5)ideator<br/>6)ideaCreationDate<br/>7)lastModifiedDate<br/>8)ideaStage<br/>9)domain<br/>10)technology<br/>11)accessType<br/>12)videoId<br/>13)activeStatus<br/>14)teamStatus<br/>15)projectStatus<br/>16)totalFollowers<br/>17)totalComments<br/>18)totalBlogs<br/>19)averageRatingScore<br/>20)numberOfRatings<br/>21)currentUserFollowing<br/>22)currentUserRating<br/>23)ideaFileURL<br/>24)sentiment</br>25)entity
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseIdea result = apiInstance.getIdea(ideaId, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseIdea result = apiInstance.getIdea(ideaId, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdeaApi#getIdea");
@@ -449,10 +451,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ideaId** | **Long**| idea Id |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)ideaDescription&lt;br/&gt;4)ideaCreationDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)group&lt;br/&gt;4)ideaDescription&lt;br/&gt;5)ideator&lt;br/&gt;6)ideaCreationDate&lt;br/&gt;7)lastModifiedDate&lt;br/&gt;8)ideaStage&lt;br/&gt;9)domain&lt;br/&gt;10)technology&lt;br/&gt;11)accessType&lt;br/&gt;12)videoId&lt;br/&gt;13)activeStatus&lt;br/&gt;14)teamStatus&lt;br/&gt;15)projectStatus&lt;br/&gt;16)totalFollowers&lt;br/&gt;17)totalComments&lt;br/&gt;18)totalBlogs&lt;br/&gt;19)averageRatingScore&lt;br/&gt;20)numberOfRatings&lt;br/&gt;21)currentUserFollowing&lt;br/&gt;22)currentUserRating&lt;br/&gt;23)ideaFileURL&lt;br/&gt;24)sentiment&lt;/br&gt;25)entity | [optional] [default to ideaId,ideaTitle,ideaDescription,ideaCreationDate]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -469,7 +471,7 @@ Name | Type | Description  | Notes
 
 <a name="getIdeaComment"></a>
 # **getIdeaComment**
-> VerveResponseCommentList getIdeaComment(ideaId, start, end, loggedInUserId, accessToken, clientToken)
+> VerveResponseCommentList getIdeaComment(ideaId, start, end, requesterId, clientToken, accessToken)
 
 Get list of comments on idea
 
@@ -494,11 +496,11 @@ IdeaApi apiInstance = new IdeaApi();
 Long ideaId = 789L; // Long | idea Id
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseCommentList result = apiInstance.getIdeaComment(ideaId, start, end, loggedInUserId, accessToken, clientToken);
+    VerveResponseCommentList result = apiInstance.getIdeaComment(ideaId, start, end, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdeaApi#getIdeaComment");
@@ -513,9 +515,9 @@ Name | Type | Description  | Notes
  **ideaId** | **Long**| idea Id |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -532,7 +534,7 @@ Name | Type | Description  | Notes
 
 <a name="getIdeaFollowers"></a>
 # **getIdeaFollowers**
-> VerveResponseUserList getIdeaFollowers(ideaId, start, end, loggedInUserId, accessToken, clientToken)
+> VerveResponseUserList getIdeaFollowers(ideaId, start, end, requesterId, clientToken, accessToken)
 
 Get list of followers for this idea
 
@@ -557,11 +559,11 @@ IdeaApi apiInstance = new IdeaApi();
 Long ideaId = 789L; // Long | ideaId
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseUserList result = apiInstance.getIdeaFollowers(ideaId, start, end, loggedInUserId, accessToken, clientToken);
+    VerveResponseUserList result = apiInstance.getIdeaFollowers(ideaId, start, end, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdeaApi#getIdeaFollowers");
@@ -576,9 +578,9 @@ Name | Type | Description  | Notes
  **ideaId** | **Long**| ideaId |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -595,7 +597,7 @@ Name | Type | Description  | Notes
 
 <a name="getIdeaRatingParameters"></a>
 # **getIdeaRatingParameters**
-> VerveResponseString getIdeaRatingParameters(userId, ideaStage, loggedInUserId, accessToken, clientToken)
+> VerveResponseString getIdeaRatingParameters(userId, ideaStage, requesterId, clientToken, accessToken)
 
 Get rating parameters of idea by user
 
@@ -619,11 +621,11 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 IdeaApi apiInstance = new IdeaApi();
 Long userId = 789L; // Long | user Id
 String ideaStage = "ideaStage_example"; // String | Idea stages<br/>1)under-consideration <br/>2) shortlisted <br/>3) accepted <br/>4) prototyping
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseString result = apiInstance.getIdeaRatingParameters(userId, ideaStage, loggedInUserId, accessToken, clientToken);
+    VerveResponseString result = apiInstance.getIdeaRatingParameters(userId, ideaStage, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdeaApi#getIdeaRatingParameters");
@@ -637,9 +639,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **Long**| user Id |
  **ideaStage** | **String**| Idea stages&lt;br/&gt;1)under-consideration &lt;br/&gt;2) shortlisted &lt;br/&gt;3) accepted &lt;br/&gt;4) prototyping |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -656,7 +658,7 @@ Name | Type | Description  | Notes
 
 <a name="getIdeaRatings"></a>
 # **getIdeaRatings**
-> VerveResponseIdeaUserRatingList getIdeaRatings(userId, ideaId, ideaStage, loggedInUserId, accessToken, clientToken)
+> VerveResponseIdeaUserRatingList getIdeaRatings(userId, ideaId, ideaStage, requesterId, clientToken, accessToken)
 
 Get list of ideas that are rated by user 
 
@@ -681,11 +683,11 @@ IdeaApi apiInstance = new IdeaApi();
 Long userId = 789L; // Long | user Id
 Long ideaId = 789L; // Long | idea Id
 String ideaStage = "ideaStage_example"; // String | Idea stages<br/>1)under-consideration <br/>2) shortlisted <br/>3) accepted <br/>4) prototyping
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseIdeaUserRatingList result = apiInstance.getIdeaRatings(userId, ideaId, ideaStage, loggedInUserId, accessToken, clientToken);
+    VerveResponseIdeaUserRatingList result = apiInstance.getIdeaRatings(userId, ideaId, ideaStage, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdeaApi#getIdeaRatings");
@@ -700,9 +702,9 @@ Name | Type | Description  | Notes
  **userId** | **Long**| user Id |
  **ideaId** | **Long**| idea Id |
  **ideaStage** | **String**| Idea stages&lt;br/&gt;1)under-consideration &lt;br/&gt;2) shortlisted &lt;br/&gt;3) accepted &lt;br/&gt;4) prototyping |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -719,7 +721,7 @@ Name | Type | Description  | Notes
 
 <a name="getRecommendIdeas"></a>
 # **getRecommendIdeas**
-> VerveResponseIdeaList getRecommendIdeas(start, end, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseIdeaList getRecommendIdeas(start, end, requesterId, clientToken, fields, accessToken)
 
 Get the list of recommended ideas
 
@@ -743,12 +745,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 IdeaApi apiInstance = new IdeaApi();
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "ideaId,ideaTitle,ideaDescription,ideaCreationDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)ideaId<br/>2)ideaTitle<br/>3)ideaDescription<br/>4)ideaCreationDate<br/><b>A) Available values-</b><br/>1)ideaId<br/>2)ideaTitle<br/>3)group<br/>4)ideaDescription<br/>5)ideator<br/>6)ideaCreationDate<br/>7)lastModifiedDate<br/>8)ideaStage<br/>9)domain<br/>10)technology<br/>11)accessType<br/>12)videoId<br/>13)activeStatus<br/>14)teamStatus<br/>15)projectStatus<br/>16)totalFollowers<br/>17)totalComments<br/>18)totalBlogs<br/>19)averageRatingScore<br/>20)numberOfRatings<br/>21)currentUserFollowing<br/>22)currentUserRating<br/>23)ideaFileURL<br/>24)sentiment</br>25)entity
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseIdeaList result = apiInstance.getRecommendIdeas(start, end, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseIdeaList result = apiInstance.getRecommendIdeas(start, end, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdeaApi#getRecommendIdeas");
@@ -762,10 +764,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)ideaDescription&lt;br/&gt;4)ideaCreationDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)group&lt;br/&gt;4)ideaDescription&lt;br/&gt;5)ideator&lt;br/&gt;6)ideaCreationDate&lt;br/&gt;7)lastModifiedDate&lt;br/&gt;8)ideaStage&lt;br/&gt;9)domain&lt;br/&gt;10)technology&lt;br/&gt;11)accessType&lt;br/&gt;12)videoId&lt;br/&gt;13)activeStatus&lt;br/&gt;14)teamStatus&lt;br/&gt;15)projectStatus&lt;br/&gt;16)totalFollowers&lt;br/&gt;17)totalComments&lt;br/&gt;18)totalBlogs&lt;br/&gt;19)averageRatingScore&lt;br/&gt;20)numberOfRatings&lt;br/&gt;21)currentUserFollowing&lt;br/&gt;22)currentUserRating&lt;br/&gt;23)ideaFileURL&lt;br/&gt;24)sentiment&lt;/br&gt;25)entity | [optional] [default to ideaId,ideaTitle,ideaDescription,ideaCreationDate]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -782,7 +784,7 @@ Name | Type | Description  | Notes
 
 <a name="getTopIdeas"></a>
 # **getTopIdeas**
-> VerveResponseIdeaList getTopIdeas(start, end, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseIdeaList getTopIdeas(start, end, requesterId, clientToken, fields, accessToken)
 
 Get the list of top ideas
 
@@ -806,12 +808,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 IdeaApi apiInstance = new IdeaApi();
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "ideaId,ideaTitle,ideaDescription,ideaCreationDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)ideaId<br/>2)ideaTitle<br/>3)ideaDescription<br/>4)ideaCreationDate<br/><b>A) Available values-</b><br/>1)ideaId<br/>2)ideaTitle<br/>3)group<br/>4)ideaDescription<br/>5)ideator<br/>6)ideaCreationDate<br/>7)lastModifiedDate<br/>8)ideaStage<br/>9)domain<br/>10)technology<br/>11)accessType<br/>12)videoId<br/>13)activeStatus<br/>14)teamStatus<br/>15)projectStatus<br/>16)totalFollowers<br/>17)totalComments<br/>18)totalBlogs<br/>19)averageRatingScore<br/>20)numberOfRatings<br/>21)currentUserFollowing<br/>22)currentUserRating<br/>23)ideaFileURL<br/>24)sentiment</br>25)entity
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseIdeaList result = apiInstance.getTopIdeas(start, end, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseIdeaList result = apiInstance.getTopIdeas(start, end, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdeaApi#getTopIdeas");
@@ -825,10 +827,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)ideaDescription&lt;br/&gt;4)ideaCreationDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)group&lt;br/&gt;4)ideaDescription&lt;br/&gt;5)ideator&lt;br/&gt;6)ideaCreationDate&lt;br/&gt;7)lastModifiedDate&lt;br/&gt;8)ideaStage&lt;br/&gt;9)domain&lt;br/&gt;10)technology&lt;br/&gt;11)accessType&lt;br/&gt;12)videoId&lt;br/&gt;13)activeStatus&lt;br/&gt;14)teamStatus&lt;br/&gt;15)projectStatus&lt;br/&gt;16)totalFollowers&lt;br/&gt;17)totalComments&lt;br/&gt;18)totalBlogs&lt;br/&gt;19)averageRatingScore&lt;br/&gt;20)numberOfRatings&lt;br/&gt;21)currentUserFollowing&lt;br/&gt;22)currentUserRating&lt;br/&gt;23)ideaFileURL&lt;br/&gt;24)sentiment&lt;/br&gt;25)entity | [optional] [default to ideaId,ideaTitle,ideaDescription,ideaCreationDate]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -845,7 +847,7 @@ Name | Type | Description  | Notes
 
 <a name="getUserIdeas"></a>
 # **getUserIdeas**
-> VerveResponseIdeaList getUserIdeas(userId, start, end, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseIdeaList getUserIdeas(userId, start, end, requesterId, clientToken, fields, accessToken)
 
 Get list of ideas shared by user
 
@@ -867,15 +869,15 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 IdeaApi apiInstance = new IdeaApi();
-Long userId = 789L; // Long | userId whose ideas you need
+Long userId = 789L; // Long | userId whose shared ideas want to get
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "ideaId,ideaTitle,ideaDescription,ideaCreationDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)ideaId<br/>2)ideaTitle<br/>3)ideaDescription<br/>4)ideaCreationDate<br/><b>A) Available values-</b><br/>1)ideaId<br/>2)ideaTitle<br/>3)group<br/>4)ideaDescription<br/>5)ideator<br/>6)ideaCreationDate<br/>7)lastModifiedDate<br/>8)ideaStage<br/>9)domain<br/>10)technology<br/>11)accessType<br/>12)videoId<br/>13)activeStatus<br/>14)teamStatus<br/>15)projectStatus<br/>16)totalFollowers<br/>17)totalComments<br/>18)totalBlogs<br/>19)averageRatingScore<br/>20)numberOfRatings<br/>21)currentUserFollowing<br/>22)currentUserRating<br/>23)ideaFileURL<br/>24)sentiment</br>25)entity
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseIdeaList result = apiInstance.getUserIdeas(userId, start, end, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseIdeaList result = apiInstance.getUserIdeas(userId, start, end, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdeaApi#getUserIdeas");
@@ -887,13 +889,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **Long**| userId whose ideas you need |
+ **userId** | **Long**| userId whose shared ideas want to get |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)ideaDescription&lt;br/&gt;4)ideaCreationDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)group&lt;br/&gt;4)ideaDescription&lt;br/&gt;5)ideator&lt;br/&gt;6)ideaCreationDate&lt;br/&gt;7)lastModifiedDate&lt;br/&gt;8)ideaStage&lt;br/&gt;9)domain&lt;br/&gt;10)technology&lt;br/&gt;11)accessType&lt;br/&gt;12)videoId&lt;br/&gt;13)activeStatus&lt;br/&gt;14)teamStatus&lt;br/&gt;15)projectStatus&lt;br/&gt;16)totalFollowers&lt;br/&gt;17)totalComments&lt;br/&gt;18)totalBlogs&lt;br/&gt;19)averageRatingScore&lt;br/&gt;20)numberOfRatings&lt;br/&gt;21)currentUserFollowing&lt;br/&gt;22)currentUserRating&lt;br/&gt;23)ideaFileURL&lt;br/&gt;24)sentiment&lt;/br&gt;25)entity | [optional] [default to ideaId,ideaTitle,ideaDescription,ideaCreationDate]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -910,7 +912,7 @@ Name | Type | Description  | Notes
 
 <a name="getUserRateIdeas"></a>
 # **getUserRateIdeas**
-> VerveResponseIdeaList getUserRateIdeas(userId, start, end, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseIdeaList getUserRateIdeas(userId, start, end, requesterId, clientToken, fields, accessToken)
 
 Get list of ideas rated by user
 
@@ -932,15 +934,15 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 IdeaApi apiInstance = new IdeaApi();
-Long userId = 789L; // Long | userId whose ideas you need
+Long userId = 789L; // Long | userId whose rated ideas want to get
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "ideaId,ideaTitle,ideaDescription,ideaCreationDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)ideaId<br/>2)ideaTitle<br/>3)ideaDescription<br/>4)ideaCreationDate<br/><b>A) Available values-</b><br/>1)ideaId<br/>2)ideaTitle<br/>3)group<br/>4)ideaDescription<br/>5)ideator<br/>6)ideaCreationDate<br/>7)lastModifiedDate<br/>8)ideaStage<br/>9)domain<br/>10)technology<br/>11)accessType<br/>12)videoId<br/>13)activeStatus<br/>14)teamStatus<br/>15)projectStatus<br/>16)totalFollowers<br/>17)totalComments<br/>18)totalBlogs<br/>19)averageRatingScore<br/>20)numberOfRatings<br/>21)currentUserFollowing<br/>22)currentUserRating<br/>23)ideaFileURL<br/>24)sentiment</br>25)entity
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseIdeaList result = apiInstance.getUserRateIdeas(userId, start, end, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseIdeaList result = apiInstance.getUserRateIdeas(userId, start, end, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdeaApi#getUserRateIdeas");
@@ -952,13 +954,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **Long**| userId whose ideas you need |
+ **userId** | **Long**| userId whose rated ideas want to get |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)ideaDescription&lt;br/&gt;4)ideaCreationDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)group&lt;br/&gt;4)ideaDescription&lt;br/&gt;5)ideator&lt;br/&gt;6)ideaCreationDate&lt;br/&gt;7)lastModifiedDate&lt;br/&gt;8)ideaStage&lt;br/&gt;9)domain&lt;br/&gt;10)technology&lt;br/&gt;11)accessType&lt;br/&gt;12)videoId&lt;br/&gt;13)activeStatus&lt;br/&gt;14)teamStatus&lt;br/&gt;15)projectStatus&lt;br/&gt;16)totalFollowers&lt;br/&gt;17)totalComments&lt;br/&gt;18)totalBlogs&lt;br/&gt;19)averageRatingScore&lt;br/&gt;20)numberOfRatings&lt;br/&gt;21)currentUserFollowing&lt;br/&gt;22)currentUserRating&lt;br/&gt;23)ideaFileURL&lt;br/&gt;24)sentiment&lt;/br&gt;25)entity | [optional] [default to ideaId,ideaTitle,ideaDescription,ideaCreationDate]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -975,7 +977,7 @@ Name | Type | Description  | Notes
 
 <a name="rateIdea"></a>
 # **rateIdea**
-> VerveResponseIdea rateIdea(userId, ideaId, ideaStage, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseIdea rateIdea(userId, ideaId, ideaStage, requesterId, clientToken, fields, accessToken)
 
 Rate an idea
 
@@ -1000,12 +1002,12 @@ IdeaApi apiInstance = new IdeaApi();
 Long userId = 789L; // Long | user Id
 Long ideaId = 789L; // Long | idea Id
 String ideaStage = "ideaStage_example"; // String | Ideas stage<br/>1)under-consideration <br/>2) shortlisted <br/>3) accepted <br/>4) prototyping
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "ideaId,ideaTitle,ideaDescription,ideaCreationDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)ideaId<br/>2)ideaTitle<br/>3)ideaDescription<br/>4)ideaCreationDate<br/><b>A) Available values-</b><br/>1)ideaId<br/>2)ideaTitle<br/>3)group<br/>4)ideaDescription<br/>5)ideator<br/>6)ideaCreationDate<br/>7)lastModifiedDate<br/>8)ideaStage<br/>9)domain<br/>10)technology<br/>11)accessType<br/>12)videoId<br/>13)activeStatus<br/>14)teamStatus<br/>15)projectStatus<br/>16)totalFollowers<br/>17)totalComments<br/>18)totalBlogs<br/>19)averageRatingScore<br/>20)numberOfRatings<br/>21)currentUserFollowing<br/>22)currentUserRating<br/>23)ideaFileURL<br/>24)sentiment</br>25)entity
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseIdea result = apiInstance.rateIdea(userId, ideaId, ideaStage, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseIdea result = apiInstance.rateIdea(userId, ideaId, ideaStage, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdeaApi#rateIdea");
@@ -1020,10 +1022,10 @@ Name | Type | Description  | Notes
  **userId** | **Long**| user Id |
  **ideaId** | **Long**| idea Id |
  **ideaStage** | **String**| Ideas stage&lt;br/&gt;1)under-consideration &lt;br/&gt;2) shortlisted &lt;br/&gt;3) accepted &lt;br/&gt;4) prototyping |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)ideaDescription&lt;br/&gt;4)ideaCreationDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)group&lt;br/&gt;4)ideaDescription&lt;br/&gt;5)ideator&lt;br/&gt;6)ideaCreationDate&lt;br/&gt;7)lastModifiedDate&lt;br/&gt;8)ideaStage&lt;br/&gt;9)domain&lt;br/&gt;10)technology&lt;br/&gt;11)accessType&lt;br/&gt;12)videoId&lt;br/&gt;13)activeStatus&lt;br/&gt;14)teamStatus&lt;br/&gt;15)projectStatus&lt;br/&gt;16)totalFollowers&lt;br/&gt;17)totalComments&lt;br/&gt;18)totalBlogs&lt;br/&gt;19)averageRatingScore&lt;br/&gt;20)numberOfRatings&lt;br/&gt;21)currentUserFollowing&lt;br/&gt;22)currentUserRating&lt;br/&gt;23)ideaFileURL&lt;br/&gt;24)sentiment&lt;/br&gt;25)entity | [optional] [default to ideaId,ideaTitle,ideaDescription,ideaCreationDate]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1040,7 +1042,7 @@ Name | Type | Description  | Notes
 
 <a name="rateIdea_0"></a>
 # **rateIdea_0**
-> VerveResponseIdea rateIdea_0(userId, ideaId, ideaStage, parameter, rating, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseIdea rateIdea_0(userId, ideaId, ideaStage, parameter, rating, requesterId, clientToken, fields, accessToken)
 
 Give rating on idea
 
@@ -1067,12 +1069,12 @@ Long ideaId = 789L; // Long | idea Id
 String ideaStage = "ideaStage_example"; // String | Idea stages<br/>1)under-consideration <br/>2) shortlisted <br/>3) accepted <br/>4) prototyping
 String parameter = "parameter_example"; // String | parameter
 Double rating = 3.4D; // Double | rating
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "ideaId,ideaTitle,ideaDescription,ideaCreationDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)ideaId<br/>2)ideaTitle<br/>3)ideaDescription<br/>4)ideaCreationDate<br/><b>A) Available values-</b><br/>1)ideaId<br/>2)ideaTitle<br/>3)group<br/>4)ideaDescription<br/>5)ideator<br/>6)ideaCreationDate<br/>7)lastModifiedDate<br/>8)ideaStage<br/>9)domain<br/>10)technology<br/>11)accessType<br/>12)videoId<br/>13)activeStatus<br/>14)teamStatus<br/>15)projectStatus<br/>16)totalFollowers<br/>17)totalComments<br/>18)totalBlogs<br/>19)averageRatingScore<br/>20)numberOfRatings<br/>21)currentUserFollowing<br/>22)currentUserRating<br/>23)ideaFileURL<br/>24)sentiment</br>25)entity
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseIdea result = apiInstance.rateIdea_0(userId, ideaId, ideaStage, parameter, rating, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseIdea result = apiInstance.rateIdea_0(userId, ideaId, ideaStage, parameter, rating, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdeaApi#rateIdea_0");
@@ -1089,10 +1091,10 @@ Name | Type | Description  | Notes
  **ideaStage** | **String**| Idea stages&lt;br/&gt;1)under-consideration &lt;br/&gt;2) shortlisted &lt;br/&gt;3) accepted &lt;br/&gt;4) prototyping |
  **parameter** | **String**| parameter |
  **rating** | **Double**| rating |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)ideaDescription&lt;br/&gt;4)ideaCreationDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)group&lt;br/&gt;4)ideaDescription&lt;br/&gt;5)ideator&lt;br/&gt;6)ideaCreationDate&lt;br/&gt;7)lastModifiedDate&lt;br/&gt;8)ideaStage&lt;br/&gt;9)domain&lt;br/&gt;10)technology&lt;br/&gt;11)accessType&lt;br/&gt;12)videoId&lt;br/&gt;13)activeStatus&lt;br/&gt;14)teamStatus&lt;br/&gt;15)projectStatus&lt;br/&gt;16)totalFollowers&lt;br/&gt;17)totalComments&lt;br/&gt;18)totalBlogs&lt;br/&gt;19)averageRatingScore&lt;br/&gt;20)numberOfRatings&lt;br/&gt;21)currentUserFollowing&lt;br/&gt;22)currentUserRating&lt;br/&gt;23)ideaFileURL&lt;br/&gt;24)sentiment&lt;/br&gt;25)entity | [optional] [default to ideaId,ideaTitle,ideaDescription,ideaCreationDate]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1109,7 +1111,7 @@ Name | Type | Description  | Notes
 
 <a name="searchIdeas"></a>
 # **searchIdeas**
-> VerveResponseIdeaList searchIdeas(searchText, start, end, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseIdeaList searchIdeas(searchText, start, end, requesterId, clientToken, fields, accessToken)
 
 Get list of matching ideas
 
@@ -1134,12 +1136,12 @@ IdeaApi apiInstance = new IdeaApi();
 String searchText = "searchText_example"; // String | Enter text to be searched
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "ideaId,ideaTitle,ideaDescription,ideaCreationDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)ideaId<br/>2)ideaTitle<br/>3)ideaDescription<br/>4)ideaCreationDate<br/><b>A) Available values-</b><br/>1)ideaId<br/>2)ideaTitle<br/>3)group<br/>4)ideaDescription<br/>5)ideator<br/>6)ideaCreationDate<br/>7)lastModifiedDate<br/>8)ideaStage<br/>9)domain<br/>10)technology<br/>11)accessType<br/>12)videoId<br/>13)activeStatus<br/>14)teamStatus<br/>15)projectStatus<br/>16)totalFollowers<br/>17)totalComments<br/>18)totalBlogs<br/>19)averageRatingScore<br/>20)numberOfRatings<br/>21)currentUserFollowing<br/>22)currentUserRating<br/>23)ideaFileURL<br/>24)sentiment</br>25)entity
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseIdeaList result = apiInstance.searchIdeas(searchText, start, end, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseIdeaList result = apiInstance.searchIdeas(searchText, start, end, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdeaApi#searchIdeas");
@@ -1154,10 +1156,10 @@ Name | Type | Description  | Notes
  **searchText** | **String**| Enter text to be searched |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)ideaDescription&lt;br/&gt;4)ideaCreationDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)group&lt;br/&gt;4)ideaDescription&lt;br/&gt;5)ideator&lt;br/&gt;6)ideaCreationDate&lt;br/&gt;7)lastModifiedDate&lt;br/&gt;8)ideaStage&lt;br/&gt;9)domain&lt;br/&gt;10)technology&lt;br/&gt;11)accessType&lt;br/&gt;12)videoId&lt;br/&gt;13)activeStatus&lt;br/&gt;14)teamStatus&lt;br/&gt;15)projectStatus&lt;br/&gt;16)totalFollowers&lt;br/&gt;17)totalComments&lt;br/&gt;18)totalBlogs&lt;br/&gt;19)averageRatingScore&lt;br/&gt;20)numberOfRatings&lt;br/&gt;21)currentUserFollowing&lt;br/&gt;22)currentUserRating&lt;br/&gt;23)ideaFileURL&lt;br/&gt;24)sentiment&lt;/br&gt;25)entity | [optional] [default to ideaId,ideaTitle,ideaDescription,ideaCreationDate]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1174,7 +1176,7 @@ Name | Type | Description  | Notes
 
 <a name="shareFormIdea"></a>
 # **shareFormIdea**
-> VerveResponseIdea shareFormIdea(body, body2, body3, body4, loggedInUserId, accessToken, clientToken)
+> VerveResponseIdea shareFormIdea(title, description, groupId, file, loggedInUserId, accessToken, clientToken)
 
 Share Idea with attachments
 
@@ -1196,15 +1198,15 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 IdeaApi apiInstance = new IdeaApi();
-String body = "body_example"; // String | title
-String body2 = "body_example"; // String | description
-Long body3 = 789L; // Long | groupId
-List<Attachment> body4 = Arrays.asList(new Attachment()); // List<Attachment> | attachments
+String title = "title_example"; // String | title
+String description = "description_example"; // String | description
+String groupId = "groupId_example"; // String | groupId
+File file = new File("/path/to/file.txt"); // File | file
 String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 try {
-    VerveResponseIdea result = apiInstance.shareFormIdea(body, body2, body3, body4, loggedInUserId, accessToken, clientToken);
+    VerveResponseIdea result = apiInstance.shareFormIdea(title, description, groupId, file, loggedInUserId, accessToken, clientToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdeaApi#shareFormIdea");
@@ -1216,10 +1218,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **String**| title |
- **body2** | **String**| description |
- **body3** | **Long**| groupId |
- **body4** | [**List&lt;Attachment&gt;**](Attachment.md)| attachments |
+ **title** | **String**| title |
+ **description** | **String**| description |
+ **groupId** | **String**| groupId |
+ **file** | **File**| file |
  **loggedInUserId** | **String**| User id of logged / authenticated user |
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
@@ -1239,11 +1241,11 @@ Name | Type | Description  | Notes
 
 <a name="shareIdea"></a>
 # **shareIdea**
-> VerveResponseIdea shareIdea(title, description, groupId, loggedInUserId, accessToken, clientToken)
+> VerveResponseIdea shareIdea(requesterId, clientToken, body, accessToken)
 
 Share idea  
 
-Allows the user to share idea. Returns the shared idea
+This service allows a user to share a idea. The following fields(key:value) are required to be present in the Idea JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API.&lt;/br&gt;&lt;b&gt;Required fields &lt;/br&gt;1. ideaTitle &lt;/br&gt;2. ideaDescription &lt;/br&gt;3. group: { groupId } &lt;/br&gt;
 
 ### Example
 ```java
@@ -1261,14 +1263,12 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 IdeaApi apiInstance = new IdeaApi();
-String title = "title_example"; // String | title
-String description = "description_example"; // String | description
-Long groupId = 789L; // Long | group Id
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+Idea body = new Idea(); // Idea | 
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseIdea result = apiInstance.shareIdea(title, description, groupId, loggedInUserId, accessToken, clientToken);
+    VerveResponseIdea result = apiInstance.shareIdea(requesterId, clientToken, body, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdeaApi#shareIdea");
@@ -1280,12 +1280,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **title** | **String**| title |
- **description** | **String**| description |
- **groupId** | **Long**| group Id |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **body** | [**Idea**](Idea.md)|  | [optional]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1297,16 +1295,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/x-www-form-urlencoded
+ - **Content-Type**: application/json, application/x-www-form-urlencoded
  - **Accept**: application/json
 
 <a name="shareIdeaComment"></a>
 # **shareIdeaComment**
-> VerveResponseComment shareIdeaComment(ideaId, commentText, loggedInUserId, accessToken, clientToken)
+> VerveResponseComment shareIdeaComment(ideaId, requesterId, clientToken, body, accessToken)
 
 Comment on shared idea
 
-Allows the user to comment on shared idea. Returns the comment
+This service allows a user to comment on a idea. The following fields(key:value) are required to be present in the Comment JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API.&lt;/br&gt;&lt;b&gt;Required fields &lt;/br&gt;1. ideaId (Path Parameter)&lt;/br&gt;2. commentText &lt;/br&gt;
 
 ### Example
 ```java
@@ -1325,12 +1323,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 IdeaApi apiInstance = new IdeaApi();
 Long ideaId = 789L; // Long | idea Id
-String commentText = "commentText_example"; // String | comment text
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+Comment body = new Comment(); // Comment | 
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseComment result = apiInstance.shareIdeaComment(ideaId, commentText, loggedInUserId, accessToken, clientToken);
+    VerveResponseComment result = apiInstance.shareIdeaComment(ideaId, requesterId, clientToken, body, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdeaApi#shareIdeaComment");
@@ -1343,10 +1341,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ideaId** | **Long**| idea Id |
- **commentText** | **String**| comment text |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **body** | [**Comment**](Comment.md)|  | [optional]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1358,12 +1356,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/x-www-form-urlencoded
+ - **Content-Type**: application/json, application/x-www-form-urlencoded
  - **Accept**: application/json
 
 <a name="unfollowIdea"></a>
 # **unfollowIdea**
-> VerveResponseIdea unfollowIdea(ideaId, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseIdea unfollowIdea(ideaId, requesterId, clientToken, fields, accessToken)
 
 Unfollow idea
 
@@ -1386,12 +1384,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 IdeaApi apiInstance = new IdeaApi();
 Long ideaId = 789L; // Long | idea Id
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "ideaId,ideaTitle,ideaDescription,ideaCreationDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)ideaId<br/>2)ideaTitle<br/>3)ideaDescription<br/>4)ideaCreationDate<br/><b>A) Available values-</b><br/>1)ideaId<br/>2)ideaTitle<br/>3)group<br/>4)ideaDescription<br/>5)ideator<br/>6)ideaCreationDate<br/>7)lastModifiedDate<br/>8)ideaStage<br/>9)domain<br/>10)technology<br/>11)accessType<br/>12)videoId<br/>13)activeStatus<br/>14)teamStatus<br/>15)projectStatus<br/>16)totalFollowers<br/>17)totalComments<br/>18)totalBlogs<br/>19)averageRatingScore<br/>20)numberOfRatings<br/>21)currentUserFollowing<br/>22)currentUserRating<br/>23)ideaFileURL<br/>24)sentiment</br>25)entity
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseIdea result = apiInstance.unfollowIdea(ideaId, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseIdea result = apiInstance.unfollowIdea(ideaId, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdeaApi#unfollowIdea");
@@ -1404,10 +1402,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ideaId** | **Long**| idea Id |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)ideaDescription&lt;br/&gt;4)ideaCreationDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)group&lt;br/&gt;4)ideaDescription&lt;br/&gt;5)ideator&lt;br/&gt;6)ideaCreationDate&lt;br/&gt;7)lastModifiedDate&lt;br/&gt;8)ideaStage&lt;br/&gt;9)domain&lt;br/&gt;10)technology&lt;br/&gt;11)accessType&lt;br/&gt;12)videoId&lt;br/&gt;13)activeStatus&lt;br/&gt;14)teamStatus&lt;br/&gt;15)projectStatus&lt;br/&gt;16)totalFollowers&lt;br/&gt;17)totalComments&lt;br/&gt;18)totalBlogs&lt;br/&gt;19)averageRatingScore&lt;br/&gt;20)numberOfRatings&lt;br/&gt;21)currentUserFollowing&lt;br/&gt;22)currentUserRating&lt;br/&gt;23)ideaFileURL&lt;br/&gt;24)sentiment&lt;/br&gt;25)entity | [optional] [default to ideaId,ideaTitle,ideaDescription,ideaCreationDate]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1424,7 +1422,7 @@ Name | Type | Description  | Notes
 
 <a name="updateCommet"></a>
 # **updateCommet**
-> VerveResponseComment updateCommet(commentId, commentText, loggedInUserId, accessToken, clientToken)
+> VerveResponseComment updateCommet(commentId, commentText, requesterId, clientToken, accessToken)
 
 Update comment
 
@@ -1448,11 +1446,11 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 IdeaApi apiInstance = new IdeaApi();
 Long commentId = 789L; // Long | commentId
 String commentText = "commentText_example"; // String | Comment text
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseComment result = apiInstance.updateCommet(commentId, commentText, loggedInUserId, accessToken, clientToken);
+    VerveResponseComment result = apiInstance.updateCommet(commentId, commentText, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdeaApi#updateCommet");
@@ -1466,9 +1464,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commentId** | **Long**| commentId |
  **commentText** | **String**| Comment text |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1485,7 +1483,7 @@ Name | Type | Description  | Notes
 
 <a name="updateIdea"></a>
 # **updateIdea**
-> VerveResponseIdea updateIdea(ideaId, ideaTitle, ideaDescription, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseIdea updateIdea(ideaId, ideaTitle, ideaDescription, requesterId, clientToken, fields, accessToken)
 
 Update idea
 
@@ -1510,12 +1508,12 @@ IdeaApi apiInstance = new IdeaApi();
 Long ideaId = 789L; // Long | ideaId
 String ideaTitle = "ideaTitle_example"; // String | Idea Title
 String ideaDescription = "ideaDescription_example"; // String | Describe Idea
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "ideaId,ideaTitle,ideaDescription,ideaCreationDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)ideaId<br/>2)ideaTitle<br/>3)ideaDescription<br/>4)ideaCreationDate<br/><b>A) Available values-</b><br/>1)ideaId<br/>2)ideaTitle<br/>3)group<br/>4)ideaDescription<br/>5)ideator<br/>6)ideaCreationDate<br/>7)lastModifiedDate<br/>8)ideaStage<br/>9)domain<br/>10)technology<br/>11)accessType<br/>12)videoId<br/>13)activeStatus<br/>14)teamStatus<br/>15)projectStatus<br/>16)totalFollowers<br/>17)totalComments<br/>18)totalBlogs<br/>19)averageRatingScore<br/>20)numberOfRatings<br/>21)currentUserFollowing<br/>22)currentUserRating<br/>23)ideaFileURL<br/>24)sentiment</br>25)entity
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseIdea result = apiInstance.updateIdea(ideaId, ideaTitle, ideaDescription, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseIdea result = apiInstance.updateIdea(ideaId, ideaTitle, ideaDescription, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdeaApi#updateIdea");
@@ -1530,10 +1528,10 @@ Name | Type | Description  | Notes
  **ideaId** | **Long**| ideaId |
  **ideaTitle** | **String**| Idea Title |
  **ideaDescription** | **String**| Describe Idea |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)ideaDescription&lt;br/&gt;4)ideaCreationDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)group&lt;br/&gt;4)ideaDescription&lt;br/&gt;5)ideator&lt;br/&gt;6)ideaCreationDate&lt;br/&gt;7)lastModifiedDate&lt;br/&gt;8)ideaStage&lt;br/&gt;9)domain&lt;br/&gt;10)technology&lt;br/&gt;11)accessType&lt;br/&gt;12)videoId&lt;br/&gt;13)activeStatus&lt;br/&gt;14)teamStatus&lt;br/&gt;15)projectStatus&lt;br/&gt;16)totalFollowers&lt;br/&gt;17)totalComments&lt;br/&gt;18)totalBlogs&lt;br/&gt;19)averageRatingScore&lt;br/&gt;20)numberOfRatings&lt;br/&gt;21)currentUserFollowing&lt;br/&gt;22)currentUserRating&lt;br/&gt;23)ideaFileURL&lt;br/&gt;24)sentiment&lt;/br&gt;25)entity | [optional] [default to ideaId,ideaTitle,ideaDescription,ideaCreationDate]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 

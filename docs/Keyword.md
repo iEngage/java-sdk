@@ -1,10 +1,10 @@
 
-# Sentiment
+# Keyword
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sentiment** | **Double** |  |  [optional]
+**key** | **String** |  |  [optional]
 
 
 

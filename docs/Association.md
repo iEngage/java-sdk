@@ -1,10 +1,11 @@
 
-# Sentiment
+# Association
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sentiment** | **Double** |  |  [optional]
+**associationId** | **Long** |  |  [optional]
+**name** | **String** |  |  [optional]
 
 
 

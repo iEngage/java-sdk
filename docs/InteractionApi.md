@@ -1,12 +1,14 @@
 # InteractionApi
 
-All URIs are relative to *https://api.iengage.io:8243/api/1.0*
+All URIs are relative to *https://api.iengage.io:8243/api/2.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addInteraction**](InteractionApi.md#addInteraction) | **POST** /interactions | Share interaction without attachment
 [**addInteraction_0**](InteractionApi.md#addInteraction_0) | **POST** /interactions/attachment | Share interaction with attachment
 [**addResponse**](InteractionApi.md#addResponse) | **POST** /interactions/{interactionId}/responses | Response the specified interaction
+[**changeInteractionCategory**](InteractionApi.md#changeInteractionCategory) | **PUT** /interactions/{interactionId}/{categoryId} | Change interaction category
+[**changeInteractionType**](InteractionApi.md#changeInteractionType) | **PUT** /interactions/{interactionId}/type | Change interaction type
 [**createInteractionCategory**](InteractionApi.md#createInteractionCategory) | **POST** /interactions/categories | Create interaction category
 [**deleteInteraction**](InteractionApi.md#deleteInteraction) | **DELETE** /interactions/{interactionId} | Delete interaction
 [**deleteInteractionCategory**](InteractionApi.md#deleteInteractionCategory) | **DELETE** /interactions/categories/{categoryId} | Delete interaction category
@@ -38,11 +40,11 @@ Method | HTTP request | Description
 
 <a name="addInteraction"></a>
 # **addInteraction**
-> VerveResponseInteraction addInteraction(interactionTitle, loggedInUserId, accessToken, clientToken, categoryId, interactionType, interactionDescription)
+> VerveResponseInteraction addInteraction(requesterId, clientToken, body, accessToken)
 
 Share interaction without attachment
 
-Allows the user to share interaction without attachment. Returns the interaction object
+This service allows a user to post an interaction. The following fields(key:value) are required to be present in the Interaction JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API.&lt;/br&gt;&lt;b&gt;Required fields &lt;/br&gt;1. interactionTitle &lt;/br&gt;
 
 ### Example
 ```java
@@ -60,15 +62,12 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 InteractionApi apiInstance = new InteractionApi();
-String interactionTitle = "interactionTitle_example"; // String | Interaction Title
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-Long categoryId = 789L; // Long | categoryId
-String interactionType = "interactionType_example"; // String | Interaction Type
-String interactionDescription = "interactionDescription_example"; // String | Describe interaction
+InteractionInputModel body = new InteractionInputModel(); // InteractionInputModel | 
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteraction result = apiInstance.addInteraction(interactionTitle, loggedInUserId, accessToken, clientToken, categoryId, interactionType, interactionDescription);
+    VerveResponseInteraction result = apiInstance.addInteraction(requesterId, clientToken, body, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#addInteraction");
@@ -80,13 +79,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **interactionTitle** | **String**| Interaction Title |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **categoryId** | **Long**| categoryId | [optional]
- **interactionType** | **String**| Interaction Type | [optional]
- **interactionDescription** | **String**| Describe interaction | [optional]
+ **body** | [**InteractionInputModel**](InteractionInputModel.md)|  | [optional]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -98,12 +94,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/x-www-form-urlencoded
+ - **Content-Type**: application/json, application/x-www-form-urlencoded
  - **Accept**: application/json
 
 <a name="addInteraction_0"></a>
 # **addInteraction_0**
-> VerveResponseInteraction addInteraction_0(body3, loggedInUserId, accessToken, clientToken, body, body2, body4, body5)
+> VerveResponseInteraction addInteraction_0(interactionTitle, file, requesterId, clientToken, categoryId, interactionType, interactionDescription, association, accessToken)
 
 Share interaction with attachment
 
@@ -125,16 +121,17 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 InteractionApi apiInstance = new InteractionApi();
-String body3 = "body_example"; // String | interactionTitle
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String interactionTitle = "interactionTitle_example"; // String | interactionTitle
+File file = new File("/path/to/file.txt"); // File | file
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-Long body = 789L; // Long | categoryId
-String body2 = "body_example"; // String | Interaction Type
-String body4 = "body_example"; // String | interactionDescription
-List<Attachment> body5 = Arrays.asList(new Attachment()); // List<Attachment> | 
+String categoryId = "categoryId_example"; // String | categoryId
+String interactionType = "interactionType_example"; // String | interactionType
+String interactionDescription = "interactionDescription_example"; // String | interactionDescription
+String association = "association_example"; // String | association
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteraction result = apiInstance.addInteraction_0(body3, loggedInUserId, accessToken, clientToken, body, body2, body4, body5);
+    VerveResponseInteraction result = apiInstance.addInteraction_0(interactionTitle, file, requesterId, clientToken, categoryId, interactionType, interactionDescription, association, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#addInteraction_0");
@@ -146,14 +143,15 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body3** | **String**| interactionTitle |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **interactionTitle** | **String**| interactionTitle |
+ **file** | **File**| file |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **body** | **Long**| categoryId | [optional]
- **body2** | **String**| Interaction Type | [optional]
- **body4** | **String**| interactionDescription | [optional]
- **body5** | [**List&lt;Attachment&gt;**](Attachment.md)|  | [optional]
+ **categoryId** | **String**| categoryId | [optional]
+ **interactionType** | **String**| interactionType | [optional]
+ **interactionDescription** | **String**| interactionDescription | [optional]
+ **association** | **String**| association | [optional]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -170,11 +168,11 @@ Name | Type | Description  | Notes
 
 <a name="addResponse"></a>
 # **addResponse**
-> VerveResponseInteractionResponse addResponse(interactionId, response, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseInteractionResponse addResponse(interactionId, requesterId, clientToken, body, accessToken)
 
 Response the specified interaction
 
-Allows the user to response the interaction
+This service allows a user to post a response on an interaction. The following fields(key:value) are required to be present in the Response JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API.&lt;/br&gt;&lt;b&gt;Required fields &lt;/br&gt;1. interactionId (Path Parameter)&lt;/br&gt;2. responseDescription &lt;/br&gt;
 
 ### Example
 ```java
@@ -193,13 +191,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 InteractionApi apiInstance = new InteractionApi();
 Long interactionId = 789L; // Long | interactionId
-String response = "response_example"; // String | response
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "responseId,responseDescription,createdDate,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)responseId<br/>2)responseDescription<br/>3)createdDate<br/>4)interactionType<br/><b>A) Available values -</b><br/>1)responseId<br/>2)responseDescription<br/>3)createdDate<br/>4)interactionId<br/>5)respondingUser<br/>6)isMarkedResponse<br/>7)noOfLikes<br/>8)noOfDislikes<br/>9)replyCount<br/>10)isLiked<br/>11)isDisliked<br/>12)interactionType
+InteractionResponse body = new InteractionResponse(); // InteractionResponse | 
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteractionResponse result = apiInstance.addResponse(interactionId, response, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseInteractionResponse result = apiInstance.addResponse(interactionId, requesterId, clientToken, body, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#addResponse");
@@ -212,11 +209,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **interactionId** | **Long**| interactionId |
- **response** | **String**| response |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)responseId&lt;br/&gt;2)responseDescription&lt;br/&gt;3)createdDate&lt;br/&gt;4)interactionType&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt;&lt;br/&gt;1)responseId&lt;br/&gt;2)responseDescription&lt;br/&gt;3)createdDate&lt;br/&gt;4)interactionId&lt;br/&gt;5)respondingUser&lt;br/&gt;6)isMarkedResponse&lt;br/&gt;7)noOfLikes&lt;br/&gt;8)noOfDislikes&lt;br/&gt;9)replyCount&lt;br/&gt;10)isLiked&lt;br/&gt;11)isDisliked&lt;br/&gt;12)interactionType | [optional] [default to responseId,responseDescription,createdDate,interactionType]
+ **body** | [**InteractionResponse**](InteractionResponse.md)|  | [optional]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -228,16 +224,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/x-www-form-urlencoded
+ - **Content-Type**: application/x-www-form-urlencoded, application/json
  - **Accept**: application/json
 
-<a name="createInteractionCategory"></a>
-# **createInteractionCategory**
-> VerveResponseInteractionCategory createInteractionCategory(interactionType, name, loggedInUserId, accessToken, clientToken, organizationId, description, fields)
+<a name="changeInteractionCategory"></a>
+# **changeInteractionCategory**
+> VerveResponseInteraction changeInteractionCategory(interactionId, categoryId, requesterId, clientToken, fields, accessToken)
 
-Create interaction category
+Change interaction category
 
-Creates a interaction category. Returns the created interaction category
+Allows the user to change the interaction category.
 
 ### Example
 ```java
@@ -255,16 +251,138 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 InteractionApi apiInstance = new InteractionApi();
-String interactionType = "interactionType_example"; // String | Interaction Type
-String name = "name_example"; // String | Name
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+Long interactionId = 789L; // Long | interactionId
+Long categoryId = 789L; // Long | New interaction categoryId
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-Long organizationId = 789L; // Long | OrganizationId
-String description = "description_example"; // String | description
-String fields = "categoryId,categoryName,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)categoryId<br/>2)categoryName<br/>3)interactionType<br/><b>A) Available values -</b> <br/>1)categoryId<br/>2)categoryName<br/>3)categoryDescription<br/>4)createdDate<br/>5)isSubscribed<br/>6)interactionType
+String fields = "interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType<br/>15)categoryId<br/>16)categoryName
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteractionCategory result = apiInstance.createInteractionCategory(interactionType, name, loggedInUserId, accessToken, clientToken, organizationId, description, fields);
+    VerveResponseInteraction result = apiInstance.changeInteractionCategory(interactionId, categoryId, requesterId, clientToken, fields, accessToken);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling InteractionApi#changeInteractionCategory");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **interactionId** | **Long**| interactionId |
+ **categoryId** | **Long**| New interaction categoryId |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
+ **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType&lt;br/&gt;15)categoryId&lt;br/&gt;16)categoryName | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
+
+### Return type
+
+[**VerveResponseInteraction**](VerveResponseInteraction.md)
+
+### Authorization
+
+[default](../README.md#default)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+<a name="changeInteractionType"></a>
+# **changeInteractionType**
+> VerveResponseInteraction changeInteractionType(interactionId, interactionType, requesterId, clientToken, fields, accessToken)
+
+Change interaction type
+
+Allows the user to change the interaction type. Boolean value
+
+### Example
+```java
+// Import classes:
+//import com.iengage.ApiClient;
+//import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
+//import com.iengage.service.InteractionApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
+
+InteractionApi apiInstance = new InteractionApi();
+Long interactionId = 789L; // Long | interactionId
+String interactionType = "interactionType_example"; // String | New interaction type
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
+String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String fields = "interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType<br/>15)categoryId<br/>16)categoryName
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+try {
+    VerveResponseInteraction result = apiInstance.changeInteractionType(interactionId, interactionType, requesterId, clientToken, fields, accessToken);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling InteractionApi#changeInteractionType");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **interactionId** | **Long**| interactionId |
+ **interactionType** | **String**| New interaction type |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
+ **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType&lt;br/&gt;15)categoryId&lt;br/&gt;16)categoryName | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
+
+### Return type
+
+[**VerveResponseInteraction**](VerveResponseInteraction.md)
+
+### Authorization
+
+[default](../README.md#default)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+<a name="createInteractionCategory"></a>
+# **createInteractionCategory**
+> VerveResponseInteractionCategory createInteractionCategory(requesterId, clientToken, body, accessToken)
+
+Create interaction category
+
+This service allows a user to create a category. The following fields(key:value) are required to be present in the Category JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API.&lt;/br&gt;&lt;b&gt;Required fields &lt;/br&gt;1. associationId &lt;/br&gt;2. categoryName &lt;/br&gt;3. interactionType &lt;/br&gt;
+
+### Example
+```java
+// Import classes:
+//import com.iengage.ApiClient;
+//import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
+//import com.iengage.service.InteractionApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
+
+InteractionApi apiInstance = new InteractionApi();
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
+String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+InteractionCategory body = new InteractionCategory(); // InteractionCategory | 
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+try {
+    VerveResponseInteractionCategory result = apiInstance.createInteractionCategory(requesterId, clientToken, body, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#createInteractionCategory");
@@ -276,14 +394,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **interactionType** | **String**| Interaction Type |
- **name** | **String**| Name |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **organizationId** | **Long**| OrganizationId | [optional]
- **description** | **String**| description | [optional]
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)interactionType&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)categoryDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)isSubscribed&lt;br/&gt;6)interactionType | [optional] [default to categoryId,categoryName,interactionType]
+ **body** | [**InteractionCategory**](InteractionCategory.md)|  | [optional]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -295,12 +409,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/x-www-form-urlencoded
+ - **Content-Type**: application/x-www-form-urlencoded, application/json
  - **Accept**: application/json
 
 <a name="deleteInteraction"></a>
 # **deleteInteraction**
-> VerveResponseInteraction deleteInteraction(interactionId, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseInteraction deleteInteraction(interactionId, requesterId, clientToken, fields, accessToken)
 
 Delete interaction
 
@@ -323,12 +437,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 InteractionApi apiInstance = new InteractionApi();
 Long interactionId = 789L; // Long | interactionId
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "interactionId,interactionTitle,interactionDescription,createdDate,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType
+String fields = "interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType<br/>15)categoryId<br/>16)categoryName
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteraction result = apiInstance.deleteInteraction(interactionId, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseInteraction result = apiInstance.deleteInteraction(interactionId, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#deleteInteraction");
@@ -341,10 +455,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **interactionId** | **Long**| interactionId |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType]
+ **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType&lt;br/&gt;15)categoryId&lt;br/&gt;16)categoryName | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -361,7 +475,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteInteractionCategory"></a>
 # **deleteInteractionCategory**
-> VerveResponseInteractionCategory deleteInteractionCategory(categoryId, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseInteractionCategory deleteInteractionCategory(categoryId, requesterId, clientToken, fields, accessToken)
 
 Delete interaction category
 
@@ -384,12 +498,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 InteractionApi apiInstance = new InteractionApi();
 Long categoryId = 789L; // Long | categoryId
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "categoryId,categoryName,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)categoryId<br/>2)categoryName<br/>3)interactionType<br/><b>A) Available values -</b> <br/>1)categoryId<br/>2)categoryName<br/>3)categoryDescription<br/>4)createdDate<br/>5)isSubscribed<br/>6)interactionType
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteractionCategory result = apiInstance.deleteInteractionCategory(categoryId, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseInteractionCategory result = apiInstance.deleteInteractionCategory(categoryId, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#deleteInteractionCategory");
@@ -402,10 +516,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **categoryId** | **Long**| categoryId |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)interactionType&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)categoryDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)isSubscribed&lt;br/&gt;6)interactionType | [optional] [default to categoryId,categoryName,interactionType]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -422,7 +536,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteResponse"></a>
 # **deleteResponse**
-> VerveResponseInteractionResponse deleteResponse(responseId, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseInteractionResponse deleteResponse(responseId, requesterId, clientToken, fields, accessToken)
 
 Delete response
 
@@ -445,12 +559,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 InteractionApi apiInstance = new InteractionApi();
 Long responseId = 789L; // Long | responseId
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "responseId,responseDescription,createdDate,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)responseId<br/>2)responseDescription<br/>3)createdDate<br/>4)interactionType<br/><b>A) Available values -</b><br/>1)responseId<br/>2)responseDescription<br/>3)createdDate<br/>4)interactionId<br/>5)respondingUser<br/>6)isMarkedResponse<br/>7)noOfLikes<br/>8)noOfDislikes<br/>9)replyCount<br/>10)isLiked<br/>11)isDisliked<br/>12)interactionType
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteractionResponse result = apiInstance.deleteResponse(responseId, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseInteractionResponse result = apiInstance.deleteResponse(responseId, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#deleteResponse");
@@ -463,10 +577,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **responseId** | **Long**| responseId |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)responseId&lt;br/&gt;2)responseDescription&lt;br/&gt;3)createdDate&lt;br/&gt;4)interactionType&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt;&lt;br/&gt;1)responseId&lt;br/&gt;2)responseDescription&lt;br/&gt;3)createdDate&lt;br/&gt;4)interactionId&lt;br/&gt;5)respondingUser&lt;br/&gt;6)isMarkedResponse&lt;br/&gt;7)noOfLikes&lt;br/&gt;8)noOfDislikes&lt;br/&gt;9)replyCount&lt;br/&gt;10)isLiked&lt;br/&gt;11)isDisliked&lt;br/&gt;12)interactionType | [optional] [default to responseId,responseDescription,createdDate,interactionType]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -483,7 +597,7 @@ Name | Type | Description  | Notes
 
 <a name="dislikeResponse"></a>
 # **dislikeResponse**
-> VerveResponseInteractionResponse dislikeResponse(interactionId, responseId, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseInteractionResponse dislikeResponse(interactionId, responseId, requesterId, clientToken, fields, accessToken)
 
 Dislike response
 
@@ -507,12 +621,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 InteractionApi apiInstance = new InteractionApi();
 Long interactionId = 789L; // Long | interactionId
 Long responseId = 789L; // Long | responseId
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "responseId,responseDescription,createdDate,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)responseId<br/>2)responseDescription<br/>3)createdDate<br/>4)interactionType<br/><b>A) Available values -</b><br/>1)responseId<br/>2)responseDescription<br/>3)createdDate<br/>4)interactionId<br/>5)respondingUser<br/>6)isMarkedResponse<br/>7)noOfLikes<br/>8)noOfDislikes<br/>9)replyCount<br/>10)isLiked<br/>11)isDisliked<br/>12)interactionType
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteractionResponse result = apiInstance.dislikeResponse(interactionId, responseId, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseInteractionResponse result = apiInstance.dislikeResponse(interactionId, responseId, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#dislikeResponse");
@@ -526,10 +640,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **interactionId** | **Long**| interactionId |
  **responseId** | **Long**| responseId |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)responseId&lt;br/&gt;2)responseDescription&lt;br/&gt;3)createdDate&lt;br/&gt;4)interactionType&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt;&lt;br/&gt;1)responseId&lt;br/&gt;2)responseDescription&lt;br/&gt;3)createdDate&lt;br/&gt;4)interactionId&lt;br/&gt;5)respondingUser&lt;br/&gt;6)isMarkedResponse&lt;br/&gt;7)noOfLikes&lt;br/&gt;8)noOfDislikes&lt;br/&gt;9)replyCount&lt;br/&gt;10)isLiked&lt;br/&gt;11)isDisliked&lt;br/&gt;12)interactionType | [optional] [default to responseId,responseDescription,createdDate,interactionType]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -546,7 +660,7 @@ Name | Type | Description  | Notes
 
 <a name="getFriendsInteractions"></a>
 # **getFriendsInteractions**
-> VerveResponseInteractionList getFriendsInteractions(interactionStatus, start, end, loggedInUserId, accessToken, clientToken, interactionType, categoryId, fields)
+> VerveResponseInteractionList getFriendsInteractions(interactionStatus, start, end, requesterId, clientToken, interactionType, categoryId, association, fields, accessToken)
 
 Get list of interactions shared by friends
 
@@ -571,14 +685,15 @@ InteractionApi apiInstance = new InteractionApi();
 String interactionStatus = "interactionStatus_example"; // String | Interaction status <br/> 1) ALL <br/> 2)  UNREPLIED <br/> 3)  REPLIED <br/> 4)  CLOSED
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String interactionType = "interactionType_example"; // String | Interaction Type
 Long categoryId = 789L; // Long | categoryId
-String fields = "interactionId,interactionTitle,interactionDescription,createdDate,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType
+String association = "association_example"; // String | association
+String fields = "interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType<br/>15)categoryId<br/>16)categoryName
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteractionList result = apiInstance.getFriendsInteractions(interactionStatus, start, end, loggedInUserId, accessToken, clientToken, interactionType, categoryId, fields);
+    VerveResponseInteractionList result = apiInstance.getFriendsInteractions(interactionStatus, start, end, requesterId, clientToken, interactionType, categoryId, association, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#getFriendsInteractions");
@@ -593,12 +708,13 @@ Name | Type | Description  | Notes
  **interactionStatus** | **String**| Interaction status &lt;br/&gt; 1) ALL &lt;br/&gt; 2)  UNREPLIED &lt;br/&gt; 3)  REPLIED &lt;br/&gt; 4)  CLOSED |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **interactionType** | **String**| Interaction Type | [optional]
  **categoryId** | **Long**| categoryId | [optional]
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType]
+ **association** | **String**| association | [optional]
+ **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType&lt;br/&gt;15)categoryId&lt;br/&gt;16)categoryName | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -615,7 +731,7 @@ Name | Type | Description  | Notes
 
 <a name="getInteraction"></a>
 # **getInteraction**
-> VerveResponseInteraction getInteraction(interactionId, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseInteraction getInteraction(interactionId, requesterId, clientToken, fields, accessToken)
 
 Get interaction by id
 
@@ -638,12 +754,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 InteractionApi apiInstance = new InteractionApi();
 Long interactionId = 789L; // Long | interactionId
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "interactionId,interactionTitle,interactionDescription,createdDate,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType
+String fields = "interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType<br/>15)categoryId<br/>16)categoryName
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteraction result = apiInstance.getInteraction(interactionId, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseInteraction result = apiInstance.getInteraction(interactionId, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#getInteraction");
@@ -656,10 +772,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **interactionId** | **Long**| interactionId |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType]
+ **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType&lt;br/&gt;15)categoryId&lt;br/&gt;16)categoryName | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -676,7 +792,7 @@ Name | Type | Description  | Notes
 
 <a name="getInteractionCategories"></a>
 # **getInteractionCategories**
-> VerveResponseInteractionCategoryList getInteractionCategories(start, end, loggedInUserId, accessToken, clientToken, interactionType, fields)
+> VerveResponseInteractionCategoryList getInteractionCategories(start, end, requesterId, clientToken, interactionType, association, fields, accessToken)
 
 Get the list of interaction categories
 
@@ -700,13 +816,14 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 InteractionApi apiInstance = new InteractionApi();
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String interactionType = "interactionType_example"; // String | Interaction Type
+String association = "association_example"; // String | association
 String fields = "categoryId,categoryName,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)categoryId<br/>2)categoryName<br/>3)interactionType<br/><b>A) Available values -</b> <br/>1)categoryId<br/>2)categoryName<br/>3)categoryDescription<br/>4)createdDate<br/>5)isSubscribed<br/>6)interactionType
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteractionCategoryList result = apiInstance.getInteractionCategories(start, end, loggedInUserId, accessToken, clientToken, interactionType, fields);
+    VerveResponseInteractionCategoryList result = apiInstance.getInteractionCategories(start, end, requesterId, clientToken, interactionType, association, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#getInteractionCategories");
@@ -720,11 +837,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **interactionType** | **String**| Interaction Type | [optional]
+ **association** | **String**| association | [optional]
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)interactionType&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)categoryDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)isSubscribed&lt;br/&gt;6)interactionType | [optional] [default to categoryId,categoryName,interactionType]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -741,7 +859,7 @@ Name | Type | Description  | Notes
 
 <a name="getInteractionsForUser"></a>
 # **getInteractionsForUser**
-> VerveResponseInteractionList getInteractionsForUser(interactionStatus, start, end, loggedInUserId, accessToken, clientToken, categoryId, interactionType, fields)
+> VerveResponseInteractionList getInteractionsForUser(interactionStatus, start, end, requesterId, clientToken, categoryId, interactionType, association, fields, accessToken)
 
 Get list of all interactions visible to the user
 
@@ -766,14 +884,15 @@ InteractionApi apiInstance = new InteractionApi();
 String interactionStatus = "interactionStatus_example"; // String | Interaction status <br/> 1) ALL <br/> 2)  UNREPLIED <br/> 3)  REPLIED <br/> 4)  CLOSED
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 Long categoryId = 789L; // Long | categoryId
 String interactionType = "interactionType_example"; // String | Interaction Type
-String fields = "interactionId,interactionTitle,interactionDescription,createdDate,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType
+String association = "association_example"; // String | association
+String fields = "interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType<br/>15)categoryId<br/>16)categoryName
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteractionList result = apiInstance.getInteractionsForUser(interactionStatus, start, end, loggedInUserId, accessToken, clientToken, categoryId, interactionType, fields);
+    VerveResponseInteractionList result = apiInstance.getInteractionsForUser(interactionStatus, start, end, requesterId, clientToken, categoryId, interactionType, association, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#getInteractionsForUser");
@@ -788,12 +907,13 @@ Name | Type | Description  | Notes
  **interactionStatus** | **String**| Interaction status &lt;br/&gt; 1) ALL &lt;br/&gt; 2)  UNREPLIED &lt;br/&gt; 3)  REPLIED &lt;br/&gt; 4)  CLOSED |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **categoryId** | **Long**| categoryId | [optional]
  **interactionType** | **String**| Interaction Type | [optional]
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType]
+ **association** | **String**| association | [optional]
+ **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType&lt;br/&gt;15)categoryId&lt;br/&gt;16)categoryName | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -810,7 +930,7 @@ Name | Type | Description  | Notes
 
 <a name="getRecommendInteractions"></a>
 # **getRecommendInteractions**
-> VerveResponseInteractionList getRecommendInteractions(start, end, loggedInUserId, accessToken, clientToken, interactionType, fields)
+> VerveResponseInteractionList getRecommendInteractions(start, end, requesterId, clientToken, interactionType, association, fields, accessToken)
 
 Get list of recommended interactions
 
@@ -834,13 +954,14 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 InteractionApi apiInstance = new InteractionApi();
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String interactionType = "interactionType_example"; // String | interactionType
-String fields = "interactionId,interactionTitle,interactionDescription,createdDate,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType
+String association = "association_example"; // String | association
+String fields = "interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType<br/>15)categoryId<br/>16)categoryName
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteractionList result = apiInstance.getRecommendInteractions(start, end, loggedInUserId, accessToken, clientToken, interactionType, fields);
+    VerveResponseInteractionList result = apiInstance.getRecommendInteractions(start, end, requesterId, clientToken, interactionType, association, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#getRecommendInteractions");
@@ -854,11 +975,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **interactionType** | **String**| interactionType | [optional]
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType]
+ **association** | **String**| association | [optional]
+ **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType&lt;br/&gt;15)categoryId&lt;br/&gt;16)categoryName | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -875,7 +997,7 @@ Name | Type | Description  | Notes
 
 <a name="getRecommendedInteractinsFromDB"></a>
 # **getRecommendedInteractinsFromDB**
-> VerveResponseInteractionList getRecommendedInteractinsFromDB(userId, start, end, loggedInUserId, accessToken, clientToken, interactionType, fields)
+> VerveResponseInteractionList getRecommendedInteractinsFromDB(userId, start, end, requesterId, clientToken, interactionType, association, fields, accessToken)
 
 Get list of recommended interactions from DB
 
@@ -897,16 +1019,17 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 InteractionApi apiInstance = new InteractionApi();
-Long userId = 789L; // Long | userId
+Long userId = 789L; // Long | User Id whose recommended interactions want to get
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String interactionType = "interactionType_example"; // String | Interaction Type
-String fields = "interactionId,interactionTitle,interactionDescription,createdDate,,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType
+String association = "association_example"; // String | association
+String fields = "interactionId,interactionTitle,interactionDescription,createdDate,,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType<br/>15)categoryId<br/>16)categoryName
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteractionList result = apiInstance.getRecommendedInteractinsFromDB(userId, start, end, loggedInUserId, accessToken, clientToken, interactionType, fields);
+    VerveResponseInteractionList result = apiInstance.getRecommendedInteractinsFromDB(userId, start, end, requesterId, clientToken, interactionType, association, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#getRecommendedInteractinsFromDB");
@@ -918,14 +1041,15 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **Long**| userId |
+ **userId** | **Long**| User Id whose recommended interactions want to get |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **interactionType** | **String**| Interaction Type | [optional]
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,,interactionType]
+ **association** | **String**| association | [optional]
+ **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType&lt;br/&gt;15)categoryId&lt;br/&gt;16)categoryName | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,,interactionType]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -942,7 +1066,7 @@ Name | Type | Description  | Notes
 
 <a name="getRecommendedUsersFromDB"></a>
 # **getRecommendedUsersFromDB**
-> VerveResponseUserList getRecommendedUsersFromDB(interactionId, start, end, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseUserList getRecommendedUsersFromDB(interactionId, start, end, requesterId, clientToken, association, fields, accessToken)
 
 Get list of recommended Users from DB
 
@@ -967,12 +1091,13 @@ InteractionApi apiInstance = new InteractionApi();
 Long interactionId = 789L; // Long | interactionId
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "userId,firstName,lastName"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)userId<br/>2)firstName<br/>3)lastName<br/>4)profileImage<br/><b>A) Available values-</b><br/>1)userId<br/>2)firstName<br/>3)lastName<br/>4)emailId<br/>5)profileImage<br/>6)birthDate<br/>7)currentUserFollowing<br/>8)currentUserFriend<br/>9)equityScore
+String association = "association_example"; // String | association
+String fields = "userId,firstName,lastName"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)userId<br/>2)firstName<br/>3)lastName<br/>4)profileImage<br/><b>A) Available values-</b><br/>1)userId<br/>2)firstName<br/>3)lastName<br/>4)emailId<br/>5)profileImage<br/>6)birthDate<br/>
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseUserList result = apiInstance.getRecommendedUsersFromDB(interactionId, start, end, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseUserList result = apiInstance.getRecommendedUsersFromDB(interactionId, start, end, requesterId, clientToken, association, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#getRecommendedUsersFromDB");
@@ -987,10 +1112,11 @@ Name | Type | Description  | Notes
  **interactionId** | **Long**| interactionId |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)userId&lt;br/&gt;2)firstName&lt;br/&gt;3)lastName&lt;br/&gt;4)profileImage&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)userId&lt;br/&gt;2)firstName&lt;br/&gt;3)lastName&lt;br/&gt;4)emailId&lt;br/&gt;5)profileImage&lt;br/&gt;6)birthDate&lt;br/&gt;7)currentUserFollowing&lt;br/&gt;8)currentUserFriend&lt;br/&gt;9)equityScore | [optional] [default to userId,firstName,lastName]
+ **association** | **String**| association | [optional]
+ **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)userId&lt;br/&gt;2)firstName&lt;br/&gt;3)lastName&lt;br/&gt;4)profileImage&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)userId&lt;br/&gt;2)firstName&lt;br/&gt;3)lastName&lt;br/&gt;4)emailId&lt;br/&gt;5)profileImage&lt;br/&gt;6)birthDate&lt;br/&gt; | [optional] [default to userId,firstName,lastName]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1007,7 +1133,7 @@ Name | Type | Description  | Notes
 
 <a name="getResponses"></a>
 # **getResponses**
-> VerveResponseInteractionResponseList getResponses(interactionId, start, end, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseInteractionResponseList getResponses(interactionId, start, end, requesterId, clientToken, fields, accessToken)
 
 Get list of responses by interactionId
 
@@ -1032,12 +1158,12 @@ InteractionApi apiInstance = new InteractionApi();
 Long interactionId = 789L; // Long | interactionId
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "responseId,responseDescription,createdDate,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)responseId<br/>2)responseDescription<br/>3)createdDate<br/>4)interactionType<br/><b>A) Available values -</b><br/>1)responseId<br/>2)responseDescription<br/>3)createdDate<br/>4)interactionId<br/>5)respondingUser<br/>6)isMarkedResponse<br/>7)noOfLikes<br/>8)noOfDislikes<br/>9)replyCount<br/>10)isLiked<br/>11)isDisliked<br/>12)interactionType
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteractionResponseList result = apiInstance.getResponses(interactionId, start, end, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseInteractionResponseList result = apiInstance.getResponses(interactionId, start, end, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#getResponses");
@@ -1052,10 +1178,10 @@ Name | Type | Description  | Notes
  **interactionId** | **Long**| interactionId |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)responseId&lt;br/&gt;2)responseDescription&lt;br/&gt;3)createdDate&lt;br/&gt;4)interactionType&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt;&lt;br/&gt;1)responseId&lt;br/&gt;2)responseDescription&lt;br/&gt;3)createdDate&lt;br/&gt;4)interactionId&lt;br/&gt;5)respondingUser&lt;br/&gt;6)isMarkedResponse&lt;br/&gt;7)noOfLikes&lt;br/&gt;8)noOfDislikes&lt;br/&gt;9)replyCount&lt;br/&gt;10)isLiked&lt;br/&gt;11)isDisliked&lt;br/&gt;12)interactionType | [optional] [default to responseId,responseDescription,createdDate,interactionType]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1072,7 +1198,7 @@ Name | Type | Description  | Notes
 
 <a name="getUserInteractions"></a>
 # **getUserInteractions**
-> VerveResponseInteractionList getUserInteractions(userId, interactionStatus, start, end, loggedInUserId, accessToken, clientToken, categoryId, interactionType, fields)
+> VerveResponseInteractionList getUserInteractions(userId, interactionStatus, start, end, requesterId, clientToken, categoryId, interactionType, association, fields, accessToken)
 
 Get list of interactions shared by user
 
@@ -1094,18 +1220,19 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 InteractionApi apiInstance = new InteractionApi();
-Long userId = 789L; // Long | userId
+Long userId = 789L; // Long | userId whose shared interactions want to get
 String interactionStatus = "interactionStatus_example"; // String | Interaction status <br/> 1) ALL <br/> 2)  UNREPLIED <br/> 3)  REPLIED <br/> 4)  CLOSED
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 Long categoryId = 789L; // Long | categoryId
 String interactionType = "interactionType_example"; // String | Interaction Type
-String fields = "interactionId,interactionTitle,interactionDescription,createdDate,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType
+String association = "association_example"; // String | association
+String fields = "interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType<br/>15)categoryId<br/>16)categoryName
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteractionList result = apiInstance.getUserInteractions(userId, interactionStatus, start, end, loggedInUserId, accessToken, clientToken, categoryId, interactionType, fields);
+    VerveResponseInteractionList result = apiInstance.getUserInteractions(userId, interactionStatus, start, end, requesterId, clientToken, categoryId, interactionType, association, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#getUserInteractions");
@@ -1117,16 +1244,17 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **Long**| userId |
+ **userId** | **Long**| userId whose shared interactions want to get |
  **interactionStatus** | **String**| Interaction status &lt;br/&gt; 1) ALL &lt;br/&gt; 2)  UNREPLIED &lt;br/&gt; 3)  REPLIED &lt;br/&gt; 4)  CLOSED |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **categoryId** | **Long**| categoryId | [optional]
  **interactionType** | **String**| Interaction Type | [optional]
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType]
+ **association** | **String**| association | [optional]
+ **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType&lt;br/&gt;15)categoryId&lt;br/&gt;16)categoryName | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1143,7 +1271,7 @@ Name | Type | Description  | Notes
 
 <a name="getUserSubscribedInteractionCategories"></a>
 # **getUserSubscribedInteractionCategories**
-> VerveResponseInteractionCategoryList getUserSubscribedInteractionCategories(userId, interactionType, start, end, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseInteractionCategoryList getUserSubscribedInteractionCategories(userId, start, end, requesterId, clientToken, interactionType, association, fields, accessToken)
 
 Get list of interaction categories subscribed by the user
 
@@ -1165,16 +1293,17 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 InteractionApi apiInstance = new InteractionApi();
-Long userId = 789L; // Long | userId
-String interactionType = "interactionType_example"; // String | interactionType
+Long userId = 789L; // Long | User Id whose subcripbed category want to get
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String interactionType = "interactionType_example"; // String | interactionType
+String association = "association_example"; // String | association
 String fields = "categoryId,categoryName,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)categoryId<br/>2)categoryName<br/>3)interactionType<br/><b>A) Available values -</b> <br/>1)categoryId<br/>2)categoryName<br/>3)categoryDescription<br/>4)createdDate<br/>5)isSubscribed<br/>6)interactionType
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteractionCategoryList result = apiInstance.getUserSubscribedInteractionCategories(userId, interactionType, start, end, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseInteractionCategoryList result = apiInstance.getUserSubscribedInteractionCategories(userId, start, end, requesterId, clientToken, interactionType, association, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#getUserSubscribedInteractionCategories");
@@ -1186,14 +1315,15 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **Long**| userId |
- **interactionType** | **String**| interactionType |
+ **userId** | **Long**| User Id whose subcripbed category want to get |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **interactionType** | **String**| interactionType | [optional]
+ **association** | **String**| association | [optional]
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)interactionType&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)categoryDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)isSubscribed&lt;br/&gt;6)interactionType | [optional] [default to categoryId,categoryName,interactionType]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1210,7 +1340,7 @@ Name | Type | Description  | Notes
 
 <a name="getUserSubscribedInteractions"></a>
 # **getUserSubscribedInteractions**
-> VerveResponseInteractionList getUserSubscribedInteractions(userId, interactionStatus, start, end, loggedInUserId, accessToken, clientToken, categoryId, interactionType, fields)
+> VerveResponseInteractionList getUserSubscribedInteractions(userId, interactionStatus, start, end, requesterId, clientToken, categoryId, interactionType, association, fields, accessToken)
 
 Get list of interactions subscribed by user
 
@@ -1232,18 +1362,19 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 InteractionApi apiInstance = new InteractionApi();
-Long userId = 789L; // Long | userId
+Long userId = 789L; // Long | User Id whose subcribed interactions wants to get
 String interactionStatus = "interactionStatus_example"; // String | Interaction status <br/> 1) ALL <br/> 2)  UNREPLIED <br/> 3)  REPLIED <br/> 4)  CLOSED
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 Long categoryId = 789L; // Long | categoryId
 String interactionType = "interactionType_example"; // String | Interaction Type
-String fields = "interactionId,interactionTitle,interactionDescription,createdDate,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType
+String association = "association_example"; // String | association
+String fields = "interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType<br/>15)categoryId<br/>16)categoryName
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteractionList result = apiInstance.getUserSubscribedInteractions(userId, interactionStatus, start, end, loggedInUserId, accessToken, clientToken, categoryId, interactionType, fields);
+    VerveResponseInteractionList result = apiInstance.getUserSubscribedInteractions(userId, interactionStatus, start, end, requesterId, clientToken, categoryId, interactionType, association, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#getUserSubscribedInteractions");
@@ -1255,16 +1386,17 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **Long**| userId |
+ **userId** | **Long**| User Id whose subcribed interactions wants to get |
  **interactionStatus** | **String**| Interaction status &lt;br/&gt; 1) ALL &lt;br/&gt; 2)  UNREPLIED &lt;br/&gt; 3)  REPLIED &lt;br/&gt; 4)  CLOSED |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **categoryId** | **Long**| categoryId | [optional]
  **interactionType** | **String**| Interaction Type | [optional]
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType]
+ **association** | **String**| association | [optional]
+ **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType&lt;br/&gt;15)categoryId&lt;br/&gt;16)categoryName | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1281,7 +1413,7 @@ Name | Type | Description  | Notes
 
 <a name="likeResponse"></a>
 # **likeResponse**
-> VerveResponseInteractionResponse likeResponse(interactionId, responseId, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseInteractionResponse likeResponse(interactionId, responseId, requesterId, clientToken, fields, accessToken)
 
 Like response
 
@@ -1305,12 +1437,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 InteractionApi apiInstance = new InteractionApi();
 Long interactionId = 789L; // Long | interactionId
 Long responseId = 789L; // Long | responseId
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "responseId,responseDescription,createdDate,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)responseId<br/>2)responseDescription<br/>3)createdDate<br/>4)interactionType<br/><b>A) Available values -</b><br/>1)responseId<br/>2)responseDescription<br/>3)createdDate<br/>4)interactionId<br/>5)respondingUser<br/>6)isMarkedResponse<br/>7)noOfLikes<br/>8)noOfDislikes<br/>9)replyCount<br/>10)isLiked<br/>11)isDisliked<br/>12)interactionType
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteractionResponse result = apiInstance.likeResponse(interactionId, responseId, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseInteractionResponse result = apiInstance.likeResponse(interactionId, responseId, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#likeResponse");
@@ -1324,10 +1456,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **interactionId** | **Long**| interactionId |
  **responseId** | **Long**| responseId |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)responseId&lt;br/&gt;2)responseDescription&lt;br/&gt;3)createdDate&lt;br/&gt;4)interactionType&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt;&lt;br/&gt;1)responseId&lt;br/&gt;2)responseDescription&lt;br/&gt;3)createdDate&lt;br/&gt;4)interactionId&lt;br/&gt;5)respondingUser&lt;br/&gt;6)isMarkedResponse&lt;br/&gt;7)noOfLikes&lt;br/&gt;8)noOfDislikes&lt;br/&gt;9)replyCount&lt;br/&gt;10)isLiked&lt;br/&gt;11)isDisliked&lt;br/&gt;12)interactionType | [optional] [default to responseId,responseDescription,createdDate,interactionType]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1344,7 +1476,7 @@ Name | Type | Description  | Notes
 
 <a name="markAsAnResponse"></a>
 # **markAsAnResponse**
-> VerveResponseInteractionResponse markAsAnResponse(interactionId, responseId, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseInteractionResponse markAsAnResponse(interactionId, responseId, requesterId, clientToken, fields, accessToken)
 
 Mark response as a response
 
@@ -1368,12 +1500,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 InteractionApi apiInstance = new InteractionApi();
 Long interactionId = 789L; // Long | interactionId
 Long responseId = 789L; // Long | responseId
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "responseId,responseDescription,createdDate,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)responseId<br/>2)responseDescription<br/>3)createdDate<br/>4)interactionType<br/><b>A) Available values -</b><br/>1)responseId<br/>2)responseDescription<br/>3)createdDate<br/>4)interactionId<br/>5)respondingUser<br/>6)isMarkedResponse<br/>7)noOfLikes<br/>8)noOfDislikes<br/>9)replyCount<br/>10)isLiked<br/>11)isDisliked<br/>12)interactionType
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteractionResponse result = apiInstance.markAsAnResponse(interactionId, responseId, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseInteractionResponse result = apiInstance.markAsAnResponse(interactionId, responseId, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#markAsAnResponse");
@@ -1387,10 +1519,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **interactionId** | **Long**| interactionId |
  **responseId** | **Long**| responseId |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)responseId&lt;br/&gt;2)responseDescription&lt;br/&gt;3)createdDate&lt;br/&gt;4)interactionType&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt;&lt;br/&gt;1)responseId&lt;br/&gt;2)responseDescription&lt;br/&gt;3)createdDate&lt;br/&gt;4)interactionId&lt;br/&gt;5)respondingUser&lt;br/&gt;6)isMarkedResponse&lt;br/&gt;7)noOfLikes&lt;br/&gt;8)noOfDislikes&lt;br/&gt;9)replyCount&lt;br/&gt;10)isLiked&lt;br/&gt;11)isDisliked&lt;br/&gt;12)interactionType | [optional] [default to responseId,responseDescription,createdDate,interactionType]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1407,7 +1539,7 @@ Name | Type | Description  | Notes
 
 <a name="searchInteractions"></a>
 # **searchInteractions**
-> VerveResponseInteractionList searchInteractions(searchText, interactionStatus, start, end, loggedInUserId, accessToken, clientToken, interactionType, fields)
+> VerveResponseInteractionList searchInteractions(searchText, interactionStatus, start, end, requesterId, clientToken, interactionType, association, fields, accessToken)
 
 Get list of matching interactions
 
@@ -1433,13 +1565,14 @@ String searchText = "searchText_example"; // String | Search Text, keywords to s
 String interactionStatus = "interactionStatus_example"; // String | Interaction status <br/> 1) ALL <br/> 2)  UNREPLIED <br/> 3)  REPLIED <br/> 4)  CLOSED
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String interactionType = "interactionType_example"; // String | Interaction Type
-String fields = "interactionId,interactionTitle,interactionDescription,createdDate,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType
+String association = "association_example"; // String | association
+String fields = "interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType<br/>15)categoryId<br/>16)categoryName
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteractionList result = apiInstance.searchInteractions(searchText, interactionStatus, start, end, loggedInUserId, accessToken, clientToken, interactionType, fields);
+    VerveResponseInteractionList result = apiInstance.searchInteractions(searchText, interactionStatus, start, end, requesterId, clientToken, interactionType, association, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#searchInteractions");
@@ -1455,11 +1588,12 @@ Name | Type | Description  | Notes
  **interactionStatus** | **String**| Interaction status &lt;br/&gt; 1) ALL &lt;br/&gt; 2)  UNREPLIED &lt;br/&gt; 3)  REPLIED &lt;br/&gt; 4)  CLOSED |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **interactionType** | **String**| Interaction Type | [optional]
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType]
+ **association** | **String**| association | [optional]
+ **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType&lt;br/&gt;15)categoryId&lt;br/&gt;16)categoryName | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1476,7 +1610,7 @@ Name | Type | Description  | Notes
 
 <a name="subscribeInteractinCategory"></a>
 # **subscribeInteractinCategory**
-> VerveResponseInteractionCategory subscribeInteractinCategory(categoryId, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseInteractionCategory subscribeInteractinCategory(categoryId, requesterId, clientToken, fields, accessToken)
 
 Subscribe interaction category
 
@@ -1499,12 +1633,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 InteractionApi apiInstance = new InteractionApi();
 Long categoryId = 789L; // Long | categoryId
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "categoryId,categoryName,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)categoryId<br/>2)categoryName<br/>3)interactionType<br/><b>A) Available values -</b> <br/>1)categoryId<br/>2)categoryName<br/>3)categoryDescription<br/>4)createdDate<br/>5)isSubscribed<br/>6)interactionType
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteractionCategory result = apiInstance.subscribeInteractinCategory(categoryId, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseInteractionCategory result = apiInstance.subscribeInteractinCategory(categoryId, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#subscribeInteractinCategory");
@@ -1517,10 +1651,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **categoryId** | **Long**| categoryId |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)interactionType&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)categoryDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)isSubscribed&lt;br/&gt;6)interactionType | [optional] [default to categoryId,categoryName,interactionType]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1537,7 +1671,7 @@ Name | Type | Description  | Notes
 
 <a name="subscribeInteraction"></a>
 # **subscribeInteraction**
-> VerveResponseInteraction subscribeInteraction(interactionId, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseInteraction subscribeInteraction(interactionId, requesterId, clientToken, fields, accessToken)
 
 Subscribe interaction
 
@@ -1560,12 +1694,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 InteractionApi apiInstance = new InteractionApi();
 Long interactionId = 789L; // Long | interactionId
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "interactionId,interactionTitle,interactionDescription,createdDate,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType
+String fields = "interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType<br/>15)categoryId<br/>16)categoryName
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteraction result = apiInstance.subscribeInteraction(interactionId, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseInteraction result = apiInstance.subscribeInteraction(interactionId, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#subscribeInteraction");
@@ -1578,10 +1712,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **interactionId** | **Long**| interactionId |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType]
+ **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType&lt;br/&gt;15)categoryId&lt;br/&gt;16)categoryName | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1598,7 +1732,7 @@ Name | Type | Description  | Notes
 
 <a name="unmarkAsAnResponse"></a>
 # **unmarkAsAnResponse**
-> VerveResponseInteractionResponse unmarkAsAnResponse(interactionId, responseId, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseInteractionResponse unmarkAsAnResponse(interactionId, responseId, requesterId, clientToken, fields, accessToken)
 
 Unmark response as a response
 
@@ -1622,12 +1756,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 InteractionApi apiInstance = new InteractionApi();
 Long interactionId = 789L; // Long | interactionId
 Long responseId = 789L; // Long | responseId
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "responseId,responseDescription,createdDate,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)responseId<br/>2)responseDescription<br/>3)createdDate<br/>4)interactionType<br/><b>A) Available values -</b><br/>1)responseId<br/>2)responseDescription<br/>3)createdDate<br/>4)interactionId<br/>5)respondingUser<br/>6)isMarkedResponse<br/>7)noOfLikes<br/>8)noOfDislikes<br/>9)replyCount<br/>10)isLiked<br/>11)isDisliked<br/>12)interactionType
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteractionResponse result = apiInstance.unmarkAsAnResponse(interactionId, responseId, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseInteractionResponse result = apiInstance.unmarkAsAnResponse(interactionId, responseId, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#unmarkAsAnResponse");
@@ -1641,10 +1775,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **interactionId** | **Long**| interactionId |
  **responseId** | **Long**| responseId |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)responseId&lt;br/&gt;2)responseDescription&lt;br/&gt;3)createdDate&lt;br/&gt;4)interactionType&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt;&lt;br/&gt;1)responseId&lt;br/&gt;2)responseDescription&lt;br/&gt;3)createdDate&lt;br/&gt;4)interactionId&lt;br/&gt;5)respondingUser&lt;br/&gt;6)isMarkedResponse&lt;br/&gt;7)noOfLikes&lt;br/&gt;8)noOfDislikes&lt;br/&gt;9)replyCount&lt;br/&gt;10)isLiked&lt;br/&gt;11)isDisliked&lt;br/&gt;12)interactionType | [optional] [default to responseId,responseDescription,createdDate,interactionType]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1661,7 +1795,7 @@ Name | Type | Description  | Notes
 
 <a name="unsubscribeInteractinCategory"></a>
 # **unsubscribeInteractinCategory**
-> VerveResponseInteractionCategory unsubscribeInteractinCategory(categoryId, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseInteractionCategory unsubscribeInteractinCategory(categoryId, requesterId, clientToken, fields, accessToken)
 
 Unsubscribe interaction category
 
@@ -1684,12 +1818,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 InteractionApi apiInstance = new InteractionApi();
 Long categoryId = 789L; // Long | categoryId
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "categoryId,categoryName,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)categoryId<br/>2)categoryName<br/>3)interactionType<br/><b>A) Available values -</b> <br/>1)categoryId<br/>2)categoryName<br/>3)categoryDescription<br/>4)createdDate<br/>5)isSubscribed<br/>6)interactionType
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteractionCategory result = apiInstance.unsubscribeInteractinCategory(categoryId, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseInteractionCategory result = apiInstance.unsubscribeInteractinCategory(categoryId, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#unsubscribeInteractinCategory");
@@ -1702,10 +1836,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **categoryId** | **Long**| categoryId |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)interactionType&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)categoryDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)isSubscribed&lt;br/&gt;6)interactionType | [optional] [default to categoryId,categoryName,interactionType]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1722,7 +1856,7 @@ Name | Type | Description  | Notes
 
 <a name="unsubscribeInteraction"></a>
 # **unsubscribeInteraction**
-> VerveResponseInteraction unsubscribeInteraction(interactionId, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseInteraction unsubscribeInteraction(interactionId, requesterId, clientToken, fields, accessToken)
 
 Unsubscribe interaction
 
@@ -1745,12 +1879,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 InteractionApi apiInstance = new InteractionApi();
 Long interactionId = 789L; // Long | interactionId
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "interactionId,interactionTitle,interactionDescription,createdDate,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType
+String fields = "interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType<br/>15)categoryId<br/>16)categoryName
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteraction result = apiInstance.unsubscribeInteraction(interactionId, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseInteraction result = apiInstance.unsubscribeInteraction(interactionId, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#unsubscribeInteraction");
@@ -1763,10 +1897,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **interactionId** | **Long**| interactionId |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType]
+ **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType&lt;br/&gt;15)categoryId&lt;br/&gt;16)categoryName | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1783,7 +1917,7 @@ Name | Type | Description  | Notes
 
 <a name="updateInteraction"></a>
 # **updateInteraction**
-> VerveResponseInteraction updateInteraction(interactionId, interactionTitle, loggedInUserId, accessToken, clientToken, interactionDescription, fields)
+> VerveResponseInteraction updateInteraction(interactionId, interactionTitle, requesterId, clientToken, interactionDescription, fields, accessToken)
 
 Update interaction
 
@@ -1807,13 +1941,13 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 InteractionApi apiInstance = new InteractionApi();
 Long interactionId = 789L; // Long | interactionId
 String interactionTitle = "interactionTitle_example"; // String | Interaction Title
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String interactionDescription = "interactionDescription_example"; // String | Describe Interaction
-String fields = "interactionId,interactionTitle,interactionDescription,createdDate,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType
+String fields = "interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)createdDate<br/>5)interactionType<br/><b>A) Available values-</b><br/>1)interactionId<br/>2)interactionTitle<br/>3)interactionDescription<br/>4)issuer<br/>5)noOfResponses<br/>6)isClosed<br/>7)createdDate<br/>8)lastUpdatedDate<br/>9)videoId<br/>10)fileURL<br/>11)isSubscribed<br/>12)sentiment</br>13)entity<br/>14)interactionType<br/>15)categoryId<br/>16)categoryName
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteraction result = apiInstance.updateInteraction(interactionId, interactionTitle, loggedInUserId, accessToken, clientToken, interactionDescription, fields);
+    VerveResponseInteraction result = apiInstance.updateInteraction(interactionId, interactionTitle, requesterId, clientToken, interactionDescription, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#updateInteraction");
@@ -1827,11 +1961,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **interactionId** | **Long**| interactionId |
  **interactionTitle** | **String**| Interaction Title |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **interactionDescription** | **String**| Describe Interaction | [optional]
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType]
+ **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)interactionType&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)interactionId&lt;br/&gt;2)interactionTitle&lt;br/&gt;3)interactionDescription&lt;br/&gt;4)issuer&lt;br/&gt;5)noOfResponses&lt;br/&gt;6)isClosed&lt;br/&gt;7)createdDate&lt;br/&gt;8)lastUpdatedDate&lt;br/&gt;9)videoId&lt;br/&gt;10)fileURL&lt;br/&gt;11)isSubscribed&lt;br/&gt;12)sentiment&lt;/br&gt;13)entity&lt;br/&gt;14)interactionType&lt;br/&gt;15)categoryId&lt;br/&gt;16)categoryName | [optional] [default to interactionId,interactionTitle,interactionDescription,createdDate,interactionType,categoryName]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1848,7 +1982,7 @@ Name | Type | Description  | Notes
 
 <a name="updateInteractionCategory"></a>
 # **updateInteractionCategory**
-> VerveResponseInteractionCategory updateInteractionCategory(categoryId, categoryName, loggedInUserId, accessToken, clientToken, categoryDescription, fields)
+> VerveResponseInteractionCategory updateInteractionCategory(categoryId, categoryName, requesterId, clientToken, categoryDescription, fields, accessToken)
 
 Update interaction category
 
@@ -1872,13 +2006,13 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 InteractionApi apiInstance = new InteractionApi();
 Long categoryId = 789L; // Long | categoryId
 String categoryName = "categoryName_example"; // String | Category Name
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String categoryDescription = "categoryDescription_example"; // String | Describe category
 String fields = "categoryId,categoryName,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)categoryId<br/>2)categoryName<br/>3)interactionType<br/><b>A) Available values -</b> <br/>1)categoryId<br/>2)categoryName<br/>3)categoryDescription<br/>4)createdDate<br/>5)isSubscribed<br/>6)interactionType
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteractionCategory result = apiInstance.updateInteractionCategory(categoryId, categoryName, loggedInUserId, accessToken, clientToken, categoryDescription, fields);
+    VerveResponseInteractionCategory result = apiInstance.updateInteractionCategory(categoryId, categoryName, requesterId, clientToken, categoryDescription, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#updateInteractionCategory");
@@ -1892,11 +2026,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **categoryId** | **Long**| categoryId |
  **categoryName** | **String**| Category Name |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **categoryDescription** | **String**| Describe category | [optional]
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)interactionType&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt; &lt;br/&gt;1)categoryId&lt;br/&gt;2)categoryName&lt;br/&gt;3)categoryDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)isSubscribed&lt;br/&gt;6)interactionType | [optional] [default to categoryId,categoryName,interactionType]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1913,7 +2047,7 @@ Name | Type | Description  | Notes
 
 <a name="updateResponse"></a>
 # **updateResponse**
-> VerveResponseInteractionResponse updateResponse(responseId, response, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseInteractionResponse updateResponse(responseId, response, requesterId, clientToken, fields, accessToken)
 
 Update response
 
@@ -1937,12 +2071,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 InteractionApi apiInstance = new InteractionApi();
 Long responseId = 789L; // Long | responseId
 String response = "response_example"; // String | response
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "responseId,responseDescription,createdDate,interactionType"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)responseId<br/>2)responseDescription<br/>3)createdDate<br/>4)interactionType<br/><b>A) Available values -</b><br/>1)responseId<br/>2)responseDescription<br/>3)createdDate<br/>4)interactionId<br/>5)respondingUser<br/>6)isMarkedResponse<br/>7)noOfLikes<br/>8)noOfDislikes<br/>9)replyCount<br/>10)isLiked<br/>11)isDisliked<br/>12)interactionType
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseInteractionResponse result = apiInstance.updateResponse(responseId, response, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseInteractionResponse result = apiInstance.updateResponse(responseId, response, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InteractionApi#updateResponse");
@@ -1956,10 +2090,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **responseId** | **Long**| responseId |
  **response** | **String**| response |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)responseId&lt;br/&gt;2)responseDescription&lt;br/&gt;3)createdDate&lt;br/&gt;4)interactionType&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt;&lt;br/&gt;1)responseId&lt;br/&gt;2)responseDescription&lt;br/&gt;3)createdDate&lt;br/&gt;4)interactionId&lt;br/&gt;5)respondingUser&lt;br/&gt;6)isMarkedResponse&lt;br/&gt;7)noOfLikes&lt;br/&gt;8)noOfDislikes&lt;br/&gt;9)replyCount&lt;br/&gt;10)isLiked&lt;br/&gt;11)isDisliked&lt;br/&gt;12)interactionType | [optional] [default to responseId,responseDescription,createdDate,interactionType]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 

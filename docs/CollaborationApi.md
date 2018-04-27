@@ -1,6 +1,6 @@
 # CollaborationApi
 
-All URIs are relative to *https://api.iengage.io:8243/api/1.0*
+All URIs are relative to *https://api.iengage.io:8243/api/2.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -30,11 +30,11 @@ Method | HTTP request | Description
 
 <a name="addCommentBlog"></a>
 # **addCommentBlog**
-> VerveResponseComment addCommentBlog(blogId, commentText, loggedInUserId, accessToken, clientToken)
+> VerveResponseComment addCommentBlog(blogId, requesterId, clientToken, body, accessToken)
 
 Comment on posted blog
 
-Allows the user to give comment on posted Blog. Returns the comment
+This service allows a user to comment on a blog. The following fields(key:value) are required to be present in the Comment JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API.&lt;/br&gt;&lt;b&gt;Required fields &lt;/br&gt;1. blogId (Path Parameter)&lt;/br&gt;2. commentText &lt;/br&gt;
 
 ### Example
 ```java
@@ -53,12 +53,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 CollaborationApi apiInstance = new CollaborationApi();
 Long blogId = 789L; // Long | blogId
-String commentText = "commentText_example"; // String | Comment Text
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+Comment body = new Comment(); // Comment | 
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseComment result = apiInstance.addCommentBlog(blogId, commentText, loggedInUserId, accessToken, clientToken);
+    VerveResponseComment result = apiInstance.addCommentBlog(blogId, requesterId, clientToken, body, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollaborationApi#addCommentBlog");
@@ -71,10 +71,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **blogId** | **Long**| blogId |
- **commentText** | **String**| Comment Text |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **body** | [**Comment**](Comment.md)|  | [optional]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -86,16 +86,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/x-www-form-urlencoded
+ - **Content-Type**: application/json, application/x-www-form-urlencoded
  - **Accept**: application/json
 
 <a name="addCommentDiscussion"></a>
 # **addCommentDiscussion**
-> VerveResponseComment addCommentDiscussion(discussionId, commentText, loggedInUserId, accessToken, clientToken)
+> VerveResponseComment addCommentDiscussion(discussionId, requesterId, clientToken, body, accessToken)
 
 Comment on discussion
 
-Allows the user to comment on discussion. Returns the comment
+This service allows a user to comment on a discussion. The following fields(key:value) are required to be present in the Comment JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API.&lt;/br&gt;&lt;b&gt;Required fields &lt;/br&gt;1. discussionId (Path Parameter)&lt;/br&gt;2. commentText &lt;/br&gt;
 
 ### Example
 ```java
@@ -114,12 +114,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 CollaborationApi apiInstance = new CollaborationApi();
 Long discussionId = 789L; // Long | discussionId
-String commentText = "commentText_example"; // String | Comment Text
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+Comment body = new Comment(); // Comment | 
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseComment result = apiInstance.addCommentDiscussion(discussionId, commentText, loggedInUserId, accessToken, clientToken);
+    VerveResponseComment result = apiInstance.addCommentDiscussion(discussionId, requesterId, clientToken, body, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollaborationApi#addCommentDiscussion");
@@ -132,10 +132,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **discussionId** | **Long**| discussionId |
- **commentText** | **String**| Comment Text |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **body** | [**Comment**](Comment.md)|  | [optional]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -147,12 +147,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/x-www-form-urlencoded
+ - **Content-Type**: application/json, application/x-www-form-urlencoded
  - **Accept**: application/json
 
 <a name="deleteBlog"></a>
 # **deleteBlog**
-> VerveResponseBlog deleteBlog(blogId, loggedInUserId, accessToken, clientToken)
+> VerveResponseBlog deleteBlog(blogId, requesterId, clientToken, accessToken)
 
 Delete blog
 
@@ -175,11 +175,11 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 CollaborationApi apiInstance = new CollaborationApi();
 Long blogId = 789L; // Long | blog Id
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseBlog result = apiInstance.deleteBlog(blogId, loggedInUserId, accessToken, clientToken);
+    VerveResponseBlog result = apiInstance.deleteBlog(blogId, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollaborationApi#deleteBlog");
@@ -192,9 +192,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **blogId** | **Long**| blog Id |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -211,7 +211,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteBlogComment"></a>
 # **deleteBlogComment**
-> VerveResponseComment deleteBlogComment(commentId, loggedInUserId, accessToken, clientToken)
+> VerveResponseComment deleteBlogComment(commentId, requesterId, clientToken, accessToken)
 
 Delete blog comment
 
@@ -234,11 +234,11 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 CollaborationApi apiInstance = new CollaborationApi();
 Long commentId = 789L; // Long | comment Id
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseComment result = apiInstance.deleteBlogComment(commentId, loggedInUserId, accessToken, clientToken);
+    VerveResponseComment result = apiInstance.deleteBlogComment(commentId, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollaborationApi#deleteBlogComment");
@@ -251,9 +251,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commentId** | **Long**| comment Id |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteDiscussion"></a>
 # **deleteDiscussion**
-> VerveResponseDiscussion deleteDiscussion(discussionId, loggedInUserId, accessToken, clientToken)
+> VerveResponseDiscussion deleteDiscussion(discussionId, requesterId, clientToken, accessToken)
 
 Delete discussion
 
@@ -293,11 +293,11 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 CollaborationApi apiInstance = new CollaborationApi();
 Long discussionId = 789L; // Long | discussion Id
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseDiscussion result = apiInstance.deleteDiscussion(discussionId, loggedInUserId, accessToken, clientToken);
+    VerveResponseDiscussion result = apiInstance.deleteDiscussion(discussionId, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollaborationApi#deleteDiscussion");
@@ -310,9 +310,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **discussionId** | **Long**| discussion Id |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -329,7 +329,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteDiscussionComment"></a>
 # **deleteDiscussionComment**
-> VerveResponseComment deleteDiscussionComment(commentId, loggedInUserId, accessToken, clientToken)
+> VerveResponseComment deleteDiscussionComment(commentId, requesterId, clientToken, accessToken)
 
 Delete discussion comment
 
@@ -352,11 +352,11 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 CollaborationApi apiInstance = new CollaborationApi();
 Long commentId = 789L; // Long | comment Id
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseComment result = apiInstance.deleteDiscussionComment(commentId, loggedInUserId, accessToken, clientToken);
+    VerveResponseComment result = apiInstance.deleteDiscussionComment(commentId, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollaborationApi#deleteDiscussionComment");
@@ -369,9 +369,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commentId** | **Long**| comment Id |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -388,7 +388,7 @@ Name | Type | Description  | Notes
 
 <a name="getBlogComments"></a>
 # **getBlogComments**
-> VerveResponseCommentList getBlogComments(blogId, start, end, loggedInUserId, accessToken, clientToken)
+> VerveResponseCommentList getBlogComments(blogId, start, end, requesterId, clientToken, accessToken)
 
 Get list of comments on blog
 
@@ -413,11 +413,11 @@ CollaborationApi apiInstance = new CollaborationApi();
 Long blogId = 789L; // Long | blogId
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseCommentList result = apiInstance.getBlogComments(blogId, start, end, loggedInUserId, accessToken, clientToken);
+    VerveResponseCommentList result = apiInstance.getBlogComments(blogId, start, end, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollaborationApi#getBlogComments");
@@ -432,9 +432,9 @@ Name | Type | Description  | Notes
  **blogId** | **Long**| blogId |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -451,7 +451,7 @@ Name | Type | Description  | Notes
 
 <a name="getBlogs"></a>
 # **getBlogs**
-> VerveResponseBlogList getBlogs(organizationId, start, end, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseBlogList getBlogs(association, start, end, requesterId, clientToken, fields, accessToken)
 
 Get list of blogs
 
@@ -473,15 +473,15 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 CollaborationApi apiInstance = new CollaborationApi();
-Long organizationId = 789L; // Long | organizationId
+Long association = 789L; // Long | association
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "blogId,blogTitle,blogDescription,createdDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)blogId<br/>2)blogTitle<br/>3)blogDescription<br/>4)createdDate<br/><b>A )Available values-</b><br/>1)blogId<br/>2)blogTitle<br/>3)blogDescription<br/>4)createdDate<br/>5)user<br/>6)sentiment</br>7)entity
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseBlogList result = apiInstance.getBlogs(organizationId, start, end, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseBlogList result = apiInstance.getBlogs(association, start, end, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollaborationApi#getBlogs");
@@ -493,13 +493,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organizationId** | **Long**| organizationId |
+ **association** | **Long**| association |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)blogId&lt;br/&gt;2)blogTitle&lt;br/&gt;3)blogDescription&lt;br/&gt;4)createdDate&lt;br/&gt;&lt;b&gt;A )Available values-&lt;/b&gt;&lt;br/&gt;1)blogId&lt;br/&gt;2)blogTitle&lt;br/&gt;3)blogDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)user&lt;br/&gt;6)sentiment&lt;/br&gt;7)entity | [optional] [default to blogId,blogTitle,blogDescription,createdDate]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -516,7 +516,7 @@ Name | Type | Description  | Notes
 
 <a name="getDiscussionComments"></a>
 # **getDiscussionComments**
-> VerveResponseCommentList getDiscussionComments(discussionId, start, end, loggedInUserId, accessToken, clientToken)
+> VerveResponseCommentList getDiscussionComments(discussionId, start, end, requesterId, clientToken, accessToken)
 
 Get list of comments on discussion
 
@@ -541,11 +541,11 @@ CollaborationApi apiInstance = new CollaborationApi();
 Long discussionId = 789L; // Long | discussionId
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseCommentList result = apiInstance.getDiscussionComments(discussionId, start, end, loggedInUserId, accessToken, clientToken);
+    VerveResponseCommentList result = apiInstance.getDiscussionComments(discussionId, start, end, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollaborationApi#getDiscussionComments");
@@ -560,9 +560,9 @@ Name | Type | Description  | Notes
  **discussionId** | **Long**| discussionId |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -579,7 +579,7 @@ Name | Type | Description  | Notes
 
 <a name="getDiscussions"></a>
 # **getDiscussions**
-> VerveResponseDiscussionList getDiscussions(organizationId, start, end, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseDiscussionList getDiscussions(association, start, end, requesterId, clientToken, fields, accessToken)
 
 Get list of discussions
 
@@ -601,15 +601,15 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 CollaborationApi apiInstance = new CollaborationApi();
-Long organizationId = 789L; // Long | organizationId
+Long association = 789L; // Long | association
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "discussionId,discussionSubject,discussionDescription,createdDate "; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)discussionId<br/>2)discussionSubject<br/>3)discussionDescription<br/>4)createdDate<br/><b>A) Available values-</b><br/>1)discussionId<br/>2)discussionSubject<br/>3)discussionDescription<br/>4)createdDate<br/>5)user<br/>6)sentiment</br>7)entity
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseDiscussionList result = apiInstance.getDiscussions(organizationId, start, end, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseDiscussionList result = apiInstance.getDiscussions(association, start, end, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollaborationApi#getDiscussions");
@@ -621,13 +621,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organizationId** | **Long**| organizationId |
+ **association** | **Long**| association |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)discussionId&lt;br/&gt;2)discussionSubject&lt;br/&gt;3)discussionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)discussionId&lt;br/&gt;2)discussionSubject&lt;br/&gt;3)discussionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)user&lt;br/&gt;6)sentiment&lt;/br&gt;7)entity | [optional] [default to discussionId,discussionSubject,discussionDescription,createdDate ]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -644,7 +644,7 @@ Name | Type | Description  | Notes
 
 <a name="getUserSubscribedBlogs"></a>
 # **getUserSubscribedBlogs**
-> VerveResponseBlog getUserSubscribedBlogs(userId, start, end, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseBlog getUserSubscribedBlogs(userId, start, end, requesterId, clientToken, fields, accessToken)
 
 Get list of blogs subscribed by user
 
@@ -666,15 +666,15 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 CollaborationApi apiInstance = new CollaborationApi();
-Long userId = 789L; // Long | userId
+Long userId = 789L; // Long | User Id whose subcribtions want tp get. 
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "blogId,blogTitle,blogDescription,createdDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)blogId<br/>2)blogTitle<br/>3)blogDescription<br/>4)createdDate<br/><b>A )Available values-</b><br/>1)blogId<br/>2)blogTitle<br/>3)blogDescription<br/>4)createdDate<br/>5)user<br/>6)sentiment</br>7)entity
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseBlog result = apiInstance.getUserSubscribedBlogs(userId, start, end, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseBlog result = apiInstance.getUserSubscribedBlogs(userId, start, end, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollaborationApi#getUserSubscribedBlogs");
@@ -686,13 +686,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **Long**| userId |
+ **userId** | **Long**| User Id whose subcribtions want tp get.  |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)blogId&lt;br/&gt;2)blogTitle&lt;br/&gt;3)blogDescription&lt;br/&gt;4)createdDate&lt;br/&gt;&lt;b&gt;A )Available values-&lt;/b&gt;&lt;br/&gt;1)blogId&lt;br/&gt;2)blogTitle&lt;br/&gt;3)blogDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)user&lt;br/&gt;6)sentiment&lt;/br&gt;7)entity | [optional] [default to blogId,blogTitle,blogDescription,createdDate]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -709,7 +709,7 @@ Name | Type | Description  | Notes
 
 <a name="getUserSubscribedDiscussions"></a>
 # **getUserSubscribedDiscussions**
-> VerveResponseDiscussionList getUserSubscribedDiscussions(userId, start, end, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseDiscussionList getUserSubscribedDiscussions(userId, start, end, requesterId, clientToken, fields, accessToken)
 
 Get list of discussions subscribed by user
 
@@ -731,15 +731,15 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 CollaborationApi apiInstance = new CollaborationApi();
-Long userId = 789L; // Long | userId
+Long userId = 789L; // Long | User Id whose subcribtions want tp get.
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "discussionId,discussionSubject,discussionDescription,createdDate "; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)discussionId<br/>2)discussionSubject<br/>3)discussionDescription<br/>4)createdDate<br/><b>A) Available values-</b><br/>1)discussionId<br/>2)discussionSubject<br/>3)discussionDescription<br/>4)createdDate<br/>5)user<br/>6)sentiment</br>7)entity
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseDiscussionList result = apiInstance.getUserSubscribedDiscussions(userId, start, end, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseDiscussionList result = apiInstance.getUserSubscribedDiscussions(userId, start, end, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollaborationApi#getUserSubscribedDiscussions");
@@ -751,13 +751,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **Long**| userId |
+ **userId** | **Long**| User Id whose subcribtions want tp get. |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)discussionId&lt;br/&gt;2)discussionSubject&lt;br/&gt;3)discussionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)discussionId&lt;br/&gt;2)discussionSubject&lt;br/&gt;3)discussionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)user&lt;br/&gt;6)sentiment&lt;/br&gt;7)entity | [optional] [default to discussionId,discussionSubject,discussionDescription,createdDate ]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -774,11 +774,11 @@ Name | Type | Description  | Notes
 
 <a name="postBlog"></a>
 # **postBlog**
-> VerveResponseBlog postBlog(organizationId, blogTitle, blogDescription, loggedInUserId, accessToken, clientToken)
+> VerveResponseBlog postBlog(requesterId, clientToken, body, accessToken)
 
 Post blog
 
-Allows the user to post a blog. Returns the posted blog
+This service allows a user to post a blog. The following fields(key:value) are required to be present in the Blog JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API.&lt;/br&gt;&lt;b&gt;Required fields &lt;/br&gt;1. association &lt;/br&gt;2. title &lt;/br&gt;3. description &lt;/br&gt;
 
 ### Example
 ```java
@@ -796,14 +796,12 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 CollaborationApi apiInstance = new CollaborationApi();
-Long organizationId = 789L; // Long | organizationId
-String blogTitle = "blogTitle_example"; // String | blogTitle
-String blogDescription = "blogDescription_example"; // String | blogDescription
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+Blog body = new Blog(); // Blog | 
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseBlog result = apiInstance.postBlog(organizationId, blogTitle, blogDescription, loggedInUserId, accessToken, clientToken);
+    VerveResponseBlog result = apiInstance.postBlog(requesterId, clientToken, body, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollaborationApi#postBlog");
@@ -815,12 +813,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organizationId** | **Long**| organizationId |
- **blogTitle** | **String**| blogTitle |
- **blogDescription** | **String**| blogDescription |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **body** | [**Blog**](Blog.md)|  | [optional]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -832,16 +828,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/x-www-form-urlencoded
+ - **Content-Type**: application/json, application/x-www-form-urlencoded
  - **Accept**: application/json
 
 <a name="startDiscussion"></a>
 # **startDiscussion**
-> VerveResponseDiscussion startDiscussion(organizationId, subject, description, loggedInUserId, accessToken, clientToken)
+> VerveResponseDiscussion startDiscussion(requesterId, clientToken, body, accessToken)
 
 Start discussion
 
-Allows the user to start discussion. Returns the started discussion
+This service allows a user to post a discussion. The following fields(key:value) are required to be present in the Discussion JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API.&lt;/br&gt;&lt;b&gt;Required fields &lt;/br&gt;1. association &lt;/br&gt;2. subject &lt;/br&gt;3. description &lt;/br&gt;
 
 ### Example
 ```java
@@ -859,14 +855,12 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 CollaborationApi apiInstance = new CollaborationApi();
-Long organizationId = 789L; // Long | organizationId
-String subject = "subject_example"; // String | subject
-String description = "description_example"; // String | description
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+Discussion body = new Discussion(); // Discussion | 
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseDiscussion result = apiInstance.startDiscussion(organizationId, subject, description, loggedInUserId, accessToken, clientToken);
+    VerveResponseDiscussion result = apiInstance.startDiscussion(requesterId, clientToken, body, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollaborationApi#startDiscussion");
@@ -878,12 +872,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organizationId** | **Long**| organizationId |
- **subject** | **String**| subject |
- **description** | **String**| description |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **body** | [**Discussion**](Discussion.md)|  | [optional]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -895,12 +887,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/x-www-form-urlencoded
+ - **Content-Type**: application/json, application/x-www-form-urlencoded
  - **Accept**: application/json
 
 <a name="subscribeBlog"></a>
 # **subscribeBlog**
-> VerveResponseBlog subscribeBlog(blogId, loggedInUserId, accessToken, clientToken)
+> VerveResponseBlog subscribeBlog(blogId, requesterId, clientToken, accessToken)
 
 Subscribe blog
 
@@ -923,11 +915,11 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 CollaborationApi apiInstance = new CollaborationApi();
 Long blogId = 789L; // Long | blogId
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseBlog result = apiInstance.subscribeBlog(blogId, loggedInUserId, accessToken, clientToken);
+    VerveResponseBlog result = apiInstance.subscribeBlog(blogId, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollaborationApi#subscribeBlog");
@@ -940,9 +932,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **blogId** | **Long**| blogId |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -959,7 +951,7 @@ Name | Type | Description  | Notes
 
 <a name="subscribeDiscussion"></a>
 # **subscribeDiscussion**
-> VerveResponseDiscussion subscribeDiscussion(discussionId, loggedInUserId, accessToken, clientToken)
+> VerveResponseDiscussion subscribeDiscussion(discussionId, requesterId, clientToken, accessToken)
 
 Subscribe discussion
 
@@ -982,11 +974,11 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 CollaborationApi apiInstance = new CollaborationApi();
 Long discussionId = 789L; // Long | discussionId
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseDiscussion result = apiInstance.subscribeDiscussion(discussionId, loggedInUserId, accessToken, clientToken);
+    VerveResponseDiscussion result = apiInstance.subscribeDiscussion(discussionId, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollaborationApi#subscribeDiscussion");
@@ -999,9 +991,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **discussionId** | **Long**| discussionId |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1018,7 +1010,7 @@ Name | Type | Description  | Notes
 
 <a name="unsubscribeBlog"></a>
 # **unsubscribeBlog**
-> VerveResponseBlog unsubscribeBlog(blogId, loggedInUserId, accessToken, clientToken)
+> VerveResponseBlog unsubscribeBlog(blogId, requesterId, clientToken, accessToken)
 
 Unsubscribe blog
 
@@ -1041,11 +1033,11 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 CollaborationApi apiInstance = new CollaborationApi();
 Long blogId = 789L; // Long | blogId
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseBlog result = apiInstance.unsubscribeBlog(blogId, loggedInUserId, accessToken, clientToken);
+    VerveResponseBlog result = apiInstance.unsubscribeBlog(blogId, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollaborationApi#unsubscribeBlog");
@@ -1058,9 +1050,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **blogId** | **Long**| blogId |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1077,7 +1069,7 @@ Name | Type | Description  | Notes
 
 <a name="unsubscribeDiscussion"></a>
 # **unsubscribeDiscussion**
-> VerveResponseDiscussion unsubscribeDiscussion(discussionId, loggedInUserId, accessToken, clientToken)
+> VerveResponseDiscussion unsubscribeDiscussion(discussionId, requesterId, clientToken, accessToken)
 
 Unsubscribe discussion
 
@@ -1100,11 +1092,11 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 CollaborationApi apiInstance = new CollaborationApi();
 Long discussionId = 789L; // Long | discussionId
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseDiscussion result = apiInstance.unsubscribeDiscussion(discussionId, loggedInUserId, accessToken, clientToken);
+    VerveResponseDiscussion result = apiInstance.unsubscribeDiscussion(discussionId, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollaborationApi#unsubscribeDiscussion");
@@ -1117,9 +1109,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **discussionId** | **Long**| discussionId |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1136,7 +1128,7 @@ Name | Type | Description  | Notes
 
 <a name="updateBlog"></a>
 # **updateBlog**
-> VerveResponseBlog updateBlog(blogId, blogTitle, blogDescription, loggedInUserId, accessToken, clientToken)
+> VerveResponseBlog updateBlog(blogId, blogTitle, blogDescription, requesterId, clientToken, accessToken)
 
 Update blog
 
@@ -1161,11 +1153,11 @@ CollaborationApi apiInstance = new CollaborationApi();
 Long blogId = 789L; // Long | blogId
 String blogTitle = "blogTitle_example"; // String | blog title
 String blogDescription = "blogDescription_example"; // String | blog description
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseBlog result = apiInstance.updateBlog(blogId, blogTitle, blogDescription, loggedInUserId, accessToken, clientToken);
+    VerveResponseBlog result = apiInstance.updateBlog(blogId, blogTitle, blogDescription, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollaborationApi#updateBlog");
@@ -1180,9 +1172,9 @@ Name | Type | Description  | Notes
  **blogId** | **Long**| blogId |
  **blogTitle** | **String**| blog title |
  **blogDescription** | **String**| blog description |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1199,7 +1191,7 @@ Name | Type | Description  | Notes
 
 <a name="updateBlogComment"></a>
 # **updateBlogComment**
-> VerveResponseComment updateBlogComment(commentId, commentText, loggedInUserId, accessToken, clientToken)
+> VerveResponseComment updateBlogComment(commentId, commentText, requesterId, clientToken, accessToken)
 
 Update blog comment
 
@@ -1223,11 +1215,11 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 CollaborationApi apiInstance = new CollaborationApi();
 Long commentId = 789L; // Long | commentId
 String commentText = "commentText_example"; // String | comment text
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseComment result = apiInstance.updateBlogComment(commentId, commentText, loggedInUserId, accessToken, clientToken);
+    VerveResponseComment result = apiInstance.updateBlogComment(commentId, commentText, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollaborationApi#updateBlogComment");
@@ -1241,9 +1233,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commentId** | **Long**| commentId |
  **commentText** | **String**| comment text |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1260,7 +1252,7 @@ Name | Type | Description  | Notes
 
 <a name="updateDiscussion"></a>
 # **updateDiscussion**
-> VerveResponseDiscussion updateDiscussion(discussionId, subject, discussionDescription, loggedInUserId, accessToken, clientToken)
+> VerveResponseDiscussion updateDiscussion(discussionId, subject, discussionDescription, requesterId, clientToken, accessToken)
 
 Update discussion
 
@@ -1285,11 +1277,11 @@ CollaborationApi apiInstance = new CollaborationApi();
 Long discussionId = 789L; // Long | discussionId
 String subject = "subject_example"; // String | subject
 String discussionDescription = "discussionDescription_example"; // String | discussion Description
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseDiscussion result = apiInstance.updateDiscussion(discussionId, subject, discussionDescription, loggedInUserId, accessToken, clientToken);
+    VerveResponseDiscussion result = apiInstance.updateDiscussion(discussionId, subject, discussionDescription, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollaborationApi#updateDiscussion");
@@ -1304,9 +1296,9 @@ Name | Type | Description  | Notes
  **discussionId** | **Long**| discussionId |
  **subject** | **String**| subject |
  **discussionDescription** | **String**| discussion Description |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -1323,7 +1315,7 @@ Name | Type | Description  | Notes
 
 <a name="updateDiscussionComment"></a>
 # **updateDiscussionComment**
-> VerveResponseDiscussion updateDiscussionComment(commentId, commentText, loggedInUserId, accessToken, clientToken)
+> VerveResponseDiscussion updateDiscussionComment(commentId, commentText, requesterId, clientToken, accessToken)
 
 Update discussion comment
 
@@ -1347,11 +1339,11 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 CollaborationApi apiInstance = new CollaborationApi();
 Long commentId = 789L; // Long | commentId
 String commentText = "commentText_example"; // String | comment text
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseDiscussion result = apiInstance.updateDiscussionComment(commentId, commentText, loggedInUserId, accessToken, clientToken);
+    VerveResponseDiscussion result = apiInstance.updateDiscussionComment(commentId, commentText, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollaborationApi#updateDiscussionComment");
@@ -1365,9 +1357,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commentId** | **Long**| commentId |
  **commentText** | **String**| comment text |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 

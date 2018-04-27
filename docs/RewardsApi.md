@@ -1,6 +1,6 @@
 # RewardsApi
 
-All URIs are relative to *https://api.iengage.io:8243/api/1.0*
+All URIs are relative to *https://api.iengage.io:8243/api/2.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="getTopFriends"></a>
 # **getTopFriends**
-> VerveResponseUserPointsList getTopFriends(userId, start, end, loggedInUserId, accessToken, clientToken)
+> VerveResponseUserPointsList getTopFriends(userId, start, end, requesterId, clientToken, accessToken)
 
 Get list of top friends
 
@@ -36,11 +36,11 @@ RewardsApi apiInstance = new RewardsApi();
 Long userId = 789L; // Long | userId
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseUserPointsList result = apiInstance.getTopFriends(userId, start, end, loggedInUserId, accessToken, clientToken);
+    VerveResponseUserPointsList result = apiInstance.getTopFriends(userId, start, end, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RewardsApi#getTopFriends");
@@ -55,9 +55,9 @@ Name | Type | Description  | Notes
  **userId** | **Long**| userId |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 
 <a name="getTopUsers"></a>
 # **getTopUsers**
-> VerveResponseUserPointsList getTopUsers(start, end, loggedInUserId, accessToken, clientToken)
+> VerveResponseUserPointsList getTopUsers(start, end, requesterId, clientToken, accessToken)
 
 Get list of top users
 
@@ -98,11 +98,11 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 RewardsApi apiInstance = new RewardsApi();
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseUserPointsList result = apiInstance.getTopUsers(start, end, loggedInUserId, accessToken, clientToken);
+    VerveResponseUserPointsList result = apiInstance.getTopUsers(start, end, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RewardsApi#getTopUsers");
@@ -116,9 +116,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 
 <a name="getUserPoints"></a>
 # **getUserPoints**
-> VerveResponseUserPoints getUserPoints(userId, loggedInUserId, accessToken, clientToken)
+> VerveResponseUserPoints getUserPoints(userId, requesterId, clientToken, accessToken)
 
 Get list of user points
 
@@ -157,12 +157,12 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 RewardsApi apiInstance = new RewardsApi();
-Long userId = 789L; // Long | userId
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+Long userId = 789L; // Long | User Id whose points wants to get
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseUserPoints result = apiInstance.getUserPoints(userId, loggedInUserId, accessToken, clientToken);
+    VerveResponseUserPoints result = apiInstance.getUserPoints(userId, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RewardsApi#getUserPoints");
@@ -174,10 +174,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **Long**| userId |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **userId** | **Long**| User Id whose points wants to get |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 

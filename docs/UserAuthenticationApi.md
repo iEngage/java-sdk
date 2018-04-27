@@ -1,6 +1,6 @@
 # UserAuthenticationApi
 
-All URIs are relative to *https://api.iengage.io:8243/api/1.0*
+All URIs are relative to *https://api.iengage.io:8243/api/2.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -8,14 +8,15 @@ Method | HTTP request | Description
 [**addUser**](UserAuthenticationApi.md#addUser) | **POST** /users | Add/Register new user
 [**authenticate**](UserAuthenticationApi.md#authenticate) | **GET** /authenticate | Authenticate User
 [**changePassword**](UserAuthenticationApi.md#changePassword) | **PUT** /users/password | Change password
+[**createAssociation**](UserAuthenticationApi.md#createAssociation) | **POST** /associations | Create association
 [**deleteUser**](UserAuthenticationApi.md#deleteUser) | **DELETE** /users/{userId} | Delete user
-[**getOrganizations**](UserAuthenticationApi.md#getOrganizations) | **GET** /organizations | Get list of organizations
+[**getAssociations**](UserAuthenticationApi.md#getAssociations) | **GET** /associations | Get list of associations
 [**logout**](UserAuthenticationApi.md#logout) | **GET** /logout | Logout
 
 
 <a name="addNotificationRegisteredId"></a>
 # **addNotificationRegisteredId**
-> Boolean addNotificationRegisteredId(registeredId, type, loggedInUserId, accessToken, clientToken)
+> Boolean addNotificationRegisteredId(registeredId, type, clientToken, requesterId, accessToken)
 
 Add device token
 
@@ -39,11 +40,11 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 UserAuthenticationApi apiInstance = new UserAuthenticationApi();
 String registeredId = "registeredId_example"; // String | Registered device token to be added
 String type = "type_example"; // String | Type of device android, ios
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    Boolean result = apiInstance.addNotificationRegisteredId(registeredId, type, loggedInUserId, accessToken, clientToken);
+    Boolean result = apiInstance.addNotificationRegisteredId(registeredId, type, clientToken, requesterId, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UserAuthenticationApi#addNotificationRegisteredId");
@@ -57,9 +58,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **registeredId** | **String**| Registered device token to be added |
  **type** | **String**| Type of device android, ios |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **requesterId** | **String**| requesterId can be user id OR email address. | [optional]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -206,7 +207,7 @@ Name | Type | Description  | Notes
 
 <a name="changePassword"></a>
 # **changePassword**
-> Boolean changePassword(currentPassword, newPassword, loggedInUserId, accessToken, clientToken)
+> Boolean changePassword(currentPassword, newPassword, requesterId, clientToken, accessToken)
 
 Change password
 
@@ -230,11 +231,11 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 UserAuthenticationApi apiInstance = new UserAuthenticationApi();
 String currentPassword = "currentPassword_example"; // String | Current password
 String newPassword = "newPassword_example"; // String | New password
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    Boolean result = apiInstance.changePassword(currentPassword, newPassword, loggedInUserId, accessToken, clientToken);
+    Boolean result = apiInstance.changePassword(currentPassword, newPassword, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UserAuthenticationApi#changePassword");
@@ -248,13 +249,72 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currentPassword** | **String**| Current password |
  **newPassword** | **String**| New password |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
 **Boolean**
+
+### Authorization
+
+[default](../README.md#default)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+<a name="createAssociation"></a>
+# **createAssociation**
+> VerveResponseAssociation createAssociation(name, requesterId, clientToken, accessToken)
+
+Create association
+
+Create association. Returns the association
+
+### Example
+```java
+// Import classes:
+//import com.iengage.ApiClient;
+//import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
+//import com.iengage.service.UserAuthenticationApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
+
+UserAuthenticationApi apiInstance = new UserAuthenticationApi();
+String name = "name_example"; // String | association name
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
+String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+try {
+    VerveResponseAssociation result = apiInstance.createAssociation(name, requesterId, clientToken, accessToken);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling UserAuthenticationApi#createAssociation");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| association name |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
+ **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
+
+### Return type
+
+[**VerveResponseAssociation**](VerveResponseAssociation.md)
 
 ### Authorization
 
@@ -320,13 +380,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
-<a name="getOrganizations"></a>
-# **getOrganizations**
-> VerveResponseOrganizationList getOrganizations(loggedInUserId, accessToken, clientToken)
+<a name="getAssociations"></a>
+# **getAssociations**
+> VerveResponseAssociationList getAssociations(requesterId, clientToken, accessToken)
 
-Get list of organizations
+Get list of associations
 
-Return the list of organizations
+Return the list of association
 
 ### Example
 ```java
@@ -344,14 +404,14 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 UserAuthenticationApi apiInstance = new UserAuthenticationApi();
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseOrganizationList result = apiInstance.getOrganizations(loggedInUserId, accessToken, clientToken);
+    VerveResponseAssociationList result = apiInstance.getAssociations(requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling UserAuthenticationApi#getOrganizations");
+    System.err.println("Exception when calling UserAuthenticationApi#getAssociations");
     e.printStackTrace();
 }
 ```
@@ -360,13 +420,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
-[**VerveResponseOrganizationList**](VerveResponseOrganizationList.md)
+[**VerveResponseAssociationList**](VerveResponseAssociationList.md)
 
 ### Authorization
 
@@ -379,7 +439,7 @@ Name | Type | Description  | Notes
 
 <a name="logout"></a>
 # **logout**
-> Boolean logout(loggedInUserId, accessToken, clientToken)
+> Boolean logout(requesterId, clientToken, accessToken)
 
 Logout
 
@@ -401,11 +461,11 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 UserAuthenticationApi apiInstance = new UserAuthenticationApi();
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    Boolean result = apiInstance.logout(loggedInUserId, accessToken, clientToken);
+    Boolean result = apiInstance.logout(requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UserAuthenticationApi#logout");
@@ -417,9 +477,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **sentimentDetails** | [**Sentiment**](Sentiment.md) |  |  [optional]
 **sentimentWeightage** | **Double** |  |  [optional]
 **entity** | [**List&lt;NER&gt;**](NER.md) |  |  [optional]
+**association** | **Long** |  |  [optional]
 
 
 

@@ -1,6 +1,6 @@
 # BPMApi
 
-All URIs are relative to *https://api.iengage.io:8243/api/1.0*
+All URIs are relative to *https://api.iengage.io:8243/api/2.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 <a name="assignWFTask"></a>
 # **assignWFTask**
-> VerveResponseWFTask assignWFTask(assigneeUserId, taskId, loggedInUserId, accessToken, clientToken, comment, dueDate, fields)
+> VerveResponseWFTask assignWFTask(assigneeUserId, taskId, requesterId, clientToken, comment, dueDate, fields, accessToken)
 
 Assign task
 
@@ -39,14 +39,14 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 BPMApi apiInstance = new BPMApi();
 Long assigneeUserId = 789L; // Long | assigneeUserId - assign to this user
 Long taskId = 789L; // Long | taskId
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String comment = "comment_example"; // String | comment
 Long dueDate = 789L; // Long | dueDate
 String fields = "taskId,name,type"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)taskId<br/>2)name<br/>3)type<br/><b>A) Available values -</b> <br/>1)taskId<br/>2)name<br/>3)dueDate<br/>4)description<br/>5)transitionList<br/>6)type<br/>7)entityId<br/>8)attributes
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseWFTask result = apiInstance.assignWFTask(assigneeUserId, taskId, loggedInUserId, accessToken, clientToken, comment, dueDate, fields);
+    VerveResponseWFTask result = apiInstance.assignWFTask(assigneeUserId, taskId, requesterId, clientToken, comment, dueDate, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BPMApi#assignWFTask");
@@ -60,12 +60,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **assigneeUserId** | **Long**| assigneeUserId - assign to this user |
  **taskId** | **Long**| taskId |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **comment** | **String**| comment | [optional]
  **dueDate** | **Long**| dueDate | [optional]
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)taskId&lt;br/&gt;2)name&lt;br/&gt;3)type&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt; &lt;br/&gt;1)taskId&lt;br/&gt;2)name&lt;br/&gt;3)dueDate&lt;br/&gt;4)description&lt;br/&gt;5)transitionList&lt;br/&gt;6)type&lt;br/&gt;7)entityId&lt;br/&gt;8)attributes | [optional] [default to taskId,name,type]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 <a name="completeWFTask"></a>
 # **completeWFTask**
-> VerveResponseWFTask completeWFTask(userId, taskId, loggedInUserId, accessToken, clientToken, transition, comment, fields)
+> VerveResponseWFTask completeWFTask(userId, taskId, requesterId, clientToken, transition, comment, fields, accessToken)
 
 Complete task
 
@@ -106,14 +106,14 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 BPMApi apiInstance = new BPMApi();
 Long userId = 789L; // Long | userId whose task want to complete
 Long taskId = 789L; // Long | taskId
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String transition = "transition_example"; // String | transition
 String comment = "comment_example"; // String | comment
 String fields = "taskId,name,type"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)taskId<br/>2)name<br/>3)type<br/><b>A) Available values -</b> <br/>1)taskId<br/>2)name<br/>3)dueDate<br/>4)description<br/>5)transitionList<br/>6)type<br/>7)entityId<br/>8)attributes
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseWFTask result = apiInstance.completeWFTask(userId, taskId, loggedInUserId, accessToken, clientToken, transition, comment, fields);
+    VerveResponseWFTask result = apiInstance.completeWFTask(userId, taskId, requesterId, clientToken, transition, comment, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BPMApi#completeWFTask");
@@ -127,12 +127,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **Long**| userId whose task want to complete |
  **taskId** | **Long**| taskId |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **transition** | **String**| transition | [optional]
  **comment** | **String**| comment | [optional]
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)taskId&lt;br/&gt;2)name&lt;br/&gt;3)type&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt; &lt;br/&gt;1)taskId&lt;br/&gt;2)name&lt;br/&gt;3)dueDate&lt;br/&gt;4)description&lt;br/&gt;5)transitionList&lt;br/&gt;6)type&lt;br/&gt;7)entityId&lt;br/&gt;8)attributes | [optional] [default to taskId,name,type]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 
 <a name="getBPMTasks"></a>
 # **getBPMTasks**
-> VerveResponseWFTask getBPMTasks(userId, taskId, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseWFTask getBPMTasks(userId, taskId, requesterId, clientToken, fields, accessToken)
 
 Get task by task id
 
@@ -173,12 +173,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 BPMApi apiInstance = new BPMApi();
 Long userId = 789L; // Long | userId
 Long taskId = 789L; // Long | taskId
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "taskId,name,type"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)taskId<br/>2)name<br/>3)type<br/><b>A) Available values -</b> <br/>1)taskId<br/>2)name<br/>3)dueDate<br/>4)description<br/>5)transitionList<br/>6)type<br/>7)entityId<br/>8)attributes
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseWFTask result = apiInstance.getBPMTasks(userId, taskId, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseWFTask result = apiInstance.getBPMTasks(userId, taskId, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BPMApi#getBPMTasks");
@@ -192,10 +192,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **Long**| userId |
  **taskId** | **Long**| taskId |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)taskId&lt;br/&gt;2)name&lt;br/&gt;3)type&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt; &lt;br/&gt;1)taskId&lt;br/&gt;2)name&lt;br/&gt;3)dueDate&lt;br/&gt;4)description&lt;br/&gt;5)transitionList&lt;br/&gt;6)type&lt;br/&gt;7)entityId&lt;br/&gt;8)attributes | [optional] [default to taskId,name,type]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 
 <a name="getSearchTask"></a>
 # **getSearchTask**
-> VerveResponseWFTaskList getSearchTask(userId, searchString, completed, searchByUserRoles, start, end, loggedInUserId, accessToken, clientToken, type, organizationId, fields)
+> VerveResponseWFTaskList getSearchTask(userId, searchString, completed, searchByUserRoles, start, end, requesterId, clientToken, type, organizationId, fields, accessToken)
 
 Get list of BPM task assigned to user
 
@@ -234,20 +234,20 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 BPMApi apiInstance = new BPMApi();
-Long userId = 789L; // Long | userId
+Long userId = 789L; // Long | User Id whose tasks want to get
 String searchString = "searchString_example"; // String | searchString
 Boolean completed = true; // Boolean | 1) true - Completed <br/> 2) false - Pending <br/>
 Boolean searchByUserRoles = true; // Boolean | 1) true - Assigned to roles <br/> 2) false - Assigned to user
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String type = "type_example"; // String | Type
 Long organizationId = 789L; // Long | organizationId
 String fields = "taskId,name,type"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)taskId<br/>2)name<br/>3)type<br/><b>A) Available values -</b> <br/>1)taskId<br/>2)name<br/>3)dueDate<br/>4)description<br/>5)transitionList<br/>6)type<br/>7)entityId<br/>8)attributes
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseWFTaskList result = apiInstance.getSearchTask(userId, searchString, completed, searchByUserRoles, start, end, loggedInUserId, accessToken, clientToken, type, organizationId, fields);
+    VerveResponseWFTaskList result = apiInstance.getSearchTask(userId, searchString, completed, searchByUserRoles, start, end, requesterId, clientToken, type, organizationId, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BPMApi#getSearchTask");
@@ -259,18 +259,18 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **Long**| userId |
+ **userId** | **Long**| User Id whose tasks want to get |
  **searchString** | **String**| searchString |
  **completed** | **Boolean**| 1) true - Completed &lt;br/&gt; 2) false - Pending &lt;br/&gt; |
  **searchByUserRoles** | **Boolean**| 1) true - Assigned to roles &lt;br/&gt; 2) false - Assigned to user |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **type** | **String**| Type | [optional]
  **organizationId** | **Long**| organizationId | [optional]
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)taskId&lt;br/&gt;2)name&lt;br/&gt;3)type&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt; &lt;br/&gt;1)taskId&lt;br/&gt;2)name&lt;br/&gt;3)dueDate&lt;br/&gt;4)description&lt;br/&gt;5)transitionList&lt;br/&gt;6)type&lt;br/&gt;7)entityId&lt;br/&gt;8)attributes | [optional] [default to taskId,name,type]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -287,7 +287,7 @@ Name | Type | Description  | Notes
 
 <a name="getTasksByEntity"></a>
 # **getTasksByEntity**
-> VerveResponseWFTaskList getTasksByEntity(userId, entityId, completed, searchByUserRoles, start, end, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseWFTaskList getTasksByEntity(userId, entityId, completed, searchByUserRoles, start, end, requesterId, clientToken, fields, accessToken)
 
 Get list of BPM task assigned to user
 
@@ -309,18 +309,18 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 BPMApi apiInstance = new BPMApi();
-Long userId = 789L; // Long | userId whose task want to see
+Long userId = 789L; // Long | User Id whose task want to see
 Long entityId = 789L; // Long | entityId
 Boolean completed = true; // Boolean | 1) true - Completed <br/> 2) false - Pending <br/>
 Boolean searchByUserRoles = true; // Boolean | 1) true - Assigned to roles <br/> 2) false - Assigned to user
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String fields = "taskId,name,type"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)taskId<br/>2)name<br/>3)type<br/><b>A) Available values -</b> <br/>1)taskId<br/>2)name<br/>3)dueDate<br/>4)description<br/>5)transitionList<br/>6)type<br/>7)entityId<br/>8)attributes
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseWFTaskList result = apiInstance.getTasksByEntity(userId, entityId, completed, searchByUserRoles, start, end, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseWFTaskList result = apiInstance.getTasksByEntity(userId, entityId, completed, searchByUserRoles, start, end, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BPMApi#getTasksByEntity");
@@ -332,16 +332,16 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **Long**| userId whose task want to see |
+ **userId** | **Long**| User Id whose task want to see |
  **entityId** | **Long**| entityId |
  **completed** | **Boolean**| 1) true - Completed &lt;br/&gt; 2) false - Pending &lt;br/&gt; |
  **searchByUserRoles** | **Boolean**| 1) true - Assigned to roles &lt;br/&gt; 2) false - Assigned to user |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)taskId&lt;br/&gt;2)name&lt;br/&gt;3)type&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt; &lt;br/&gt;1)taskId&lt;br/&gt;2)name&lt;br/&gt;3)dueDate&lt;br/&gt;4)description&lt;br/&gt;5)transitionList&lt;br/&gt;6)type&lt;br/&gt;7)entityId&lt;br/&gt;8)attributes | [optional] [default to taskId,name,type]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -358,7 +358,7 @@ Name | Type | Description  | Notes
 
 <a name="getUserBPMTasks"></a>
 # **getUserBPMTasks**
-> VerveResponseWFTaskList getUserBPMTasks(userId, completed, start, end, loggedInUserId, accessToken, clientToken, type, organizationId, fields)
+> VerveResponseWFTaskList getUserBPMTasks(userId, completed, start, end, requesterId, clientToken, type, organizationId, fields, accessToken)
 
 Get list of BPM task assigned to user
 
@@ -380,18 +380,18 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 BPMApi apiInstance = new BPMApi();
-Long userId = 789L; // Long | userId whose task want to see
+Long userId = 789L; // Long | User Id whose task want to see
 Boolean completed = true; // Boolean | 1) true - Completed <br/> 2) false - Pending <br/> 3) Blank - All
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String type = "type_example"; // String | Type
 Long organizationId = 789L; // Long | organizationId
 String fields = "taskId,name,type"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)taskId<br/>2)name<br/>3)type<br/><b>A) Available values -</b> <br/>1)taskId<br/>2)name<br/>3)dueDate<br/>4)description<br/>5)transitionList<br/>6)type<br/>7)entityId<br/>8)attributes
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseWFTaskList result = apiInstance.getUserBPMTasks(userId, completed, start, end, loggedInUserId, accessToken, clientToken, type, organizationId, fields);
+    VerveResponseWFTaskList result = apiInstance.getUserBPMTasks(userId, completed, start, end, requesterId, clientToken, type, organizationId, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BPMApi#getUserBPMTasks");
@@ -403,16 +403,16 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **Long**| userId whose task want to see |
+ **userId** | **Long**| User Id whose task want to see |
  **completed** | **Boolean**| 1) true - Completed &lt;br/&gt; 2) false - Pending &lt;br/&gt; 3) Blank - All |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **type** | **String**| Type | [optional]
  **organizationId** | **Long**| organizationId | [optional]
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)taskId&lt;br/&gt;2)name&lt;br/&gt;3)type&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt; &lt;br/&gt;1)taskId&lt;br/&gt;2)name&lt;br/&gt;3)dueDate&lt;br/&gt;4)description&lt;br/&gt;5)transitionList&lt;br/&gt;6)type&lt;br/&gt;7)entityId&lt;br/&gt;8)attributes | [optional] [default to taskId,name,type]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -429,7 +429,7 @@ Name | Type | Description  | Notes
 
 <a name="getUserRolesBPMTasks"></a>
 # **getUserRolesBPMTasks**
-> VerveResponseWFTaskList getUserRolesBPMTasks(userId, completed, start, end, loggedInUserId, accessToken, clientToken, type, organizationId, fields)
+> VerveResponseWFTaskList getUserRolesBPMTasks(userId, completed, start, end, requesterId, clientToken, type, organizationId, fields, accessToken)
 
 Get list of BPM task assigned to user roles
 
@@ -451,18 +451,18 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 BPMApi apiInstance = new BPMApi();
-Long userId = 789L; // Long | userId whose task want to see
+Long userId = 789L; // Long | User Id whose task want to see
 Boolean completed = true; // Boolean | 1) true - Completed <br/> 2) false - Pending <br/> 3) Blank - All
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String type = "type_example"; // String | Type
 Long organizationId = 789L; // Long | organizationId
 String fields = "taskId,name,type"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)taskId<br/>2)name<br/>3)type<br/><b>A) Available values -</b> <br/>1)taskId<br/>2)name<br/>3)dueDate<br/>4)description<br/>5)transitionList<br/>6)type<br/>7)entityId<br/>8)attributes
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseWFTaskList result = apiInstance.getUserRolesBPMTasks(userId, completed, start, end, loggedInUserId, accessToken, clientToken, type, organizationId, fields);
+    VerveResponseWFTaskList result = apiInstance.getUserRolesBPMTasks(userId, completed, start, end, requesterId, clientToken, type, organizationId, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BPMApi#getUserRolesBPMTasks");
@@ -474,16 +474,16 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **Long**| userId whose task want to see |
+ **userId** | **Long**| User Id whose task want to see |
  **completed** | **Boolean**| 1) true - Completed &lt;br/&gt; 2) false - Pending &lt;br/&gt; 3) Blank - All |
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **type** | **String**| Type | [optional]
  **organizationId** | **Long**| organizationId | [optional]
  **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)taskId&lt;br/&gt;2)name&lt;br/&gt;3)type&lt;br/&gt;&lt;b&gt;A) Available values -&lt;/b&gt; &lt;br/&gt;1)taskId&lt;br/&gt;2)name&lt;br/&gt;3)dueDate&lt;br/&gt;4)description&lt;br/&gt;5)transitionList&lt;br/&gt;6)type&lt;br/&gt;7)entityId&lt;br/&gt;8)attributes | [optional] [default to taskId,name,type]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 

@@ -11,6 +11,9 @@ Name | Type | Description | Notes
 **priority** | **Integer** |  |  [optional]
 **dueDate** | [**DateTime**](DateTime.md) |  |  [optional]
 **createdDate** | [**DateTime**](DateTime.md) |  |  [optional]
+**associationId** | **Long** |  |  [optional]
+**neverDue** | **Boolean** |  |  [optional]
+**user** | [**User**](User.md) |  |  [optional]
 
 
 

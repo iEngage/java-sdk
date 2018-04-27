@@ -1,22 +1,26 @@
 # AugmentedIntelligenceApi
 
-All URIs are relative to *https://api.iengage.io:8243/api/1.0*
+All URIs are relative to *https://api.iengage.io:8243/api/2.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getInteraction**](AugmentedIntelligenceApi.md#getInteraction) | **GET** /machineLearning/interactionType | Get the type of interaction
+[**classify**](AugmentedIntelligenceApi.md#classify) | **POST** /ml/classifier/classify | Classifies using your classifier
+[**getEntities**](AugmentedIntelligenceApi.md#getEntities) | **POST** /ml/ner/classify | Extracts entities from text
+[**getInteractionType**](AugmentedIntelligenceApi.md#getInteractionType) | **POST** /ml/interactionType | Returns the type of interaction
+[**getKeywords**](AugmentedIntelligenceApi.md#getKeywords) | **POST** /ml/keywords | Returns the keywords of the sentence
 [**getPopularTag**](AugmentedIntelligenceApi.md#getPopularTag) | **GET** /analytics/popular/tags | Get list of popular tag of interactions
 [**getSentiment**](AugmentedIntelligenceApi.md#getSentiment) | **GET** /analytics/sentiments | Get sentiment count of interactions
 [**getTagEntitySentiments**](AugmentedIntelligenceApi.md#getTagEntitySentiments) | **GET** /analytics/tag/entitySentiment | Get list of tag entity sentiment
+[**sentiment**](AugmentedIntelligenceApi.md#sentiment) | **POST** /ml/sentiment | Analyzes the sentiment of the content
 
 
-<a name="getInteraction"></a>
-# **getInteraction**
-> VerveResponseFlowFinder getInteraction(text, loggedInUserId, accessToken, clientToken)
+<a name="classify"></a>
+# **classify**
+> VerveResponseTextClassificationList classify(text, id, clientToken)
 
-Get the type of interaction
+Classifies using your classifier
 
-Classifies text to question, complaint or suggestion
+Returns a classification based on your training in the Classifier Admin Panel. More than one classifier may be trained. Use the correct ID from the Admin Panel to get the corresponding classification
 
 ### Example
 ```java
@@ -34,15 +38,14 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 AugmentedIntelligenceApi apiInstance = new AugmentedIntelligenceApi();
-String text = "text_example"; // String | Text to be classified
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String text = "text_example"; // String | Text you want classified
+Long id = 789L; // Long | Classifier ID from the Admin Panel
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 try {
-    VerveResponseFlowFinder result = apiInstance.getInteraction(text, loggedInUserId, accessToken, clientToken);
+    VerveResponseTextClassificationList result = apiInstance.classify(text, id, clientToken);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling AugmentedIntelligenceApi#getInteraction");
+    System.err.println("Exception when calling AugmentedIntelligenceApi#classify");
     e.printStackTrace();
 }
 ```
@@ -51,9 +54,120 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **text** | **String**| Text to be classified |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **text** | **String**| Text you want classified |
+ **id** | **Long**| Classifier ID from the Admin Panel |
+ **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+
+### Return type
+
+[**VerveResponseTextClassificationList**](VerveResponseTextClassificationList.md)
+
+### Authorization
+
+[default](../README.md#default)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="getEntities"></a>
+# **getEntities**
+> VerveResponseEntitiesClassifiedList getEntities(id, text, clientToken)
+
+Extracts entities from text
+
+Classifies each word of the text as an entity based on your training in the NER Admin panel. More than one classifier may be trained. Use the correct ID from the Admin Panel to get the corresponding classification
+
+### Example
+```java
+// Import classes:
+//import com.iengage.ApiClient;
+//import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
+//import com.iengage.service.AugmentedIntelligenceApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
+
+AugmentedIntelligenceApi apiInstance = new AugmentedIntelligenceApi();
+Long id = 789L; // Long | NER ID present from the Admin Panel
+String text = "text_example"; // String | Text from which to extract entities
+String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+try {
+    VerveResponseEntitiesClassifiedList result = apiInstance.getEntities(id, text, clientToken);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AugmentedIntelligenceApi#getEntities");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Long**| NER ID present from the Admin Panel |
+ **text** | **String**| Text from which to extract entities |
+ **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+
+### Return type
+
+[**VerveResponseEntitiesClassifiedList**](VerveResponseEntitiesClassifiedList.md)
+
+### Authorization
+
+[default](../README.md#default)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="getInteractionType"></a>
+# **getInteractionType**
+> VerveResponseFlowFinder getInteractionType(text, clientToken)
+
+Returns the type of interaction
+
+Classifies text to question, complaint, appreciation, suggestion or comment. This is the default classification we assign to the type field of an Interaction
+
+### Example
+```java
+// Import classes:
+//import com.iengage.ApiClient;
+//import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
+//import com.iengage.service.AugmentedIntelligenceApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
+
+AugmentedIntelligenceApi apiInstance = new AugmentedIntelligenceApi();
+String text = "text_example"; // String | Text that is to be classified by type
+String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+try {
+    VerveResponseFlowFinder result = apiInstance.getInteractionType(text, clientToken);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AugmentedIntelligenceApi#getInteractionType");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **text** | **String**| Text that is to be classified by type |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
 
 ### Return type
@@ -69,9 +183,64 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="getKeywords"></a>
+# **getKeywords**
+> VerveResponseKeyword getKeywords(text, clientToken)
+
+Returns the keywords of the sentence
+
+Extracts the keywords of a sentence. This could be used for example as tags.
+
+### Example
+```java
+// Import classes:
+//import com.iengage.ApiClient;
+//import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
+//import com.iengage.service.AugmentedIntelligenceApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
+
+AugmentedIntelligenceApi apiInstance = new AugmentedIntelligenceApi();
+String text = "text_example"; // String | Content whose keywords are to be found out
+String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+try {
+    VerveResponseKeyword result = apiInstance.getKeywords(text, clientToken);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AugmentedIntelligenceApi#getKeywords");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **text** | **String**| Content whose keywords are to be found out |
+ **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+
+### Return type
+
+[**VerveResponseKeyword**](VerveResponseKeyword.md)
+
+### Authorization
+
+[default](../README.md#default)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="getPopularTag"></a>
 # **getPopularTag**
-> VerveResponseTagList getPopularTag(startTime, endTime, start, end, loggedInUserId, accessToken, clientToken, interactionType, sentimentType, additionalInformation)
+> VerveResponseTagList getPopularTag(startTime, endTime, start, end, requesterId, clientToken, interactionType, sentimentType, additionalInformation, association, categoryId, accessToken)
 
 Get list of popular tag of interactions
 
@@ -97,14 +266,16 @@ Long startTime = 789L; // Long | start time
 Long endTime = 789L; // Long | end time
 Integer start = 56; // Integer | start
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String interactionType = "interactionType_example"; // String | Interaction Type <br/>1)Question<br/>2)Complaint<br/>3)Idea<br/>4)Blog<br/>5)Discussion
 String sentimentType = "sentimentType_example"; // String | Sentiment Type <br/>1)Positive<br/>2)Negative<br/> 3)Neutral
 String additionalInformation = "additionalInformation_example"; // String | additional information
+String association = "association_example"; // String | association
+Long categoryId = 789L; // Long | categoryId
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseTagList result = apiInstance.getPopularTag(startTime, endTime, start, end, loggedInUserId, accessToken, clientToken, interactionType, sentimentType, additionalInformation);
+    VerveResponseTagList result = apiInstance.getPopularTag(startTime, endTime, start, end, requesterId, clientToken, interactionType, sentimentType, additionalInformation, association, categoryId, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AugmentedIntelligenceApi#getPopularTag");
@@ -120,12 +291,14 @@ Name | Type | Description  | Notes
  **endTime** | **Long**| end time |
  **start** | **Integer**| start |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **interactionType** | **String**| Interaction Type &lt;br/&gt;1)Question&lt;br/&gt;2)Complaint&lt;br/&gt;3)Idea&lt;br/&gt;4)Blog&lt;br/&gt;5)Discussion | [optional]
  **sentimentType** | **String**| Sentiment Type &lt;br/&gt;1)Positive&lt;br/&gt;2)Negative&lt;br/&gt; 3)Neutral | [optional]
  **additionalInformation** | **String**| additional information | [optional]
+ **association** | **String**| association | [optional]
+ **categoryId** | **Long**| categoryId | [optional]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -142,7 +315,7 @@ Name | Type | Description  | Notes
 
 <a name="getSentiment"></a>
 # **getSentiment**
-> VerveResponseSentimentAnalytics getSentiment(startTime, endTime, loggedInUserId, accessToken, clientToken, interactionType, additionalInformation)
+> VerveResponseSentimentAnalytics getSentiment(startTime, endTime, requesterId, clientToken, interactionType, additionalInformation, association, categoryId, accessToken)
 
 Get sentiment count of interactions
 
@@ -166,13 +339,15 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 AugmentedIntelligenceApi apiInstance = new AugmentedIntelligenceApi();
 Long startTime = 789L; // Long | start time
 Long endTime = 789L; // Long | end time
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String interactionType = "interactionType_example"; // String | Interaction Type <br/>1)Question<br/>2)Complaint<br/>3)Idea<br/>4)Blog<br/>5)Discussion
 String additionalInformation = "additionalInformation_example"; // String | additional information
+String association = "association_example"; // String | association
+Long categoryId = 789L; // Long | categoryId
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseSentimentAnalytics result = apiInstance.getSentiment(startTime, endTime, loggedInUserId, accessToken, clientToken, interactionType, additionalInformation);
+    VerveResponseSentimentAnalytics result = apiInstance.getSentiment(startTime, endTime, requesterId, clientToken, interactionType, additionalInformation, association, categoryId, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AugmentedIntelligenceApi#getSentiment");
@@ -186,11 +361,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startTime** | **Long**| start time |
  **endTime** | **Long**| end time |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **interactionType** | **String**| Interaction Type &lt;br/&gt;1)Question&lt;br/&gt;2)Complaint&lt;br/&gt;3)Idea&lt;br/&gt;4)Blog&lt;br/&gt;5)Discussion | [optional]
  **additionalInformation** | **String**| additional information | [optional]
+ **association** | **String**| association | [optional]
+ **categoryId** | **Long**| categoryId | [optional]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -207,7 +384,7 @@ Name | Type | Description  | Notes
 
 <a name="getTagEntitySentiments"></a>
 # **getTagEntitySentiments**
-> VerveResponseEntitySentimentList getTagEntitySentiments(tagName, startTime, endTime, start, end, loggedInUserId, accessToken, clientToken, sentimentType, additionalInformation)
+> VerveResponseEntitySentimentList getTagEntitySentiments(tagName, startTime, endTime, start, end, requesterId, clientToken, sentimentType, additionalInformation, association, interactionType, categoryId, accessToken)
 
 Get list of tag entity sentiment
 
@@ -234,13 +411,16 @@ Long startTime = 789L; // Long | start time
 Long endTime = 789L; // Long | end time
 Integer start = 56; // Integer | start
 Integer end = 56; // Integer | end
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String sentimentType = "sentimentType_example"; // String | Sentiment Type <br/>1)Positive<br/>2)Negative<br/>3)Neutral
 String additionalInformation = "additionalInformation_example"; // String | additional information
+String association = "association_example"; // String | association
+String interactionType = "interactionType_example"; // String | Interaction Type <br/>1)Question<br/>2)Complaint<br/>3)Idea<br/>4)Blog<br/>5)Discussion
+Long categoryId = 789L; // Long | categoryId
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseEntitySentimentList result = apiInstance.getTagEntitySentiments(tagName, startTime, endTime, start, end, loggedInUserId, accessToken, clientToken, sentimentType, additionalInformation);
+    VerveResponseEntitySentimentList result = apiInstance.getTagEntitySentiments(tagName, startTime, endTime, start, end, requesterId, clientToken, sentimentType, additionalInformation, association, interactionType, categoryId, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AugmentedIntelligenceApi#getTagEntitySentiments");
@@ -257,15 +437,73 @@ Name | Type | Description  | Notes
  **endTime** | **Long**| end time |
  **start** | **Integer**| start |
  **end** | **Integer**| end |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **sentimentType** | **String**| Sentiment Type &lt;br/&gt;1)Positive&lt;br/&gt;2)Negative&lt;br/&gt;3)Neutral | [optional]
  **additionalInformation** | **String**| additional information | [optional]
+ **association** | **String**| association | [optional]
+ **interactionType** | **String**| Interaction Type &lt;br/&gt;1)Question&lt;br/&gt;2)Complaint&lt;br/&gt;3)Idea&lt;br/&gt;4)Blog&lt;br/&gt;5)Discussion | [optional]
+ **categoryId** | **Long**| categoryId | [optional]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
 [**VerveResponseEntitySentimentList**](VerveResponseEntitySentimentList.md)
+
+### Authorization
+
+[default](../README.md#default)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="sentiment"></a>
+# **sentiment**
+> VerveResponseSentiment sentiment(text, clientToken)
+
+Analyzes the sentiment of the content
+
+The response will be a Sentiment Weightage. -1 is most negative and +1 is most positive. 0 will be neutral
+
+### Example
+```java
+// Import classes:
+//import com.iengage.ApiClient;
+//import com.iengage.ApiException;
+//import com.iengage.Configuration;
+//import com.iengage.auth.*;
+//import com.iengage.service.AugmentedIntelligenceApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: default
+OAuth default = (OAuth) defaultClient.getAuthentication("default");
+default.setAccessToken("YOUR ACCESS TOKEN");
+
+AugmentedIntelligenceApi apiInstance = new AugmentedIntelligenceApi();
+String text = "text_example"; // String | Sentence whose sentiment is to be found out
+String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+try {
+    VerveResponseSentiment result = apiInstance.sentiment(text, clientToken);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AugmentedIntelligenceApi#sentiment");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **text** | **String**| Sentence whose sentiment is to be found out |
+ **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+
+### Return type
+
+[**VerveResponseSentiment**](VerveResponseSentiment.md)
 
 ### Authorization
 

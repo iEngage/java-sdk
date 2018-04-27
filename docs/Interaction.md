@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **isClosed** | **Boolean** |  |  [optional]
 **createdDate** | [**DateTime**](DateTime.md) |  |  [optional]
 **lastUpdatedDate** | [**DateTime**](DateTime.md) |  |  [optional]
+**association** | **String** |  |  [optional]
 **videoId** | **String** |  |  [optional]
 **fileURL** | **String** |  |  [optional]
 **fileEntityName** | **String** |  |  [optional]
@@ -22,6 +23,9 @@ Name | Type | Description | Notes
 **sentimentWeightage** | **Double** |  |  [optional]
 **entity** | [**List&lt;NER&gt;**](NER.md) |  |  [optional]
 **attachmentList** | [**List&lt;Multimedia&gt;**](Multimedia.md) |  |  [optional]
+**categoryId** | **Long** |  |  [optional]
+**categoryName** | **String** |  |  [optional]
+**score** | **Double** |  |  [optional]
 
 
 

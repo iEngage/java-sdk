@@ -1,6 +1,6 @@
 # SocialApi
 
-All URIs are relative to *https://api.iengage.io:8243/api/1.0*
+All URIs are relative to *https://api.iengage.io:8243/api/2.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 <a name="addFriend"></a>
 # **addFriend**
-> Boolean addFriend(id1, id2, loggedInUserId, accessToken, clientToken)
+> Boolean addFriend(id1, id2, requesterId, clientToken, accessToken)
 
 Add Friend
 
@@ -44,11 +44,11 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 SocialApi apiInstance = new SocialApi();
 String id1 = "id1_example"; // String | Enter userId/mailId of the person who wants to add a friend
 String id2 = "id2_example"; // String | Enter userId /mailId you want to add in friend list
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    Boolean result = apiInstance.addFriend(id1, id2, loggedInUserId, accessToken, clientToken);
+    Boolean result = apiInstance.addFriend(id1, id2, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SocialApi#addFriend");
@@ -62,9 +62,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id1** | **String**| Enter userId/mailId of the person who wants to add a friend |
  **id2** | **String**| Enter userId /mailId you want to add in friend list |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 <a name="confirmFriendRequest"></a>
 # **confirmFriendRequest**
-> Boolean confirmFriendRequest(userId, status, loggedInUserId, accessToken, clientToken)
+> Boolean confirmFriendRequest(userId, status, requesterId, clientToken, accessToken)
 
 confirm/ignore friend request
 
@@ -105,11 +105,11 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 SocialApi apiInstance = new SocialApi();
 Long userId = 789L; // Long | userId of user who sent friend request
 Integer status = 56; // Integer | Set Friend Request status <br/> CONFIRM - 1  <br/> IGNORE - 2 
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    Boolean result = apiInstance.confirmFriendRequest(userId, status, loggedInUserId, accessToken, clientToken);
+    Boolean result = apiInstance.confirmFriendRequest(userId, status, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SocialApi#confirmFriendRequest");
@@ -123,9 +123,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **Long**| userId of user who sent friend request |
  **status** | **Integer**| Set Friend Request status &lt;br/&gt; CONFIRM - 1  &lt;br/&gt; IGNORE - 2  |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 <a name="follow"></a>
 # **follow**
-> Boolean follow(follower, followee, loggedInUserId, accessToken, clientToken)
+> Boolean follow(follower, followee, requesterId, clientToken, accessToken)
 
 Follow user
 
@@ -166,11 +166,11 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 SocialApi apiInstance = new SocialApi();
 String follower = "follower_example"; // String | Enter the userId/mailId of the follower
 String followee = "followee_example"; // String | Enter the userId/mailId of the user the follower wants to follow
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    Boolean result = apiInstance.follow(follower, followee, loggedInUserId, accessToken, clientToken);
+    Boolean result = apiInstance.follow(follower, followee, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SocialApi#follow");
@@ -184,9 +184,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **follower** | **String**| Enter the userId/mailId of the follower |
  **followee** | **String**| Enter the userId/mailId of the user the follower wants to follow |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 <a name="getUser"></a>
 # **getUser**
-> VerveResponseUser getUser(userId, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseUser getUser(userId, requesterId, clientToken, fields, accessToken)
 
 Get user by id 
 
@@ -226,12 +226,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 SocialApi apiInstance = new SocialApi();
 Long userId = 789L; // Long | User Id
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "userId,firstName,lastName,profileImage"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)userId<br/>2)firstName<br/>3)lastName<br/>4)profileImage<br/><b>A) Available values-</b><br/>1)userId<br/>2)firstName<br/>3)lastName<br/>4)emailId<br/>5)profileImage<br/>6)birthDate<br/>7)currentUserFollowing<br/>8)currentUserFriend<br/>9)equityScore
+String fields = "userId,firstName,lastName,profileImage"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)userId<br/>2)firstName<br/>3)lastName<br/>4)profileImage<br/><b>A) Available values-</b><br/>1)userId<br/>2)firstName<br/>3)lastName<br/>4)emailId<br/>5)profileImage<br/>6)birthDate<br/>
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseUser result = apiInstance.getUser(userId, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseUser result = apiInstance.getUser(userId, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SocialApi#getUser");
@@ -244,10 +244,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **Long**| User Id |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)userId&lt;br/&gt;2)firstName&lt;br/&gt;3)lastName&lt;br/&gt;4)profileImage&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)userId&lt;br/&gt;2)firstName&lt;br/&gt;3)lastName&lt;br/&gt;4)emailId&lt;br/&gt;5)profileImage&lt;br/&gt;6)birthDate&lt;br/&gt;7)currentUserFollowing&lt;br/&gt;8)currentUserFriend&lt;br/&gt;9)equityScore | [optional] [default to userId,firstName,lastName,profileImage]
+ **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)userId&lt;br/&gt;2)firstName&lt;br/&gt;3)lastName&lt;br/&gt;4)profileImage&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)userId&lt;br/&gt;2)firstName&lt;br/&gt;3)lastName&lt;br/&gt;4)emailId&lt;br/&gt;5)profileImage&lt;br/&gt;6)birthDate&lt;br/&gt; | [optional] [default to userId,firstName,lastName,profileImage]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -264,7 +264,7 @@ Name | Type | Description  | Notes
 
 <a name="getUserDetail"></a>
 # **getUserDetail**
-> VerveResponseUserDetail getUserDetail(userId, loggedInUserId, accessToken, clientToken)
+> VerveResponseUserDetail getUserDetail(userId, requesterId, clientToken, accessToken)
 
 Get user details 
 
@@ -287,11 +287,11 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 SocialApi apiInstance = new SocialApi();
 Long userId = 789L; // Long | Enter user Id whose details you need
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseUserDetail result = apiInstance.getUserDetail(userId, loggedInUserId, accessToken, clientToken);
+    VerveResponseUserDetail result = apiInstance.getUserDetail(userId, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SocialApi#getUserDetail");
@@ -304,9 +304,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **Long**| Enter user Id whose details you need |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -323,7 +323,7 @@ Name | Type | Description  | Notes
 
 <a name="getUserFollowers"></a>
 # **getUserFollowers**
-> VerveResponseUserList getUserFollowers(userId, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseUserList getUserFollowers(userId, requesterId, clientToken, fields, accessToken)
 
 Get list of followers
 
@@ -345,13 +345,13 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 SocialApi apiInstance = new SocialApi();
-Long userId = 789L; // Long | userId
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+Long userId = 789L; // Long | User Id whose followers wants to get.
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "userId,firstName,lastName,profileImage"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)userId<br/>2)firstName<br/>3)lastName<br/>4)profileImage<br/><b>A) Available values-</b><br/>1)userId<br/>2)firstName<br/>3)lastName<br/>4)emailId<br/>5)profileImage<br/>6)birthDate<br/>7)currentUserFollowing<br/>8)currentUserFriend<br/>9)equityScore
+String fields = "userId,firstName,lastName,profileImage"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)userId<br/>2)firstName<br/>3)lastName<br/>4)profileImage<br/><b>A) Available values-</b><br/>1)userId<br/>2)firstName<br/>3)lastName<br/>4)emailId<br/>5)profileImage<br/>6)birthDate<br/>
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseUserList result = apiInstance.getUserFollowers(userId, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseUserList result = apiInstance.getUserFollowers(userId, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SocialApi#getUserFollowers");
@@ -363,11 +363,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **Long**| userId |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **userId** | **Long**| User Id whose followers wants to get. |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)userId&lt;br/&gt;2)firstName&lt;br/&gt;3)lastName&lt;br/&gt;4)profileImage&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)userId&lt;br/&gt;2)firstName&lt;br/&gt;3)lastName&lt;br/&gt;4)emailId&lt;br/&gt;5)profileImage&lt;br/&gt;6)birthDate&lt;br/&gt;7)currentUserFollowing&lt;br/&gt;8)currentUserFriend&lt;br/&gt;9)equityScore | [optional] [default to userId,firstName,lastName,profileImage]
+ **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)userId&lt;br/&gt;2)firstName&lt;br/&gt;3)lastName&lt;br/&gt;4)profileImage&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)userId&lt;br/&gt;2)firstName&lt;br/&gt;3)lastName&lt;br/&gt;4)emailId&lt;br/&gt;5)profileImage&lt;br/&gt;6)birthDate&lt;br/&gt; | [optional] [default to userId,firstName,lastName,profileImage]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -384,7 +384,7 @@ Name | Type | Description  | Notes
 
 <a name="getUserFollowing"></a>
 # **getUserFollowing**
-> VerveResponseUserList getUserFollowing(userId, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseUserList getUserFollowing(userId, requesterId, clientToken, fields, accessToken)
 
 Get list of users that are being followed
 
@@ -406,13 +406,13 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 SocialApi apiInstance = new SocialApi();
-Long userId = 789L; // Long | userId
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+Long userId = 789L; // Long | User Id whose followed list want to get
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "userId,firstName,lastName,profileImage"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)userId<br/>2)firstName<br/>3)lastName<br/>4)profileImage<br/><b>A) Available values-</b><br/>1)userId<br/>2)firstName<br/>3)lastName<br/>4)emailId<br/>5)profileImage<br/>6)birthDate<br/>7)currentUserFollowing<br/>8)currentUserFriend<br/>9)equityScore
+String fields = "userId,firstName,lastName,profileImage"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)userId<br/>2)firstName<br/>3)lastName<br/>4)profileImage<br/><b>A) Available values-</b><br/>1)userId<br/>2)firstName<br/>3)lastName<br/>4)emailId<br/>5)profileImage<br/>6)birthDate<br/>
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseUserList result = apiInstance.getUserFollowing(userId, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseUserList result = apiInstance.getUserFollowing(userId, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SocialApi#getUserFollowing");
@@ -424,11 +424,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **Long**| userId |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **userId** | **Long**| User Id whose followed list want to get |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)userId&lt;br/&gt;2)firstName&lt;br/&gt;3)lastName&lt;br/&gt;4)profileImage&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)userId&lt;br/&gt;2)firstName&lt;br/&gt;3)lastName&lt;br/&gt;4)emailId&lt;br/&gt;5)profileImage&lt;br/&gt;6)birthDate&lt;br/&gt;7)currentUserFollowing&lt;br/&gt;8)currentUserFriend&lt;br/&gt;9)equityScore | [optional] [default to userId,firstName,lastName,profileImage]
+ **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)userId&lt;br/&gt;2)firstName&lt;br/&gt;3)lastName&lt;br/&gt;4)profileImage&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)userId&lt;br/&gt;2)firstName&lt;br/&gt;3)lastName&lt;br/&gt;4)emailId&lt;br/&gt;5)profileImage&lt;br/&gt;6)birthDate&lt;br/&gt; | [optional] [default to userId,firstName,lastName,profileImage]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -445,7 +445,7 @@ Name | Type | Description  | Notes
 
 <a name="getUserFriends"></a>
 # **getUserFriends**
-> VerveResponseUserList getUserFriends(userId, loggedInUserId, accessToken, clientToken, fields)
+> VerveResponseUserList getUserFriends(userId, requesterId, clientToken, fields, accessToken)
 
 Get list of friends
 
@@ -468,12 +468,12 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 SocialApi apiInstance = new SocialApi();
 Long userId = 789L; // Long | userId
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "userId,firstName,lastName,profileImage"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)userId<br/>2)firstName<br/>3)lastName<br/>4)profileImage<br/><b>A) Available values-</b><br/>1)userId<br/>2)firstName<br/>3)lastName<br/>4)emailId<br/>5)profileImage<br/>6)birthDate<br/>7)currentUserFollowing<br/>8)currentUserFriend<br/>9)equityScore
+String fields = "userId,firstName,lastName,profileImage"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)userId<br/>2)firstName<br/>3)lastName<br/>4)profileImage<br/><b>A) Available values-</b><br/>1)userId<br/>2)firstName<br/>3)lastName<br/>4)emailId<br/>5)profileImage<br/>6)birthDate<br/>
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseUserList result = apiInstance.getUserFriends(userId, loggedInUserId, accessToken, clientToken, fields);
+    VerveResponseUserList result = apiInstance.getUserFriends(userId, requesterId, clientToken, fields, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SocialApi#getUserFriends");
@@ -486,10 +486,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **Long**| userId |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)userId&lt;br/&gt;2)firstName&lt;br/&gt;3)lastName&lt;br/&gt;4)profileImage&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)userId&lt;br/&gt;2)firstName&lt;br/&gt;3)lastName&lt;br/&gt;4)emailId&lt;br/&gt;5)profileImage&lt;br/&gt;6)birthDate&lt;br/&gt;7)currentUserFollowing&lt;br/&gt;8)currentUserFriend&lt;br/&gt;9)equityScore | [optional] [default to userId,firstName,lastName,profileImage]
+ **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)userId&lt;br/&gt;2)firstName&lt;br/&gt;3)lastName&lt;br/&gt;4)profileImage&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)userId&lt;br/&gt;2)firstName&lt;br/&gt;3)lastName&lt;br/&gt;4)emailId&lt;br/&gt;5)profileImage&lt;br/&gt;6)birthDate&lt;br/&gt; | [optional] [default to userId,firstName,lastName,profileImage]
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -506,7 +506,7 @@ Name | Type | Description  | Notes
 
 <a name="removeFriend"></a>
 # **removeFriend**
-> Boolean removeFriend(id1, id2, loggedInUserId, accessToken, clientToken)
+> Boolean removeFriend(id1, id2, requesterId, clientToken, accessToken)
 
 Remove friend 
 
@@ -530,11 +530,11 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 SocialApi apiInstance = new SocialApi();
 String id1 = "id1_example"; // String | Enter userId/mailId of the person who wants to remove from friend
 String id2 = "id2_example"; // String | Enter userId /mailId you want to remove in friend list
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    Boolean result = apiInstance.removeFriend(id1, id2, loggedInUserId, accessToken, clientToken);
+    Boolean result = apiInstance.removeFriend(id1, id2, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SocialApi#removeFriend");
@@ -548,9 +548,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id1** | **String**| Enter userId/mailId of the person who wants to remove from friend |
  **id2** | **String**| Enter userId /mailId you want to remove in friend list |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -567,7 +567,7 @@ Name | Type | Description  | Notes
 
 <a name="requestFriend"></a>
 # **requestFriend**
-> Boolean requestFriend(userId, loggedInUserId, accessToken, clientToken)
+> Boolean requestFriend(userId, requesterId, clientToken, accessToken)
 
 Send friend request
 
@@ -590,11 +590,11 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 SocialApi apiInstance = new SocialApi();
 Long userId = 789L; // Long | Enter userId /mailId you want to send friend request
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    Boolean result = apiInstance.requestFriend(userId, loggedInUserId, accessToken, clientToken);
+    Boolean result = apiInstance.requestFriend(userId, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SocialApi#requestFriend");
@@ -607,9 +607,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **Long**| Enter userId /mailId you want to send friend request |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -626,7 +626,7 @@ Name | Type | Description  | Notes
 
 <a name="requestsForMe"></a>
 # **requestsForMe**
-> VerveResponseRequestForMeList requestsForMe(loggedInUserId, accessToken, clientToken)
+> VerveResponseRequestForMeList requestsForMe(requesterId, clientToken, accessToken)
 
 Get list of friend requests
 
@@ -648,11 +648,11 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 SocialApi apiInstance = new SocialApi();
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    VerveResponseRequestForMeList result = apiInstance.requestsForMe(loggedInUserId, accessToken, clientToken);
+    VerveResponseRequestForMeList result = apiInstance.requestsForMe(requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SocialApi#requestsForMe");
@@ -664,9 +664,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
@@ -683,7 +683,7 @@ Name | Type | Description  | Notes
 
 <a name="unfollow"></a>
 # **unfollow**
-> Boolean unfollow(unfollower, unfollowee, loggedInUserId, accessToken, clientToken)
+> Boolean unfollow(unfollower, unfollowee, requesterId, clientToken, accessToken)
 
 Unfollow user
 
@@ -707,11 +707,11 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 SocialApi apiInstance = new SocialApi();
 String unfollower = "unfollower_example"; // String | Enter the userId/mailId of the unfollower
 String unfollowee = "unfollowee_example"; // String | Enter the userId/mailId of the user the unfollower wants to unfollow
-String loggedInUserId = "loggedInUserId_example"; // String | User id of logged / authenticated user
-String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
+String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
-    Boolean result = apiInstance.unfollow(unfollower, unfollowee, loggedInUserId, accessToken, clientToken);
+    Boolean result = apiInstance.unfollow(unfollower, unfollowee, requesterId, clientToken, accessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SocialApi#unfollow");
@@ -725,9 +725,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **unfollower** | **String**| Enter the userId/mailId of the unfollower |
  **unfollowee** | **String**| Enter the userId/mailId of the user the unfollower wants to unfollow |
- **loggedInUserId** | **String**| User id of logged / authenticated user |
- **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate |
+ **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
+ **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
 
