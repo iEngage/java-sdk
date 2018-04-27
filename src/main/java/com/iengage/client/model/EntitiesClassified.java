@@ -19,10 +19,10 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * NER
+ * EntitiesClassified
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-27T14:33:47.218+05:30")
-public class NER {
+public class EntitiesClassified {
   @SerializedName("serial")
   private Integer serial = null;
 
@@ -32,7 +32,7 @@ public class NER {
   @SerializedName("entity")
   private String entity = null;
 
-  public NER serial(Integer serial) {
+  public EntitiesClassified serial(Integer serial) {
     this.serial = serial;
     return this;
   }
@@ -50,7 +50,7 @@ public class NER {
     this.serial = serial;
   }
 
-  public NER object(String object) {
+  public EntitiesClassified object(String object) {
     this.object = object;
     return this;
   }
@@ -68,7 +68,7 @@ public class NER {
     this.object = object;
   }
 
-  public NER entity(String entity) {
+  public EntitiesClassified entity(String entity) {
     this.entity = entity;
     return this;
   }
@@ -95,10 +95,10 @@ public class NER {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    NER NER = (NER) o;
-    return Objects.equals(this.serial, NER.serial) &&
-        Objects.equals(this.object, NER.object) &&
-        Objects.equals(this.entity, NER.entity);
+    EntitiesClassified entitiesClassified = (EntitiesClassified) o;
+    return Objects.equals(this.serial, entitiesClassified.serial) &&
+        Objects.equals(this.object, entitiesClassified.object) &&
+        Objects.equals(this.entity, entitiesClassified.entity);
   }
 
   @Override
@@ -110,7 +110,7 @@ public class NER {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class NER {\n");
+    sb.append("class EntitiesClassified {\n");
     
     sb.append("    serial: ").append(toIndentedString(serial)).append("\n");
     sb.append("    object: ").append(toIndentedString(object)).append("\n");

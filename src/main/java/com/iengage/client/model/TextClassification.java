@@ -19,29 +19,50 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Sentiment
+ * TextClassification
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-27T14:33:47.218+05:30")
-public class Sentiment {
-  @SerializedName("sentiment")
-  private Double sentiment = null;
+public class TextClassification {
+  @SerializedName("confidence")
+  private String confidence = null;
 
-  public Sentiment sentiment(Double sentiment) {
-    this.sentiment = sentiment;
+  @SerializedName("name")
+  private String name = null;
+
+  public TextClassification confidence(String confidence) {
+    this.confidence = confidence;
     return this;
   }
 
    /**
-   * Get sentiment
-   * @return sentiment
+   * Get confidence
+   * @return confidence
   **/
   @ApiModelProperty(example = "null", value = "")
-  public Double getSentiment() {
-    return sentiment;
+  public String getConfidence() {
+    return confidence;
   }
 
-  public void setSentiment(Double sentiment) {
-    this.sentiment = sentiment;
+  public void setConfidence(String confidence) {
+    this.confidence = confidence;
+  }
+
+  public TextClassification name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -53,22 +74,24 @@ public class Sentiment {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Sentiment sentiment = (Sentiment) o;
-    return Objects.equals(this.sentiment, sentiment.sentiment);
+    TextClassification textClassification = (TextClassification) o;
+    return Objects.equals(this.confidence, textClassification.confidence) &&
+        Objects.equals(this.name, textClassification.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sentiment);
+    return Objects.hash(confidence, name);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Sentiment {\n");
+    sb.append("class TextClassification {\n");
     
-    sb.append("    sentiment: ").append(toIndentedString(sentiment)).append("\n");
+    sb.append("    confidence: ").append(toIndentedString(confidence)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

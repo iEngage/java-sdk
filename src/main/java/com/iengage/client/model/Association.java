@@ -19,29 +19,50 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Sentiment
+ * Association
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-27T14:33:47.218+05:30")
-public class Sentiment {
-  @SerializedName("sentiment")
-  private Double sentiment = null;
+public class Association {
+  @SerializedName("associationId")
+  private Long associationId = null;
 
-  public Sentiment sentiment(Double sentiment) {
-    this.sentiment = sentiment;
+  @SerializedName("name")
+  private String name = null;
+
+  public Association associationId(Long associationId) {
+    this.associationId = associationId;
     return this;
   }
 
    /**
-   * Get sentiment
-   * @return sentiment
+   * Get associationId
+   * @return associationId
   **/
   @ApiModelProperty(example = "null", value = "")
-  public Double getSentiment() {
-    return sentiment;
+  public Long getAssociationId() {
+    return associationId;
   }
 
-  public void setSentiment(Double sentiment) {
-    this.sentiment = sentiment;
+  public void setAssociationId(Long associationId) {
+    this.associationId = associationId;
+  }
+
+  public Association name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -53,22 +74,24 @@ public class Sentiment {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Sentiment sentiment = (Sentiment) o;
-    return Objects.equals(this.sentiment, sentiment.sentiment);
+    Association association = (Association) o;
+    return Objects.equals(this.associationId, association.associationId) &&
+        Objects.equals(this.name, association.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sentiment);
+    return Objects.hash(associationId, name);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Sentiment {\n");
+    sb.append("class Association {\n");
     
-    sb.append("    sentiment: ").append(toIndentedString(sentiment)).append("\n");
+    sb.append("    associationId: ").append(toIndentedString(associationId)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

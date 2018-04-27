@@ -19,29 +19,29 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Sentiment
+ * Keyword
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-27T14:33:47.218+05:30")
-public class Sentiment {
-  @SerializedName("sentiment")
-  private Double sentiment = null;
+public class Keyword {
+  @SerializedName("key")
+  private String key = null;
 
-  public Sentiment sentiment(Double sentiment) {
-    this.sentiment = sentiment;
+  public Keyword key(String key) {
+    this.key = key;
     return this;
   }
 
    /**
-   * Get sentiment
-   * @return sentiment
+   * Get key
+   * @return key
   **/
   @ApiModelProperty(example = "null", value = "")
-  public Double getSentiment() {
-    return sentiment;
+  public String getKey() {
+    return key;
   }
 
-  public void setSentiment(Double sentiment) {
-    this.sentiment = sentiment;
+  public void setKey(String key) {
+    this.key = key;
   }
 
 
@@ -53,22 +53,22 @@ public class Sentiment {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Sentiment sentiment = (Sentiment) o;
-    return Objects.equals(this.sentiment, sentiment.sentiment);
+    Keyword keyword = (Keyword) o;
+    return Objects.equals(this.key, keyword.key);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sentiment);
+    return Objects.hash(key);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Sentiment {\n");
+    sb.append("class Keyword {\n");
     
-    sb.append("    sentiment: ").append(toIndentedString(sentiment)).append("\n");
+    sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("}");
     return sb.toString();
   }

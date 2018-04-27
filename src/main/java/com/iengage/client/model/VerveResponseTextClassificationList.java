@@ -15,17 +15,17 @@ package com.iengage.client.model;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
-import com.iengage.client.model.Milestone;
+import com.iengage.client.model.TextClassification;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * VerveResponseMilestone
+ * VerveResponseTextClassificationList
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-27T14:33:47.218+05:30")
-public class VerveResponseMilestone {
+public class VerveResponseTextClassificationList {
   @SerializedName("statusCode")
   private String statusCode = null;
 
@@ -33,15 +33,15 @@ public class VerveResponseMilestone {
   private String message = null;
 
   @SerializedName("list")
-  private List<Milestone> list = new ArrayList<Milestone>();
+  private List<TextClassification> list = new ArrayList<TextClassification>();
 
   @SerializedName("data")
-  private Milestone data = null;
+  private TextClassification data = null;
 
   @SerializedName("records")
   private Long records = null;
 
-  public VerveResponseMilestone statusCode(String statusCode) {
+  public VerveResponseTextClassificationList statusCode(String statusCode) {
     this.statusCode = statusCode;
     return this;
   }
@@ -59,7 +59,7 @@ public class VerveResponseMilestone {
     this.statusCode = statusCode;
   }
 
-  public VerveResponseMilestone message(String message) {
+  public VerveResponseTextClassificationList message(String message) {
     this.message = message;
     return this;
   }
@@ -77,12 +77,12 @@ public class VerveResponseMilestone {
     this.message = message;
   }
 
-  public VerveResponseMilestone list(List<Milestone> list) {
+  public VerveResponseTextClassificationList list(List<TextClassification> list) {
     this.list = list;
     return this;
   }
 
-  public VerveResponseMilestone addListItem(Milestone listItem) {
+  public VerveResponseTextClassificationList addListItem(TextClassification listItem) {
     this.list.add(listItem);
     return this;
   }
@@ -92,15 +92,15 @@ public class VerveResponseMilestone {
    * @return list
   **/
   @ApiModelProperty(example = "null", value = "")
-  public List<Milestone> getList() {
+  public List<TextClassification> getList() {
     return list;
   }
 
-  public void setList(List<Milestone> list) {
+  public void setList(List<TextClassification> list) {
     this.list = list;
   }
 
-  public VerveResponseMilestone data(Milestone data) {
+  public VerveResponseTextClassificationList data(TextClassification data) {
     this.data = data;
     return this;
   }
@@ -110,15 +110,15 @@ public class VerveResponseMilestone {
    * @return data
   **/
   @ApiModelProperty(example = "null", value = "")
-  public Milestone getData() {
+  public TextClassification getData() {
     return data;
   }
 
-  public void setData(Milestone data) {
+  public void setData(TextClassification data) {
     this.data = data;
   }
 
-  public VerveResponseMilestone records(Long records) {
+  public VerveResponseTextClassificationList records(Long records) {
     this.records = records;
     return this;
   }
@@ -145,12 +145,12 @@ public class VerveResponseMilestone {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    VerveResponseMilestone verveResponseMilestone = (VerveResponseMilestone) o;
-    return Objects.equals(this.statusCode, verveResponseMilestone.statusCode) &&
-        Objects.equals(this.message, verveResponseMilestone.message) &&
-        Objects.equals(this.list, verveResponseMilestone.list) &&
-        Objects.equals(this.data, verveResponseMilestone.data) &&
-        Objects.equals(this.records, verveResponseMilestone.records);
+    VerveResponseTextClassificationList verveResponseTextClassificationList = (VerveResponseTextClassificationList) o;
+    return Objects.equals(this.statusCode, verveResponseTextClassificationList.statusCode) &&
+        Objects.equals(this.message, verveResponseTextClassificationList.message) &&
+        Objects.equals(this.list, verveResponseTextClassificationList.list) &&
+        Objects.equals(this.data, verveResponseTextClassificationList.data) &&
+        Objects.equals(this.records, verveResponseTextClassificationList.records);
   }
 
   @Override
@@ -162,7 +162,7 @@ public class VerveResponseMilestone {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class VerveResponseMilestone {\n");
+    sb.append("class VerveResponseTextClassificationList {\n");
     
     sb.append("    statusCode: ").append(toIndentedString(statusCode)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");

@@ -15,33 +15,28 @@ package com.iengage.client.model;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
-import com.iengage.client.model.Milestone;
+import com.iengage.client.model.Sentiment;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * VerveResponseMilestone
+ * VerveResponseSentiment
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-27T14:33:47.218+05:30")
-public class VerveResponseMilestone {
+public class VerveResponseSentiment {
   @SerializedName("statusCode")
   private String statusCode = null;
 
   @SerializedName("message")
   private String message = null;
 
-  @SerializedName("list")
-  private List<Milestone> list = new ArrayList<Milestone>();
-
   @SerializedName("data")
-  private Milestone data = null;
+  private Sentiment data = null;
 
   @SerializedName("records")
   private Long records = null;
 
-  public VerveResponseMilestone statusCode(String statusCode) {
+  public VerveResponseSentiment statusCode(String statusCode) {
     this.statusCode = statusCode;
     return this;
   }
@@ -59,7 +54,7 @@ public class VerveResponseMilestone {
     this.statusCode = statusCode;
   }
 
-  public VerveResponseMilestone message(String message) {
+  public VerveResponseSentiment message(String message) {
     this.message = message;
     return this;
   }
@@ -77,30 +72,7 @@ public class VerveResponseMilestone {
     this.message = message;
   }
 
-  public VerveResponseMilestone list(List<Milestone> list) {
-    this.list = list;
-    return this;
-  }
-
-  public VerveResponseMilestone addListItem(Milestone listItem) {
-    this.list.add(listItem);
-    return this;
-  }
-
-   /**
-   * Get list
-   * @return list
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public List<Milestone> getList() {
-    return list;
-  }
-
-  public void setList(List<Milestone> list) {
-    this.list = list;
-  }
-
-  public VerveResponseMilestone data(Milestone data) {
+  public VerveResponseSentiment data(Sentiment data) {
     this.data = data;
     return this;
   }
@@ -110,15 +82,15 @@ public class VerveResponseMilestone {
    * @return data
   **/
   @ApiModelProperty(example = "null", value = "")
-  public Milestone getData() {
+  public Sentiment getData() {
     return data;
   }
 
-  public void setData(Milestone data) {
+  public void setData(Sentiment data) {
     this.data = data;
   }
 
-  public VerveResponseMilestone records(Long records) {
+  public VerveResponseSentiment records(Long records) {
     this.records = records;
     return this;
   }
@@ -145,28 +117,26 @@ public class VerveResponseMilestone {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    VerveResponseMilestone verveResponseMilestone = (VerveResponseMilestone) o;
-    return Objects.equals(this.statusCode, verveResponseMilestone.statusCode) &&
-        Objects.equals(this.message, verveResponseMilestone.message) &&
-        Objects.equals(this.list, verveResponseMilestone.list) &&
-        Objects.equals(this.data, verveResponseMilestone.data) &&
-        Objects.equals(this.records, verveResponseMilestone.records);
+    VerveResponseSentiment verveResponseSentiment = (VerveResponseSentiment) o;
+    return Objects.equals(this.statusCode, verveResponseSentiment.statusCode) &&
+        Objects.equals(this.message, verveResponseSentiment.message) &&
+        Objects.equals(this.data, verveResponseSentiment.data) &&
+        Objects.equals(this.records, verveResponseSentiment.records);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(statusCode, message, list, data, records);
+    return Objects.hash(statusCode, message, data, records);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class VerveResponseMilestone {\n");
+    sb.append("class VerveResponseSentiment {\n");
     
     sb.append("    statusCode: ").append(toIndentedString(statusCode)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    list: ").append(toIndentedString(list)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    records: ").append(toIndentedString(records)).append("\n");
     sb.append("}");
