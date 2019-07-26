@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 Comment on milestone
 
-This service allows a user to comment on a milestone. The following fields(key:value) are required to be present in the Comment JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API.&lt;/br&gt;&lt;b&gt;Required fields &lt;/br&gt;1. milestoneId (Path Parameter)&lt;/br&gt;2. commentText &lt;/br&gt;
+This service allows a user to comment on a milestone. The following fields(key:value) are required to be present in the Comment JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API.  **Required fields**  1. milestoneId (Path Parameter) 2. commentText  
 
 ### Example
 ```java
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 Comment on task
 
-This service allows a user to comment on a task. The following fields(key:value) are required to be present in the Comment JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API.&lt;/br&gt;&lt;b&gt;Required fields &lt;/br&gt;1. taskId (Path Parameter)&lt;/br&gt;2. commentText &lt;/br&gt;
+This service allows a user to comment on a task. The following fields(key:value) are required to be present in the Comment JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API.  **Required fields**  1. **taskId (Path Parameter)**  2. **commentText**  
 
 ### Example
 ```java
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 Create milestone
 
-This service allows a user to create a milestone. The following fields(key:value) are required to be present in the Milestone JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API.&lt;/br&gt;&lt;b&gt;Required fields &lt;/br&gt;1. milestoneTitle &lt;/br&gt;2. milestoneDescription &lt;/br&gt;3. dueDate &lt;/br&gt;4. neverDue &lt;/br&gt;
+This service allows a user to create a milestone. The following fields(key:value) are required to be present in the Milestone JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API.  **Required fields**  1. **milestoneTitle**  2. **milestoneDescription**  3. **dueDate**  4. **neverDue**  
 
 ### Example
 ```java
@@ -206,7 +206,7 @@ Name | Type | Description  | Notes
 
 Create task
 
-This service allows a user to create a task. The following fields(key:value) are required to be present in the Task JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API.&lt;/br&gt; &lt;b&gt;Required fields &lt;/br&gt;1. taskTitle &lt;/br&gt;2. taskDescription &lt;/br&gt;3. priority &lt;/br&gt;4. dueDate &lt;/br&gt;5. assigneeUserId &lt;/br&gt;6. neverDue &lt;/br&gt;7. user: { userId }&lt;/b&gt;
+This service allows a user to create a task. The following fields(key:value) are required to be present in the Task JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API.   **Required fields**  1. **taskTitle**  2. **taskDescription**  3. **priority**  4. **dueDate**  5. **assigneeUserId**  6. **neverDue**  7. **user: { userId }**
 
 ### Example
 ```java
@@ -288,7 +288,7 @@ ProjectManagementApi apiInstance = new ProjectManagementApi();
 Long milestoneId = 789L; // Long | milestoneId
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "milestoneId,milestoneTitle,milestoneDescription,createdDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)milestoneId<br/>2)milestoneTitle<br/>3)milestoneDescription<br/>4)createdDate<br/><b>A) Available values-</b><br/>1)milestoneId<br/>2)milestoneTitle<br/>3)milestoneDescription<br/>4)createdDate<br/>5)status<br/>6)priority<br/>7)dueDate
+String fields = "milestoneId,milestoneTitle,milestoneDescription,createdDate"; // String | Filter fields in result list      /_*   **A) Default values -**        1)milestoneId       2)milestoneTitle       3)milestoneDescription       4)createdDate        **A) Available values-**        1)milestoneId       2)milestoneTitle       3)milestoneDescription       4)createdDate       5)status       6)priority       7)dueDate   *_/
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
     VerveResponseMilestone result = apiInstance.deleteMilestone(milestoneId, requesterId, clientToken, fields, accessToken);
@@ -306,7 +306,7 @@ Name | Type | Description  | Notes
  **milestoneId** | **Long**| milestoneId |
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)milestoneId&lt;br/&gt;2)milestoneTitle&lt;br/&gt;3)milestoneDescription&lt;br/&gt;4)createdDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)milestoneId&lt;br/&gt;2)milestoneTitle&lt;br/&gt;3)milestoneDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)status&lt;br/&gt;6)priority&lt;br/&gt;7)dueDate | [optional] [default to milestoneId,milestoneTitle,milestoneDescription,createdDate]
+ **fields** | **String**| Filter fields in result list      /_*   **A) Default values -**        1)milestoneId       2)milestoneTitle       3)milestoneDescription       4)createdDate        **A) Available values-**        1)milestoneId       2)milestoneTitle       3)milestoneDescription       4)createdDate       5)status       6)priority       7)dueDate   *_/ | [optional] [default to milestoneId,milestoneTitle,milestoneDescription,createdDate]
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
@@ -349,7 +349,7 @@ ProjectManagementApi apiInstance = new ProjectManagementApi();
 Long taskId = 789L; // Long | taskId
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "taskId,taskTitle,taskDescription,dueDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)taskId<br/>2)taskTitle<br/>3)taskDescription<br/>4)dueDate<br/><b>A) Available values-</b><br/>1)taskId<br/>2)taskTitle<br/>3)taskDescription<br/>4)status<br/>5)priority<br/>6)dueDate<br/>7)milestoneName<br/>8)groupType<br/>9)groupName
+String fields = "taskId,taskTitle,taskDescription,dueDate"; // String | Filter fields in result list        /_*   **A) Default values -**        1)taskId       2)taskTitle       3)taskDescription       4)dueDate        **A) Available values-**        1)taskId       2)taskTitle       3)taskDescription       4)status       5)priority       6)dueDate       7)milestoneName       8)groupType       9)groupName   *_/
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
     VerveResponseTask result = apiInstance.deleteTask(taskId, requesterId, clientToken, fields, accessToken);
@@ -367,7 +367,7 @@ Name | Type | Description  | Notes
  **taskId** | **Long**| taskId |
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)taskId&lt;br/&gt;2)taskTitle&lt;br/&gt;3)taskDescription&lt;br/&gt;4)dueDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)taskId&lt;br/&gt;2)taskTitle&lt;br/&gt;3)taskDescription&lt;br/&gt;4)status&lt;br/&gt;5)priority&lt;br/&gt;6)dueDate&lt;br/&gt;7)milestoneName&lt;br/&gt;8)groupType&lt;br/&gt;9)groupName | [optional] [default to taskId,taskTitle,taskDescription,dueDate]
+ **fields** | **String**| Filter fields in result list        /_*   **A) Default values -**        1)taskId       2)taskTitle       3)taskDescription       4)dueDate        **A) Available values-**        1)taskId       2)taskTitle       3)taskDescription       4)status       5)priority       6)dueDate       7)milestoneName       8)groupType       9)groupName   *_/ | [optional] [default to taskId,taskTitle,taskDescription,dueDate]
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
@@ -410,7 +410,7 @@ ProjectManagementApi apiInstance = new ProjectManagementApi();
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 Long organizationId = 789L; // Long | organizationId
-String fields = "milestoneId,milestoneTitle,milestoneDescription,createdDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)milestoneId<br/>2)milestoneTitle<br/>3)milestoneDescription<br/>4)createdDate<br/><b>A) Available values-</b><br/>1)milestoneId<br/>2)milestoneTitle<br/>3)milestoneDescription<br/>4)createdDate<br/>5)status<br/>6)priority<br/>7)dueDate
+String fields = "milestoneId,milestoneTitle,milestoneDescription,createdDate"; // String | Filter fields in result list      /_*   **A) Default values -**        1)milestoneId       2)milestoneTitle       3)milestoneDescription       4)createdDate        **A) Available values-**        1)milestoneId       2)milestoneTitle       3)milestoneDescription       4)createdDate       5)status       6)priority       7)dueDate   *_/
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
     VerveResponseMilestoneList result = apiInstance.getMilestones(requesterId, clientToken, organizationId, fields, accessToken);
@@ -428,7 +428,7 @@ Name | Type | Description  | Notes
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **organizationId** | **Long**| organizationId | [optional]
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)milestoneId&lt;br/&gt;2)milestoneTitle&lt;br/&gt;3)milestoneDescription&lt;br/&gt;4)createdDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)milestoneId&lt;br/&gt;2)milestoneTitle&lt;br/&gt;3)milestoneDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)status&lt;br/&gt;6)priority&lt;br/&gt;7)dueDate | [optional] [default to milestoneId,milestoneTitle,milestoneDescription,createdDate]
+ **fields** | **String**| Filter fields in result list      /_*   **A) Default values -**        1)milestoneId       2)milestoneTitle       3)milestoneDescription       4)createdDate        **A) Available values-**        1)milestoneId       2)milestoneTitle       3)milestoneDescription       4)createdDate       5)status       6)priority       7)dueDate   *_/ | [optional] [default to milestoneId,milestoneTitle,milestoneDescription,createdDate]
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
@@ -587,10 +587,10 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 ProjectManagementApi apiInstance = new ProjectManagementApi();
 Long userId = 789L; // Long | User Id whose assinged task want to get
-Integer status = 56; // Integer | Task status <br/> 0 - ALL <br/> 1 - OPEN <br/> 2 - PERCENT_TWENTY <br/> 3 - PERCENT_FORTY <br/> 4 - PERCENT_SIXTY <br/> 5 - PERCENT_EIGHTY <br/> 6 - RESOLVED <br/> 7 - REOPENED
+Integer status = 56; // Integer |   /_*   Task status   0 - ALL   1 - OPEN   2 - PERCENT_TWENTY   3 - PERCENT_FORTY   4 - PERCENT_SIXTY   5 - PERCENT_EIGHTY   6 - RESOLVED   7 - REOPENED   *_/
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "taskId,taskTitle,taskDescription,dueDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)taskId<br/>2)taskTitle<br/>3)taskDescription<br/>4)dueDate<br/><b>A) Available values-</b><br/>1)taskId<br/>2)taskTitle<br/>3)taskDescription<br/>4)status<br/>5)priority<br/>6)dueDate<br/>7)milestoneName<br/>8)groupType<br/>9)groupName
+String fields = "taskId,taskTitle,taskDescription,dueDate"; // String | Filter fields in result list        /_*   **A) Default values -**        1)taskId       2)taskTitle       3)taskDescription       4)dueDate        **A) Available values-**        1)taskId       2)taskTitle       3)taskDescription       4)status       5)priority       6)dueDate       7)milestoneName       8)groupType       9)groupName   *_/
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
     VerveResponseTaskList result = apiInstance.getUserTasks(userId, status, requesterId, clientToken, fields, accessToken);
@@ -606,10 +606,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **Long**| User Id whose assinged task want to get |
- **status** | **Integer**| Task status &lt;br/&gt; 0 - ALL &lt;br/&gt; 1 - OPEN &lt;br/&gt; 2 - PERCENT_TWENTY &lt;br/&gt; 3 - PERCENT_FORTY &lt;br/&gt; 4 - PERCENT_SIXTY &lt;br/&gt; 5 - PERCENT_EIGHTY &lt;br/&gt; 6 - RESOLVED &lt;br/&gt; 7 - REOPENED |
+ **status** | **Integer**|   /_*   Task status   0 - ALL   1 - OPEN   2 - PERCENT_TWENTY   3 - PERCENT_FORTY   4 - PERCENT_SIXTY   5 - PERCENT_EIGHTY   6 - RESOLVED   7 - REOPENED   *_/ |
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)taskId&lt;br/&gt;2)taskTitle&lt;br/&gt;3)taskDescription&lt;br/&gt;4)dueDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)taskId&lt;br/&gt;2)taskTitle&lt;br/&gt;3)taskDescription&lt;br/&gt;4)status&lt;br/&gt;5)priority&lt;br/&gt;6)dueDate&lt;br/&gt;7)milestoneName&lt;br/&gt;8)groupType&lt;br/&gt;9)groupName | [optional] [default to taskId,taskTitle,taskDescription,dueDate]
+ **fields** | **String**| Filter fields in result list        /_*   **A) Default values -**        1)taskId       2)taskTitle       3)taskDescription       4)dueDate        **A) Available values-**        1)taskId       2)taskTitle       3)taskDescription       4)status       5)priority       6)dueDate       7)milestoneName       8)groupType       9)groupName   *_/ | [optional] [default to taskId,taskTitle,taskDescription,dueDate]
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
@@ -655,7 +655,7 @@ String description = "description_example"; // String | description
 String dueDate = "dueDate_example"; // String | Due date (Format: MM-dd-yyyy HH:mm:ss a)
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "milestoneId,milestoneTitle,milestoneDescription,createdDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)milestoneId<br/>2)milestoneTitle<br/>3)milestoneDescription<br/>4)createdDate<br/><b>A) Available values-</b><br/>1)milestoneId<br/>2)milestoneTitle<br/>3)milestoneDescription<br/>4)createdDate<br/>5)status<br/>6)priority<br/>7)dueDate
+String fields = "milestoneId,milestoneTitle,milestoneDescription,createdDate"; // String | Filter fields in result list      /_*   **A) Default values -**        1)milestoneId       2)milestoneTitle       3)milestoneDescription       4)createdDate        **A) Available values-**        1)milestoneId       2)milestoneTitle       3)milestoneDescription       4)createdDate       5)status       6)priority       7)dueDate   *_/
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
     VerveResponseMilestone result = apiInstance.updateMilestone(milestoneId, title, description, dueDate, requesterId, clientToken, fields, accessToken);
@@ -676,7 +676,7 @@ Name | Type | Description  | Notes
  **dueDate** | **String**| Due date (Format: MM-dd-yyyy HH:mm:ss a) |
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)milestoneId&lt;br/&gt;2)milestoneTitle&lt;br/&gt;3)milestoneDescription&lt;br/&gt;4)createdDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)milestoneId&lt;br/&gt;2)milestoneTitle&lt;br/&gt;3)milestoneDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)status&lt;br/&gt;6)priority&lt;br/&gt;7)dueDate | [optional] [default to milestoneId,milestoneTitle,milestoneDescription,createdDate]
+ **fields** | **String**| Filter fields in result list      /_*   **A) Default values -**        1)milestoneId       2)milestoneTitle       3)milestoneDescription       4)createdDate        **A) Available values-**        1)milestoneId       2)milestoneTitle       3)milestoneDescription       4)createdDate       5)status       6)priority       7)dueDate   *_/ | [optional] [default to milestoneId,milestoneTitle,milestoneDescription,createdDate]
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
@@ -720,11 +720,11 @@ Long taskId = 789L; // Long | taskId
 String title = "title_example"; // String | title
 String description = "description_example"; // String | description
 String dueDate = "dueDate_example"; // String | Due date
-Integer status = 56; // Integer | Task status <br/> 1 - OPEN <br/> 2 - PERCENT_TWENTY <br/> 3 - PERCENT_FORTY <br/> 4 - PERCENT_SIXTY <br/> 5 - PERCENT_EIGHTY <br/> 6 - RESOLVED <br/> 7 - REOPENED
+Integer status = 56; // Integer |   /_*   Task status   1 - OPEN   2 - PERCENT_TWENTY   3 - PERCENT_FORTY   4 - PERCENT_SIXTY   5 - PERCENT_EIGHTY   6 - RESOLVED   7 - REOPENED   *_/
 Long reAssigneeUserId = 789L; // Long | re-assignee User Id
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "taskId,taskTitle,taskDescription,dueDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)taskId<br/>2)taskTitle<br/>3)taskDescription<br/>4)dueDate<br/><b>A) Available values-</b><br/>1)taskId<br/>2)taskTitle<br/>3)taskDescription<br/>4)status<br/>5)priority<br/>6)dueDate<br/>7)milestoneName<br/>8)groupType<br/>9)groupName
+String fields = "taskId,taskTitle,taskDescription,dueDate"; // String | Filter fields in result list        /_*   **A) Default values -**        1)taskId       2)taskTitle       3)taskDescription       4)dueDate        **A) Available values-**        1)taskId       2)taskTitle       3)taskDescription       4)status       5)priority       6)dueDate       7)milestoneName       8)groupType       9)groupName   *_/
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
     VerveResponseTask result = apiInstance.updateTask(taskId, title, description, dueDate, status, reAssigneeUserId, requesterId, clientToken, fields, accessToken);
@@ -743,11 +743,11 @@ Name | Type | Description  | Notes
  **title** | **String**| title |
  **description** | **String**| description |
  **dueDate** | **String**| Due date |
- **status** | **Integer**| Task status &lt;br/&gt; 1 - OPEN &lt;br/&gt; 2 - PERCENT_TWENTY &lt;br/&gt; 3 - PERCENT_FORTY &lt;br/&gt; 4 - PERCENT_SIXTY &lt;br/&gt; 5 - PERCENT_EIGHTY &lt;br/&gt; 6 - RESOLVED &lt;br/&gt; 7 - REOPENED |
+ **status** | **Integer**|   /_*   Task status   1 - OPEN   2 - PERCENT_TWENTY   3 - PERCENT_FORTY   4 - PERCENT_SIXTY   5 - PERCENT_EIGHTY   6 - RESOLVED   7 - REOPENED   *_/ |
  **reAssigneeUserId** | **Long**| re-assignee User Id |
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)taskId&lt;br/&gt;2)taskTitle&lt;br/&gt;3)taskDescription&lt;br/&gt;4)dueDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)taskId&lt;br/&gt;2)taskTitle&lt;br/&gt;3)taskDescription&lt;br/&gt;4)status&lt;br/&gt;5)priority&lt;br/&gt;6)dueDate&lt;br/&gt;7)milestoneName&lt;br/&gt;8)groupType&lt;br/&gt;9)groupName | [optional] [default to taskId,taskTitle,taskDescription,dueDate]
+ **fields** | **String**| Filter fields in result list        /_*   **A) Default values -**        1)taskId       2)taskTitle       3)taskDescription       4)dueDate        **A) Available values-**        1)taskId       2)taskTitle       3)taskDescription       4)status       5)priority       6)dueDate       7)milestoneName       8)groupType       9)groupName   *_/ | [optional] [default to taskId,taskTitle,taskDescription,dueDate]
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
@@ -788,10 +788,10 @@ default.setAccessToken("YOUR ACCESS TOKEN");
 
 ProjectManagementApi apiInstance = new ProjectManagementApi();
 Long taskId = 789L; // Long | taskId
-Integer status = 56; // Integer | Task status <br/> 1 - OPEN <br/> 2 - PERCENT_TWENTY <br/> 3 - PERCENT_FORTY <br/> 4 - PERCENT_SIXTY <br/> 5 - PERCENT_EIGHTY <br/> 6 - RESOLVED <br/> 7 - REOPENED
+Integer status = 56; // Integer |   /_*  Task status   1 - OPEN   2 - PERCENT_TWENTY   3 - PERCENT_FORTY   4 - PERCENT_SIXTY   5 - PERCENT_EIGHTY   6 - RESOLVED   7 - REOPENED   *_/
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "taskId,taskTitle,taskDescription,dueDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)taskId<br/>2)taskTitle<br/>3)taskDescription<br/>4)dueDate<br/><b>A) Available values-</b><br/>1)taskId<br/>2)taskTitle<br/>3)taskDescription<br/>4)status<br/>5)priority<br/>6)dueDate<br/>7)milestoneName<br/>8)groupType<br/>9)groupName
+String fields = "taskId,taskTitle,taskDescription,dueDate"; // String | Filter fields in result list        /_*   **A) Default values -**        1)taskId       2)taskTitle       3)taskDescription       4)dueDate        **A) Available values-**        1)taskId       2)taskTitle       3)taskDescription       4)status       5)priority       6)dueDate       7)milestoneName       8)groupType       9)groupName   *_/
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
     VerveResponseTask result = apiInstance.updateTaskStatus(taskId, status, requesterId, clientToken, fields, accessToken);
@@ -807,10 +807,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **taskId** | **Long**| taskId |
- **status** | **Integer**| Task status &lt;br/&gt; 1 - OPEN &lt;br/&gt; 2 - PERCENT_TWENTY &lt;br/&gt; 3 - PERCENT_FORTY &lt;br/&gt; 4 - PERCENT_SIXTY &lt;br/&gt; 5 - PERCENT_EIGHTY &lt;br/&gt; 6 - RESOLVED &lt;br/&gt; 7 - REOPENED |
+ **status** | **Integer**|   /_*  Task status   1 - OPEN   2 - PERCENT_TWENTY   3 - PERCENT_FORTY   4 - PERCENT_SIXTY   5 - PERCENT_EIGHTY   6 - RESOLVED   7 - REOPENED   *_/ |
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)taskId&lt;br/&gt;2)taskTitle&lt;br/&gt;3)taskDescription&lt;br/&gt;4)dueDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)taskId&lt;br/&gt;2)taskTitle&lt;br/&gt;3)taskDescription&lt;br/&gt;4)status&lt;br/&gt;5)priority&lt;br/&gt;6)dueDate&lt;br/&gt;7)milestoneName&lt;br/&gt;8)groupType&lt;br/&gt;9)groupName | [optional] [default to taskId,taskTitle,taskDescription,dueDate]
+ **fields** | **String**| Filter fields in result list        /_*   **A) Default values -**        1)taskId       2)taskTitle       3)taskDescription       4)dueDate        **A) Available values-**        1)taskId       2)taskTitle       3)taskDescription       4)status       5)priority       6)dueDate       7)milestoneName       8)groupType       9)groupName   *_/ | [optional] [default to taskId,taskTitle,taskDescription,dueDate]
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type

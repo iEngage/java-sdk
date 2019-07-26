@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>io.iengage</groupId>
-  <artifactId>iengage-java-client</artifactId>
+  <groupId>io.swagger</groupId>
+  <artifactId>swagger-java-client</artifactId>
   <packaging>jar</packaging>
-  <name>iengage-java-client</name>
-  <version>2.0.0</version>
+  <name>swagger-java-client</name>
+  <version>1.0.0</version>
   <scm>
     <connection>scm:git:git@github.com:swagger-api/swagger-mustache.git</connection>
     <developerConnection>scm:git:git@github.com:swagger-api/swagger-codegen.git</developerConnection>
@@ -15,14 +15,6 @@
     <maven>2.2.0</maven>
   </prerequisites>
 
-  <licenses>
-    <license>
-      <name>Unlicense</name>
-      <url>http://unlicense.org</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
-  
   <build>
     <plugins>
       <plugin>
@@ -104,11 +96,6 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.10.4</version>
-      </plugin>
     </plugins>
   </build>
   <dependencies>
@@ -137,6 +124,7 @@
       <artifactId>joda-time</artifactId>
       <version>${jodatime-version}</version>
     </dependency>
+
     <!-- test dependencies -->
     <dependency>
       <groupId>junit</groupId>

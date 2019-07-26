@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 Create custom notification
 
-This service allows a user to create a notification. The following fields(key:value) are required to be present in the Notification JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API.&lt;/br&gt;&lt;b&gt;Required fields &lt;/br&gt;1. title &lt;/br&gt;2. body &lt;/br&gt;3. extraData &lt;/br&gt;4. roleName OR toUser: { emailId }
+This service allows a user to create a notification. The following fields(key:value) are required to be present in the Notification JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API. **Required fields**  1. title  2. body  3. extraData  4. roleName OR toUser: { emailId }
 
 ### Example
 ```java
@@ -94,12 +94,12 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 NotificationApi apiInstance = new NotificationApi();
-String type = "ALL"; // String | Type of count<br/> 1) UNREAD <br/> 2) READ <br/> 3)ALL
+String type = "ALL"; // String |   /_*   Type of count  1) UNREAD   2) READ   3)ALL   *_/
 Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "notificationId,message,isRead,date"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)notificationId<br/>2)message<br/>3)isRead<br/>4)date<br/><b>A) Available values-</b><br/>1)notificationId<br/>2)message<br/>3)isRead<br/>4)date<br/>5)type<br/>6)byUser<br/>7)entity<br/>8)parentEntity
+String fields = "notificationId,message,isRead,date"; // String | Filter fields in result list        /_*   **A) Default values -**        1)notificationId       2)message       3)isRead       4)date        **A) Available values-**        1)notificationId       2)message       3)isRead       4)date       5)type       6)byUser       7)entity       8)parentEntity /n *_/
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
     VerveResponseNotificationList result = apiInstance.getNotifications(type, start, end, requesterId, clientToken, fields, accessToken);
@@ -114,12 +114,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **type** | **String**| Type of count&lt;br/&gt; 1) UNREAD &lt;br/&gt; 2) READ &lt;br/&gt; 3)ALL | [default to ALL]
+ **type** | **String**|   /_*   Type of count  1) UNREAD   2) READ   3)ALL   *_/ | [default to ALL]
  **start** | **Integer**| start, initial value start from 0 |
  **end** | **Integer**| end |
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)notificationId&lt;br/&gt;2)message&lt;br/&gt;3)isRead&lt;br/&gt;4)date&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)notificationId&lt;br/&gt;2)message&lt;br/&gt;3)isRead&lt;br/&gt;4)date&lt;br/&gt;5)type&lt;br/&gt;6)byUser&lt;br/&gt;7)entity&lt;br/&gt;8)parentEntity | [optional] [default to notificationId,message,isRead,date]
+ **fields** | **String**| Filter fields in result list        /_*   **A) Default values -**        1)notificationId       2)message       3)isRead       4)date        **A) Available values-**        1)notificationId       2)message       3)isRead       4)date       5)type       6)byUser       7)entity       8)parentEntity /n *_/ | [optional] [default to notificationId,message,isRead,date]
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
@@ -275,7 +275,7 @@ OAuth default = (OAuth) defaultClient.getAuthentication("default");
 default.setAccessToken("YOUR ACCESS TOKEN");
 
 NotificationApi apiInstance = new NotificationApi();
-String type = "ALL"; // String | Type of count<br/> 1) UNREAD <br/> 2) READ <br/> 3)ALL
+String type = "ALL"; // String |   /_*  Type of count  1) UNREAD   2) READ   3)ALL   *_/
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
@@ -292,7 +292,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **type** | **String**| Type of count&lt;br/&gt; 1) UNREAD &lt;br/&gt; 2) READ &lt;br/&gt; 3)ALL | [default to ALL]
+ **type** | **String**|   /_*  Type of count  1) UNREAD   2) READ   3)ALL   *_/ | [default to ALL]
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]

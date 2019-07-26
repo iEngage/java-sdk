@@ -60,7 +60,7 @@ Please follow the [installation](#installation) instruction and execute the foll
 
 import com.iengage.*;
 import com.iengage.auth.*;
-import com.iengage.client.model.*;
+import com.iengage.model.*;
 import com.iengage.service.AugmentedIntelligenceApi;
 
 import java.io.File;
@@ -172,6 +172,7 @@ Class | Method | HTTP request | Description
 *InteractionApi* | [**addInteraction**](docs/InteractionApi.md#addInteraction) | **POST** /interactions | Share interaction without attachment
 *InteractionApi* | [**addInteraction_0**](docs/InteractionApi.md#addInteraction_0) | **POST** /interactions/attachment | Share interaction with attachment
 *InteractionApi* | [**addResponse**](docs/InteractionApi.md#addResponse) | **POST** /interactions/{interactionId}/responses | Response the specified interaction
+*InteractionApi* | [**addResponse_0**](docs/InteractionApi.md#addResponse_0) | **POST** /interactions/{interactionId}/responses/attachment | Response the specified interaction
 *InteractionApi* | [**changeInteractionCategory**](docs/InteractionApi.md#changeInteractionCategory) | **PUT** /interactions/{interactionId}/{categoryId} | Change interaction category
 *InteractionApi* | [**changeInteractionType**](docs/InteractionApi.md#changeInteractionType) | **PUT** /interactions/{interactionId}/type | Change interaction type
 *InteractionApi* | [**createInteractionCategory**](docs/InteractionApi.md#createInteractionCategory) | **POST** /interactions/categories | Create interaction category
@@ -247,8 +248,14 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [Association](docs/Association.md)
+ - [Attachment](docs/Attachment.md)
  - [Blog](docs/Blog.md)
+ - [CommandInfo](docs/CommandInfo.md)
  - [Comment](docs/Comment.md)
+ - [ContentDisposition](docs/ContentDisposition.md)
+ - [DataFlavor](docs/DataFlavor.md)
+ - [DataHandler](docs/DataHandler.md)
+ - [DataSource](docs/DataSource.md)
  - [Discussion](docs/Discussion.md)
  - [EntitiesClassified](docs/EntitiesClassified.md)
  - [Entity](docs/Entity.md)
@@ -257,15 +264,18 @@ Class | Method | HTTP request | Description
  - [Group](docs/Group.md)
  - [Idea](docs/Idea.md)
  - [IdeaUserRating](docs/IdeaUserRating.md)
+ - [InputStream](docs/InputStream.md)
  - [Interaction](docs/Interaction.md)
  - [InteractionCategory](docs/InteractionCategory.md)
  - [InteractionInputModel](docs/InteractionInputModel.md)
  - [InteractionResponse](docs/InteractionResponse.md)
  - [Keyword](docs/Keyword.md)
+ - [MediaType](docs/MediaType.md)
  - [Milestone](docs/Milestone.md)
  - [Multimedia](docs/Multimedia.md)
  - [NER](docs/NER.md)
  - [Notification](docs/Notification.md)
+ - [OutputStream](docs/OutputStream.md)
  - [QuestionCategory](docs/QuestionCategory.md)
  - [RequestForMe](docs/RequestForMe.md)
  - [Sentiment](docs/Sentiment.md)
@@ -333,7 +343,7 @@ Authentication schemes defined for the API:
 
 ## Recommendation
 
-It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issues.
+It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issue.
 
 ## Author
 

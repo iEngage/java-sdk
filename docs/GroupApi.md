@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 Create group
 
-This service allows a user to create a group. The following fields(key:value) are required to be present in the Group JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API.&lt;/br&gt;&lt;b&gt;Required fields &lt;/br&gt;1. association &lt;/br&gt;2. groupName &lt;/br&gt;3. description &lt;/br&gt;4. managerId [1,2,..] &lt;/br&gt;5. accessType &lt;/br&gt;
+This service allows a user to create a group. The following fields(key:value) are required to be present in the Group JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API. **Required fields**      1. association      2. groupName      3. description      4. managerId [1,2,..]      5. accessType
 
 ### Example
 ```java
@@ -103,7 +103,7 @@ GroupApi apiInstance = new GroupApi();
 Long groupId = 789L; // Long | groupId
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "groupId,groupName,description,startDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)groupId<br/>2)groupName<br/>3)description<br/>4)startDate<br/><b>A) Available values-</b><br/>1)groupId<br/>2)groupName<br/>3)description<br/>4)startDate<br/>5)ideasCount<br/>6)followersCount<br/>7)currentUserFollowing<br/>8)dueDate<br/>9)participantsCount<br/>10)friendsParticipantsCount<br/>11)friendsIdeasCount
+String fields = "groupId,groupName,description,startDate"; // String | Filter fields in result list        /_*   **A) Default values -**        1)groupId       2)groupName       3)description       4)startDate        **A) Available values-**        1)groupId       2)groupName       3)description       4)startDate       5)ideasCount       6)followersCount       7)currentUserFollowing       8)dueDate       9)participantsCount       10)friendsParticipantsCount       11)friendsIdeasCount   *_/
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
     VerveResponseGroup result = apiInstance.deleteGroup(groupId, requesterId, clientToken, fields, accessToken);
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
  **groupId** | **Long**| groupId |
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)groupId&lt;br/&gt;2)groupName&lt;br/&gt;3)description&lt;br/&gt;4)startDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)groupId&lt;br/&gt;2)groupName&lt;br/&gt;3)description&lt;br/&gt;4)startDate&lt;br/&gt;5)ideasCount&lt;br/&gt;6)followersCount&lt;br/&gt;7)currentUserFollowing&lt;br/&gt;8)dueDate&lt;br/&gt;9)participantsCount&lt;br/&gt;10)friendsParticipantsCount&lt;br/&gt;11)friendsIdeasCount | [optional] [default to groupId,groupName,description,startDate]
+ **fields** | **String**| Filter fields in result list        /_*   **A) Default values -**        1)groupId       2)groupName       3)description       4)startDate        **A) Available values-**        1)groupId       2)groupName       3)description       4)startDate       5)ideasCount       6)followersCount       7)currentUserFollowing       8)dueDate       9)participantsCount       10)friendsParticipantsCount       11)friendsIdeasCount   *_/ | [optional] [default to groupId,groupName,description,startDate]
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
@@ -164,7 +164,7 @@ GroupApi apiInstance = new GroupApi();
 Long groupId = 789L; // Long | groupId
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "groupId,groupName,description,startDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)groupId<br/>2)groupName<br/>3)description<br/>4)startDate<br/><b>A) Available values-</b><br/>1)groupId<br/>2)groupName<br/>3)description<br/>4)startDate<br/>5)ideasCount<br/>6)followersCount<br/>7)currentUserFollowing<br/>8)dueDate<br/>9)participantsCount<br/>10)friendsParticipantsCount<br/>11)friendsIdeasCount
+String fields = "groupId,groupName,description,startDate"; // String | Filter fields in result list        /_*   **A) Default values -**        1)groupId       2)groupName       3)description       4)startDate        **A) Available values-**        1)groupId       2)groupName       3)description       4)startDate       5)ideasCount       6)followersCount       7)currentUserFollowing       8)dueDate       9)participantsCount       10)friendsParticipantsCount       11)friendsIdeasCount   *_/
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
     VerveResponseGroup result = apiInstance.followGroup(groupId, requesterId, clientToken, fields, accessToken);
@@ -182,7 +182,7 @@ Name | Type | Description  | Notes
  **groupId** | **Long**| groupId |
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)groupId&lt;br/&gt;2)groupName&lt;br/&gt;3)description&lt;br/&gt;4)startDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)groupId&lt;br/&gt;2)groupName&lt;br/&gt;3)description&lt;br/&gt;4)startDate&lt;br/&gt;5)ideasCount&lt;br/&gt;6)followersCount&lt;br/&gt;7)currentUserFollowing&lt;br/&gt;8)dueDate&lt;br/&gt;9)participantsCount&lt;br/&gt;10)friendsParticipantsCount&lt;br/&gt;11)friendsIdeasCount | [optional] [default to groupId,groupName,description,startDate]
+ **fields** | **String**| Filter fields in result list        /_*   **A) Default values -**        1)groupId       2)groupName       3)description       4)startDate        **A) Available values-**        1)groupId       2)groupName       3)description       4)startDate       5)ideasCount       6)followersCount       7)currentUserFollowing       8)dueDate       9)participantsCount       10)friendsParticipantsCount       11)friendsIdeasCount   *_/ | [optional] [default to groupId,groupName,description,startDate]
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
@@ -227,7 +227,7 @@ Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "userId,firstName,lastName,profileImage"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)userId<br/>2)firstName<br/>3)lastName<br/>4)profileImage<br/><b>A) Available values-</b><br/>1)userId<br/>2)firstName<br/>3)lastName<br/>4)emailId<br/>5)profileImage<br/>6)birthDate<br/>
+String fields = "userId,firstName,lastName,profileImage"; // String | Filter fields in result list        /_*   **A) Default values -**        1)userId       2)firstName       3)lastName       4)profileImage        **A) Available values-**       1)userId       2)firstName       3)lastName       4)emailId       5)profileImage       6)birthDate        *_/
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
     VerveResponseUserList result = apiInstance.getGroupFollowers(groupId, start, end, requesterId, clientToken, fields, accessToken);
@@ -247,7 +247,7 @@ Name | Type | Description  | Notes
  **end** | **Integer**| end |
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)userId&lt;br/&gt;2)firstName&lt;br/&gt;3)lastName&lt;br/&gt;4)profileImage&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)userId&lt;br/&gt;2)firstName&lt;br/&gt;3)lastName&lt;br/&gt;4)emailId&lt;br/&gt;5)profileImage&lt;br/&gt;6)birthDate&lt;br/&gt; | [optional] [default to userId,firstName,lastName,profileImage]
+ **fields** | **String**| Filter fields in result list        /_*   **A) Default values -**        1)userId       2)firstName       3)lastName       4)profileImage        **A) Available values-**       1)userId       2)firstName       3)lastName       4)emailId       5)profileImage       6)birthDate        *_/ | [optional] [default to userId,firstName,lastName,profileImage]
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
@@ -292,7 +292,7 @@ Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "ideaId,ideaTitle,ideaDescription,ideaCreationDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)ideaId<br/>2)ideaTitle<br/>3)ideaDescription<br/>4)ideaCreationDate<br/><b>A) Available values-</b><br/>1)ideaId<br/>2)ideaTitle<br/>3)group<br/>4)ideaDescription<br/>5)ideator<br/>6)ideaCreationDate<br/>7)lastModifiedDate<br/>8)ideaStage<br/>9)domain<br/>10)technology<br/>11)accessType<br/>12)videoId<br/>13)activeStatus<br/>14)teamStatus<br/>15)projectStatus<br/>16)totalFollowers<br/>17)totalComments<br/>18)totalBlogs<br/>19)averageRatingScore<br/>20)numberOfRatings<br/>21)currentUserFollowing<br/>22)currentUserRating<br/>23)ideaFileURL<br/>24)sentiment</br>25)entity
+String fields = "ideaId,ideaTitle,ideaDescription,ideaCreationDate"; // String | Filter fields in result list       /_*   **A) Default values-**      1)ideaId       2)ideaTitle       3)ideaDescription       4)ideaCreationDate        **A) Available values-**        1)ideaId       2)ideaTitle       3)group       4)ideaDescription       5)ideator       6)ideaCreationDate       7)lastModifiedDate       8)ideaStage       9)domain       10)technology       11)accessType       12)videoId       13)activeStatus       14)teamStatus       15)projectStatus       16)totalFollowers       17)totalComments       18)totalBlogs       19)averageRatingScore       20)numberOfRatings       21)currentUserFollowing       22)currentUserRating       23)ideaFileURL       24)sentiment       25)entity   *_/
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
     VerveResponseIdeaList result = apiInstance.getGroupIdeas(groupId, start, end, requesterId, clientToken, fields, accessToken);
@@ -312,7 +312,7 @@ Name | Type | Description  | Notes
  **end** | **Integer**| end |
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)ideaDescription&lt;br/&gt;4)ideaCreationDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)ideaId&lt;br/&gt;2)ideaTitle&lt;br/&gt;3)group&lt;br/&gt;4)ideaDescription&lt;br/&gt;5)ideator&lt;br/&gt;6)ideaCreationDate&lt;br/&gt;7)lastModifiedDate&lt;br/&gt;8)ideaStage&lt;br/&gt;9)domain&lt;br/&gt;10)technology&lt;br/&gt;11)accessType&lt;br/&gt;12)videoId&lt;br/&gt;13)activeStatus&lt;br/&gt;14)teamStatus&lt;br/&gt;15)projectStatus&lt;br/&gt;16)totalFollowers&lt;br/&gt;17)totalComments&lt;br/&gt;18)totalBlogs&lt;br/&gt;19)averageRatingScore&lt;br/&gt;20)numberOfRatings&lt;br/&gt;21)currentUserFollowing&lt;br/&gt;22)currentUserRating&lt;br/&gt;23)ideaFileURL&lt;br/&gt;24)sentiment&lt;/br&gt;25)entity | [optional] [default to ideaId,ideaTitle,ideaDescription,ideaCreationDate]
+ **fields** | **String**| Filter fields in result list       /_*   **A) Default values-**      1)ideaId       2)ideaTitle       3)ideaDescription       4)ideaCreationDate        **A) Available values-**        1)ideaId       2)ideaTitle       3)group       4)ideaDescription       5)ideator       6)ideaCreationDate       7)lastModifiedDate       8)ideaStage       9)domain       10)technology       11)accessType       12)videoId       13)activeStatus       14)teamStatus       15)projectStatus       16)totalFollowers       17)totalComments       18)totalBlogs       19)averageRatingScore       20)numberOfRatings       21)currentUserFollowing       22)currentUserRating       23)ideaFileURL       24)sentiment       25)entity   *_/ | [optional] [default to ideaId,ideaTitle,ideaDescription,ideaCreationDate]
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
@@ -356,7 +356,7 @@ Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "groupId,groupName,description,startDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)groupId<br/>2)groupName<br/>3)description<br/>4)startDate<br/><b>A) Available values-</b><br/>1)groupId<br/>2)groupName<br/>3)description<br/>4)startDate<br/>5)ideasCount<br/>6)followersCount<br/>7)currentUserFollowing<br/>8)dueDate<br/>9)participantsCount<br/>10)friendsParticipantsCount<br/>11)friendsIdeasCount
+String fields = "groupId,groupName,description,startDate"; // String | Filter fields in result list        /_*   **A) Default values -**        1)groupId       2)groupName       3)description       4)startDate        **A) Available values-**        1)groupId       2)groupName       3)description       4)startDate       5)ideasCount       6)followersCount       7)currentUserFollowing       8)dueDate       9)participantsCount       10)friendsParticipantsCount       11)friendsIdeasCount   *_/
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
     VerveResponseGroupList result = apiInstance.getGroups(start, end, requesterId, clientToken, fields, accessToken);
@@ -375,7 +375,7 @@ Name | Type | Description  | Notes
  **end** | **Integer**| end |
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)groupId&lt;br/&gt;2)groupName&lt;br/&gt;3)description&lt;br/&gt;4)startDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)groupId&lt;br/&gt;2)groupName&lt;br/&gt;3)description&lt;br/&gt;4)startDate&lt;br/&gt;5)ideasCount&lt;br/&gt;6)followersCount&lt;br/&gt;7)currentUserFollowing&lt;br/&gt;8)dueDate&lt;br/&gt;9)participantsCount&lt;br/&gt;10)friendsParticipantsCount&lt;br/&gt;11)friendsIdeasCount | [optional] [default to groupId,groupName,description,startDate]
+ **fields** | **String**| Filter fields in result list        /_*   **A) Default values -**        1)groupId       2)groupName       3)description       4)startDate        **A) Available values-**        1)groupId       2)groupName       3)description       4)startDate       5)ideasCount       6)followersCount       7)currentUserFollowing       8)dueDate       9)participantsCount       10)friendsParticipantsCount       11)friendsIdeasCount   *_/ | [optional] [default to groupId,groupName,description,startDate]
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
@@ -419,7 +419,7 @@ Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "groupId,groupName,description,startDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)groupId<br/>2)groupName<br/>3)description<br/>4)startDate<br/><b>A) Available values-</b><br/>1)groupId<br/>2)groupName<br/>3)description<br/>4)startDate<br/>5)ideasCount<br/>6)followersCount<br/>7)currentUserFollowing<br/>8)dueDate<br/>9)participantsCount<br/>10)friendsParticipantsCount<br/>11)friendsIdeasCount
+String fields = "groupId,groupName,description,startDate"; // String | Filter fields in result list        /_*   **A) Default values -**        1)groupId       2)groupName       3)description       4)startDate        **A) Available values-**        1)groupId       2)groupName       3)description       4)startDate       5)ideasCount       6)followersCount       7)currentUserFollowing       8)dueDate       9)participantsCount       10)friendsParticipantsCount       11)friendsIdeasCount   *_/
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
     VerveResponseGroupList result = apiInstance.getRecommendationGroup(start, end, requesterId, clientToken, fields, accessToken);
@@ -438,7 +438,7 @@ Name | Type | Description  | Notes
  **end** | **Integer**| end |
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)groupId&lt;br/&gt;2)groupName&lt;br/&gt;3)description&lt;br/&gt;4)startDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)groupId&lt;br/&gt;2)groupName&lt;br/&gt;3)description&lt;br/&gt;4)startDate&lt;br/&gt;5)ideasCount&lt;br/&gt;6)followersCount&lt;br/&gt;7)currentUserFollowing&lt;br/&gt;8)dueDate&lt;br/&gt;9)participantsCount&lt;br/&gt;10)friendsParticipantsCount&lt;br/&gt;11)friendsIdeasCount | [optional] [default to groupId,groupName,description,startDate]
+ **fields** | **String**| Filter fields in result list        /_*   **A) Default values -**        1)groupId       2)groupName       3)description       4)startDate        **A) Available values-**        1)groupId       2)groupName       3)description       4)startDate       5)ideasCount       6)followersCount       7)currentUserFollowing       8)dueDate       9)participantsCount       10)friendsParticipantsCount       11)friendsIdeasCount   *_/ | [optional] [default to groupId,groupName,description,startDate]
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
@@ -483,7 +483,7 @@ Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "groupId,groupName,description,startDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)groupId<br/>2)groupName<br/>3)description<br/>4)startDate<br/><b>A) Available values-</b><br/>1)groupId<br/>2)groupName<br/>3)description<br/>4)startDate<br/>5)ideasCount<br/>6)followersCount<br/>7)currentUserFollowing<br/>8)dueDate<br/>9)participantsCount<br/>10)friendsParticipantsCount<br/>11)friendsIdeasCount
+String fields = "groupId,groupName,description,startDate"; // String | Filter fields in result list        /_*   **A) Default values -**        1)groupId       2)groupName       3)description       4)startDate        **A) Available values-**        1)groupId       2)groupName       3)description       4)startDate       5)ideasCount       6)followersCount       7)currentUserFollowing       8)dueDate       9)participantsCount       10)friendsParticipantsCount       11)friendsIdeasCount   *_/
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
     VerveResponseGroupList result = apiInstance.getUserFollowingGroups(userId, start, end, requesterId, clientToken, fields, accessToken);
@@ -503,7 +503,7 @@ Name | Type | Description  | Notes
  **end** | **Integer**| end |
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)groupId&lt;br/&gt;2)groupName&lt;br/&gt;3)description&lt;br/&gt;4)startDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)groupId&lt;br/&gt;2)groupName&lt;br/&gt;3)description&lt;br/&gt;4)startDate&lt;br/&gt;5)ideasCount&lt;br/&gt;6)followersCount&lt;br/&gt;7)currentUserFollowing&lt;br/&gt;8)dueDate&lt;br/&gt;9)participantsCount&lt;br/&gt;10)friendsParticipantsCount&lt;br/&gt;11)friendsIdeasCount | [optional] [default to groupId,groupName,description,startDate]
+ **fields** | **String**| Filter fields in result list        /_*   **A) Default values -**        1)groupId       2)groupName       3)description       4)startDate        **A) Available values-**        1)groupId       2)groupName       3)description       4)startDate       5)ideasCount       6)followersCount       7)currentUserFollowing       8)dueDate       9)participantsCount       10)friendsParticipantsCount       11)friendsIdeasCount   *_/ | [optional] [default to groupId,groupName,description,startDate]
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
@@ -548,7 +548,7 @@ Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "groupId,groupName,description,startDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)groupId<br/>2)groupName<br/>3)description<br/>4)startDate<br/><b>A) Available values-</b><br/>1)groupId<br/>2)groupName<br/>3)description<br/>4)startDate<br/>5)ideasCount<br/>6)followersCount<br/>7)currentUserFollowing<br/>8)dueDate<br/>9)participantsCount<br/>10)friendsParticipantsCount<br/>11)friendsIdeasCount
+String fields = "groupId,groupName,description,startDate"; // String | Filter fields in result list        /_*   **A) Default values -**        1)groupId       2)groupName       3)description       4)startDate        **A) Available values-**        1)groupId       2)groupName       3)description       4)startDate       5)ideasCount       6)followersCount       7)currentUserFollowing       8)dueDate       9)participantsCount       10)friendsParticipantsCount       11)friendsIdeasCount   *_/
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
     VerveResponseGroupList result = apiInstance.searchGroups(query, start, end, requesterId, clientToken, fields, accessToken);
@@ -568,7 +568,7 @@ Name | Type | Description  | Notes
  **end** | **Integer**| end |
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)groupId&lt;br/&gt;2)groupName&lt;br/&gt;3)description&lt;br/&gt;4)startDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)groupId&lt;br/&gt;2)groupName&lt;br/&gt;3)description&lt;br/&gt;4)startDate&lt;br/&gt;5)ideasCount&lt;br/&gt;6)followersCount&lt;br/&gt;7)currentUserFollowing&lt;br/&gt;8)dueDate&lt;br/&gt;9)participantsCount&lt;br/&gt;10)friendsParticipantsCount&lt;br/&gt;11)friendsIdeasCount | [optional] [default to groupId,groupName,description,startDate]
+ **fields** | **String**| Filter fields in result list        /_*   **A) Default values -**        1)groupId       2)groupName       3)description       4)startDate        **A) Available values-**        1)groupId       2)groupName       3)description       4)startDate       5)ideasCount       6)followersCount       7)currentUserFollowing       8)dueDate       9)participantsCount       10)friendsParticipantsCount       11)friendsIdeasCount   *_/ | [optional] [default to groupId,groupName,description,startDate]
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
@@ -611,7 +611,7 @@ GroupApi apiInstance = new GroupApi();
 Long groupId = 789L; // Long | groupId
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "groupId,groupName,description,startDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)groupId<br/>2)groupName<br/>3)description<br/>4)startDate<br/><b>A) Available values-</b><br/>1)groupId<br/>2)groupName<br/>3)description<br/>4)startDate<br/>5)ideasCount<br/>6)followersCount<br/>7)currentUserFollowing<br/>8)dueDate<br/>9)participantsCount<br/>10)friendsParticipantsCount<br/>11)friendsIdeasCount
+String fields = "groupId,groupName,description,startDate"; // String | Filter fields in result list        /_*   **A) Default values -**        1)groupId       2)groupName       3)description       4)startDate        **A) Available values-**        1)groupId       2)groupName       3)description       4)startDate       5)ideasCount       6)followersCount       7)currentUserFollowing       8)dueDate       9)participantsCount       10)friendsParticipantsCount       11)friendsIdeasCount   *_/
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
     VerveResponseGroup result = apiInstance.unfollowGroup(groupId, requesterId, clientToken, fields, accessToken);
@@ -629,7 +629,7 @@ Name | Type | Description  | Notes
  **groupId** | **Long**| groupId |
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)groupId&lt;br/&gt;2)groupName&lt;br/&gt;3)description&lt;br/&gt;4)startDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)groupId&lt;br/&gt;2)groupName&lt;br/&gt;3)description&lt;br/&gt;4)startDate&lt;br/&gt;5)ideasCount&lt;br/&gt;6)followersCount&lt;br/&gt;7)currentUserFollowing&lt;br/&gt;8)dueDate&lt;br/&gt;9)participantsCount&lt;br/&gt;10)friendsParticipantsCount&lt;br/&gt;11)friendsIdeasCount | [optional] [default to groupId,groupName,description,startDate]
+ **fields** | **String**| Filter fields in result list        /_*   **A) Default values -**        1)groupId       2)groupName       3)description       4)startDate        **A) Available values-**        1)groupId       2)groupName       3)description       4)startDate       5)ideasCount       6)followersCount       7)currentUserFollowing       8)dueDate       9)participantsCount       10)friendsParticipantsCount       11)friendsIdeasCount   *_/ | [optional] [default to groupId,groupName,description,startDate]
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
@@ -674,7 +674,7 @@ String title = "title_example"; // String | title
 String description = "description_example"; // String | description
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "groupId,groupName,description,startDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)groupId<br/>2)groupName<br/>3)description<br/>4)startDate<br/><b>A) Available values-</b><br/>1)groupId<br/>2)groupName<br/>3)description<br/>4)startDate<br/>5)ideasCount<br/>6)followersCount<br/>7)currentUserFollowing<br/>8)dueDate<br/>9)participantsCount<br/>10)friendsParticipantsCount<br/>11)friendsIdeasCount
+String fields = "groupId,groupName,description,startDate"; // String | Filter fields in result list        /_*   **A) Default values -**        1)groupId       2)groupName       3)description       4)startDate        **A) Available values-**        1)groupId       2)groupName       3)description       4)startDate       5)ideasCount       6)followersCount       7)currentUserFollowing       8)dueDate       9)participantsCount       10)friendsParticipantsCount       11)friendsIdeasCount   *_/
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
     VerveResponseGroup result = apiInstance.updateGroup(groupId, title, description, requesterId, clientToken, fields, accessToken);
@@ -694,7 +694,7 @@ Name | Type | Description  | Notes
  **description** | **String**| description |
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)groupId&lt;br/&gt;2)groupName&lt;br/&gt;3)description&lt;br/&gt;4)startDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)groupId&lt;br/&gt;2)groupName&lt;br/&gt;3)description&lt;br/&gt;4)startDate&lt;br/&gt;5)ideasCount&lt;br/&gt;6)followersCount&lt;br/&gt;7)currentUserFollowing&lt;br/&gt;8)dueDate&lt;br/&gt;9)participantsCount&lt;br/&gt;10)friendsParticipantsCount&lt;br/&gt;11)friendsIdeasCount | [optional] [default to groupId,groupName,description,startDate]
+ **fields** | **String**| Filter fields in result list        /_*   **A) Default values -**        1)groupId       2)groupName       3)description       4)startDate        **A) Available values-**        1)groupId       2)groupName       3)description       4)startDate       5)ideasCount       6)followersCount       7)currentUserFollowing       8)dueDate       9)participantsCount       10)friendsParticipantsCount       11)friendsIdeasCount   *_/ | [optional] [default to groupId,groupName,description,startDate]
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type

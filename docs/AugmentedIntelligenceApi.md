@@ -268,8 +268,8 @@ Integer start = 56; // Integer | start
 Integer end = 56; // Integer | end
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String interactionType = "interactionType_example"; // String | Interaction Type <br/>1)Question<br/>2)Complaint<br/>3)Idea<br/>4)Blog<br/>5)Discussion
-String sentimentType = "sentimentType_example"; // String | Sentiment Type <br/>1)Positive<br/>2)Negative<br/> 3)Neutral
+String interactionType = "interactionType_example"; // String |   /_*  Interaction Type      1) Question     2) Complaint    3) Idea     4) Blog     5) Discussion   *_/
+String sentimentType = "sentimentType_example"; // String |   /_*  Sentiment Type      1)Positive     2)Negative      3)Neutral  *_/
 String additionalInformation = "additionalInformation_example"; // String | additional information
 String association = "association_example"; // String | association
 Long categoryId = 789L; // Long | categoryId
@@ -293,8 +293,8 @@ Name | Type | Description  | Notes
  **end** | **Integer**| end |
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **interactionType** | **String**| Interaction Type &lt;br/&gt;1)Question&lt;br/&gt;2)Complaint&lt;br/&gt;3)Idea&lt;br/&gt;4)Blog&lt;br/&gt;5)Discussion | [optional]
- **sentimentType** | **String**| Sentiment Type &lt;br/&gt;1)Positive&lt;br/&gt;2)Negative&lt;br/&gt; 3)Neutral | [optional]
+ **interactionType** | **String**|   /_*  Interaction Type      1) Question     2) Complaint    3) Idea     4) Blog     5) Discussion   *_/ | [optional]
+ **sentimentType** | **String**|   /_*  Sentiment Type      1)Positive     2)Negative      3)Neutral  *_/ | [optional]
  **additionalInformation** | **String**| additional information | [optional]
  **association** | **String**| association | [optional]
  **categoryId** | **Long**| categoryId | [optional]
@@ -341,7 +341,7 @@ Long startTime = 789L; // Long | start time
 Long endTime = 789L; // Long | end time
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String interactionType = "interactionType_example"; // String | Interaction Type <br/>1)Question<br/>2)Complaint<br/>3)Idea<br/>4)Blog<br/>5)Discussion
+String interactionType = "interactionType_example"; // String |   /_*  Interaction Type      1) Question     2) Complaint     3) Idea     4) Blog     5) Discussion   *_/
 String additionalInformation = "additionalInformation_example"; // String | additional information
 String association = "association_example"; // String | association
 Long categoryId = 789L; // Long | categoryId
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
  **endTime** | **Long**| end time |
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **interactionType** | **String**| Interaction Type &lt;br/&gt;1)Question&lt;br/&gt;2)Complaint&lt;br/&gt;3)Idea&lt;br/&gt;4)Blog&lt;br/&gt;5)Discussion | [optional]
+ **interactionType** | **String**|   /_*  Interaction Type      1) Question     2) Complaint     3) Idea     4) Blog     5) Discussion   *_/ | [optional]
  **additionalInformation** | **String**| additional information | [optional]
  **association** | **String**| association | [optional]
  **categoryId** | **Long**| categoryId | [optional]
@@ -413,10 +413,10 @@ Integer start = 56; // Integer | start
 Integer end = 56; // Integer | end
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String sentimentType = "sentimentType_example"; // String | Sentiment Type <br/>1)Positive<br/>2)Negative<br/>3)Neutral
+String sentimentType = "sentimentType_example"; // String |   /_*   Sentiment Type      1)Positive     2)Negative     3)Neutral   *_/
 String additionalInformation = "additionalInformation_example"; // String | additional information
 String association = "association_example"; // String | association
-String interactionType = "interactionType_example"; // String | Interaction Type <br/>1)Question<br/>2)Complaint<br/>3)Idea<br/>4)Blog<br/>5)Discussion
+String interactionType = "interactionType_example"; // String |   /_*  Interaction Type      1)Question     2)Complaint     3)Idea     4)Blog     5)Discussion   *_/
 Long categoryId = 789L; // Long | categoryId
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
@@ -439,10 +439,10 @@ Name | Type | Description  | Notes
  **end** | **Integer**| end |
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **sentimentType** | **String**| Sentiment Type &lt;br/&gt;1)Positive&lt;br/&gt;2)Negative&lt;br/&gt;3)Neutral | [optional]
+ **sentimentType** | **String**|   /_*   Sentiment Type      1)Positive     2)Negative     3)Neutral   *_/ | [optional]
  **additionalInformation** | **String**| additional information | [optional]
  **association** | **String**| association | [optional]
- **interactionType** | **String**| Interaction Type &lt;br/&gt;1)Question&lt;br/&gt;2)Complaint&lt;br/&gt;3)Idea&lt;br/&gt;4)Blog&lt;br/&gt;5)Discussion | [optional]
+ **interactionType** | **String**|   /_*  Interaction Type      1)Question     2)Complaint     3)Idea     4)Blog     5)Discussion   *_/ | [optional]
  **categoryId** | **Long**| categoryId | [optional]
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 

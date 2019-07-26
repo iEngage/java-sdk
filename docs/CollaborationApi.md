@@ -34,7 +34,7 @@ Method | HTTP request | Description
 
 Comment on posted blog
 
-This service allows a user to comment on a blog. The following fields(key:value) are required to be present in the Comment JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API.&lt;/br&gt;&lt;b&gt;Required fields &lt;/br&gt;1. blogId (Path Parameter)&lt;/br&gt;2. commentText &lt;/br&gt;
+This service allows a user to comment on a blog. The following fields(key:value) are required to be present in the Comment JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API. **Required fields**      1. blogId (Path Parameter)     2. commentText
 
 ### Example
 ```java
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 Comment on discussion
 
-This service allows a user to comment on a discussion. The following fields(key:value) are required to be present in the Comment JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API.&lt;/br&gt;&lt;b&gt;Required fields &lt;/br&gt;1. discussionId (Path Parameter)&lt;/br&gt;2. commentText &lt;/br&gt;
+This service allows a user to comment on a discussion. The following fields(key:value) are required to be present in the Comment JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API. **Required fields**      1. discussionId (Path Parameter)     2. commentText
 
 ### Example
 ```java
@@ -478,7 +478,7 @@ Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "blogId,blogTitle,blogDescription,createdDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)blogId<br/>2)blogTitle<br/>3)blogDescription<br/>4)createdDate<br/><b>A )Available values-</b><br/>1)blogId<br/>2)blogTitle<br/>3)blogDescription<br/>4)createdDate<br/>5)user<br/>6)sentiment</br>7)entity
+String fields = "blogId,blogTitle,blogDescription,createdDate"; // String | Filter fields in result list       /_*   **A) Default values -**        1)blogId       2)blogTitle       3)blogDescription       4)createdDate        **A )Available values-**        1)blogId       2)blogTitle       3)blogDescription       4)createdDate       5)user       6)sentiment       7)entity   *_/
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
     VerveResponseBlogList result = apiInstance.getBlogs(association, start, end, requesterId, clientToken, fields, accessToken);
@@ -498,7 +498,7 @@ Name | Type | Description  | Notes
  **end** | **Integer**| end |
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)blogId&lt;br/&gt;2)blogTitle&lt;br/&gt;3)blogDescription&lt;br/&gt;4)createdDate&lt;br/&gt;&lt;b&gt;A )Available values-&lt;/b&gt;&lt;br/&gt;1)blogId&lt;br/&gt;2)blogTitle&lt;br/&gt;3)blogDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)user&lt;br/&gt;6)sentiment&lt;/br&gt;7)entity | [optional] [default to blogId,blogTitle,blogDescription,createdDate]
+ **fields** | **String**| Filter fields in result list       /_*   **A) Default values -**        1)blogId       2)blogTitle       3)blogDescription       4)createdDate        **A )Available values-**        1)blogId       2)blogTitle       3)blogDescription       4)createdDate       5)user       6)sentiment       7)entity   *_/ | [optional] [default to blogId,blogTitle,blogDescription,createdDate]
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
@@ -606,7 +606,7 @@ Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "discussionId,discussionSubject,discussionDescription,createdDate "; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)discussionId<br/>2)discussionSubject<br/>3)discussionDescription<br/>4)createdDate<br/><b>A) Available values-</b><br/>1)discussionId<br/>2)discussionSubject<br/>3)discussionDescription<br/>4)createdDate<br/>5)user<br/>6)sentiment</br>7)entity
+String fields = "discussionId,discussionSubject,discussionDescription,createdDate "; // String | Filter fields in result list        /_*   **A) Default values -**        1)discussionId       2)discussionSubject       3)discussionDescription       4)createdDate        **A) Available values-**        1)discussionId       2)discussionSubject       3)discussionDescription       4)createdDate       5)user       6)sentiment       7)entity   *_/
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
     VerveResponseDiscussionList result = apiInstance.getDiscussions(association, start, end, requesterId, clientToken, fields, accessToken);
@@ -626,7 +626,7 @@ Name | Type | Description  | Notes
  **end** | **Integer**| end |
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)discussionId&lt;br/&gt;2)discussionSubject&lt;br/&gt;3)discussionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)discussionId&lt;br/&gt;2)discussionSubject&lt;br/&gt;3)discussionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)user&lt;br/&gt;6)sentiment&lt;/br&gt;7)entity | [optional] [default to discussionId,discussionSubject,discussionDescription,createdDate ]
+ **fields** | **String**| Filter fields in result list        /_*   **A) Default values -**        1)discussionId       2)discussionSubject       3)discussionDescription       4)createdDate        **A) Available values-**        1)discussionId       2)discussionSubject       3)discussionDescription       4)createdDate       5)user       6)sentiment       7)entity   *_/ | [optional] [default to discussionId,discussionSubject,discussionDescription,createdDate ]
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
@@ -671,7 +671,7 @@ Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "blogId,blogTitle,blogDescription,createdDate"; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)blogId<br/>2)blogTitle<br/>3)blogDescription<br/>4)createdDate<br/><b>A )Available values-</b><br/>1)blogId<br/>2)blogTitle<br/>3)blogDescription<br/>4)createdDate<br/>5)user<br/>6)sentiment</br>7)entity
+String fields = "blogId,blogTitle,blogDescription,createdDate"; // String | Filter fields in result list       /_*   **A) Default values -**        1)blogId       2)blogTitle       3)blogDescription       4)createdDate        **A )Available values-**        1)blogId       2)blogTitle       3)blogDescription       4)createdDate       5)user       6)sentiment       7)entity   *_/
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
     VerveResponseBlog result = apiInstance.getUserSubscribedBlogs(userId, start, end, requesterId, clientToken, fields, accessToken);
@@ -691,7 +691,7 @@ Name | Type | Description  | Notes
  **end** | **Integer**| end |
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)blogId&lt;br/&gt;2)blogTitle&lt;br/&gt;3)blogDescription&lt;br/&gt;4)createdDate&lt;br/&gt;&lt;b&gt;A )Available values-&lt;/b&gt;&lt;br/&gt;1)blogId&lt;br/&gt;2)blogTitle&lt;br/&gt;3)blogDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)user&lt;br/&gt;6)sentiment&lt;/br&gt;7)entity | [optional] [default to blogId,blogTitle,blogDescription,createdDate]
+ **fields** | **String**| Filter fields in result list       /_*   **A) Default values -**        1)blogId       2)blogTitle       3)blogDescription       4)createdDate        **A )Available values-**        1)blogId       2)blogTitle       3)blogDescription       4)createdDate       5)user       6)sentiment       7)entity   *_/ | [optional] [default to blogId,blogTitle,blogDescription,createdDate]
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
@@ -736,7 +736,7 @@ Integer start = 56; // Integer | start, initial value start from 0
 Integer end = 56; // Integer | end
 String requesterId = "requesterId_example"; // String | requesterId can be user id OR email address.
 String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-String fields = "discussionId,discussionSubject,discussionDescription,createdDate "; // String | Filter fields in result list<br/> <b>A) Default values -</b> <br/>1)discussionId<br/>2)discussionSubject<br/>3)discussionDescription<br/>4)createdDate<br/><b>A) Available values-</b><br/>1)discussionId<br/>2)discussionSubject<br/>3)discussionDescription<br/>4)createdDate<br/>5)user<br/>6)sentiment</br>7)entity
+String fields = "discussionId,discussionSubject,discussionDescription,createdDate "; // String | Filter fields in result list        /_*   **A) Default values -**        1)discussionId       2)discussionSubject       3)discussionDescription       4)createdDate        **A) Available values-**        1)discussionId       2)discussionSubject       3)discussionDescription       4)createdDate       5)user       6)sentiment       7)entity   *_/
 String accessToken = "accessToken_example"; // String | Unique session token for user. To get access token user will have to authenticate
 try {
     VerveResponseDiscussionList result = apiInstance.getUserSubscribedDiscussions(userId, start, end, requesterId, clientToken, fields, accessToken);
@@ -756,7 +756,7 @@ Name | Type | Description  | Notes
  **end** | **Integer**| end |
  **requesterId** | **String**| requesterId can be user id OR email address. |
  **clientToken** | **String**| Use the Client Token. Please generate it from the Applications section under the Production &amp; Sandbox tabs |
- **fields** | **String**| Filter fields in result list&lt;br/&gt; &lt;b&gt;A) Default values -&lt;/b&gt; &lt;br/&gt;1)discussionId&lt;br/&gt;2)discussionSubject&lt;br/&gt;3)discussionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;&lt;b&gt;A) Available values-&lt;/b&gt;&lt;br/&gt;1)discussionId&lt;br/&gt;2)discussionSubject&lt;br/&gt;3)discussionDescription&lt;br/&gt;4)createdDate&lt;br/&gt;5)user&lt;br/&gt;6)sentiment&lt;/br&gt;7)entity | [optional] [default to discussionId,discussionSubject,discussionDescription,createdDate ]
+ **fields** | **String**| Filter fields in result list        /_*   **A) Default values -**        1)discussionId       2)discussionSubject       3)discussionDescription       4)createdDate        **A) Available values-**        1)discussionId       2)discussionSubject       3)discussionDescription       4)createdDate       5)user       6)sentiment       7)entity   *_/ | [optional] [default to discussionId,discussionSubject,discussionDescription,createdDate ]
  **accessToken** | **String**| Unique session token for user. To get access token user will have to authenticate | [optional]
 
 ### Return type
@@ -778,7 +778,7 @@ Name | Type | Description  | Notes
 
 Post blog
 
-This service allows a user to post a blog. The following fields(key:value) are required to be present in the Blog JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API.&lt;/br&gt;&lt;b&gt;Required fields &lt;/br&gt;1. association &lt;/br&gt;2. title &lt;/br&gt;3. description &lt;/br&gt;
+This service allows a user to post a blog. The following fields(key:value) are required to be present in the Blog JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API. **Required fields** 1. association      2. title      3. description
 
 ### Example
 ```java
@@ -837,7 +837,7 @@ Name | Type | Description  | Notes
 
 Start discussion
 
-This service allows a user to post a discussion. The following fields(key:value) are required to be present in the Discussion JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API.&lt;/br&gt;&lt;b&gt;Required fields &lt;/br&gt;1. association &lt;/br&gt;2. subject &lt;/br&gt;3. description &lt;/br&gt;
+This service allows a user to post a discussion. The following fields(key:value) are required to be present in the Discussion JSON object. Refer to the Model &amp; Model Schema of the expected JSON Object for the body of this API. **Required fields**      1. association      2. subject      3. description
 
 ### Example
 ```java
