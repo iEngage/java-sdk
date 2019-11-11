@@ -53,7 +53,11 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.swagger:swagger-java-client:1.0.0"
+compile "io.iengage:iengage-java-client:2.1.0"
+compile "com.squareup.okhttp:okhttp:2.7.5"
+compile "com.squareup.okhttp:logging-interceptor:2.7.5"
+compile "com.google.code.gson:gson:2.6.2"
+compile "joda-time:joda-time:2.9.3"
 ```
 
 ### Others
