@@ -26,10 +26,25 @@ Add this dependency to your project's POM:
 
 ```xml
 <dependency>
-    <groupId>io.swagger</groupId>
-    <artifactId>swagger-java-client</artifactId>
-    <version>1.0.0</version>
+    <groupId>io.iengage</groupId>
+    <artifactId>iengage-java-client</artifactId>
+    <version>2.1.0</version>
     <scope>compile</scope>
+</dependency>
+<dependency>
+      <groupId>com.squareup.okhttp</groupId>
+      <artifactId>logging-interceptor</artifactId>
+      <version>2.7.5</version>
+</dependency>
+<dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.6.2</version>
+</dependency>
+<dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+      <version>2.9.3</version>
 </dependency>
 ```
 
@@ -60,7 +75,7 @@ Please follow the [installation](#installation) instruction and execute the foll
 
 import com.iengage.*;
 import com.iengage.auth.*;
-import com.iengage.model.*;
+import com.iengage.client.model.VerveResponseTextClassificationList;
 import com.iengage.service.AugmentedIntelligenceApi;
 
 import java.io.File;
@@ -72,8 +87,8 @@ public class AugmentedIntelligenceApiExample {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         
         // Configure OAuth2 access token for authorization: default
-        OAuth default = (OAuth) defaultClient.getAuthentication("default");
-        default.setAccessToken("YOUR ACCESS TOKEN");
+        OAuth def = (OAuth) defaultClient.getAuthentication("default");
+        def.setAccessToken("YOUR ACCESS TOKEN");
 
         AugmentedIntelligenceApi apiInstance = new AugmentedIntelligenceApi();
         String text = "text_example"; // String | Text you want classified
