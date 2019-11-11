@@ -1,4 +1,4 @@
-# swagger-java-client
+# iEngage-java-client
 
 ## Requirements
 
@@ -59,17 +59,7 @@ compile "com.squareup.okhttp:logging-interceptor:2.7.5"
 compile "com.google.code.gson:gson:2.6.2"
 compile "joda-time:joda-time:2.9.3"
 ```
-### Alternatively you can download dependencies from [here](iEngage_JAVA_dependencies.zip)
-### Others
-
-At first generate the JAR by executing:
-
-    mvn package
-
-Then manually install the following JARs:
-
-* target/swagger-java-client-1.0.0.jar
-* target/lib/*.jar
+### Alternatively you can download dependencies from [here](https://github.com/iEngage/java-sdk/raw/2.1/iEngage_JAVA_dependencies.zip)
 
 ## Getting Started
 
@@ -349,22 +339,11 @@ Class | Method | HTTP request | Description
  - [WFTask](docs/WFTask.md)
 
 
-## Documentation for Authorization
-
-Authentication schemes defined for the API:
-### default
-
-- **Type**: OAuth
-- **Flow**: implicit
-- **Authorizatoin URL**: https://api.iengage.io:8243/authorize
-- **Scopes**: N/A
-
-
 ## Recommendation
 
 It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issue.
 
 ## Author
-
+iEngage.ai
 
 
