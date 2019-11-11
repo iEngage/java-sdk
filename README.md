@@ -59,7 +59,7 @@ compile "com.squareup.okhttp:logging-interceptor:2.7.5"
 compile "com.google.code.gson:gson:2.6.2"
 compile "joda-time:joda-time:2.9.3"
 ```
-
+### Alternatively you can download dependencies from [here](iengage_dependencies.zip)
 ### Others
 
 At first generate the JAR by executing:
