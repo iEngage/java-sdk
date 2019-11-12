@@ -344,6 +344,6 @@ Class | Method | HTTP request | Description
 It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issue.
 
 ## Author
-**[iEngage.ai](https://iengage.ai/)
+[**iEngage.ai**](https://iengage.ai/)
 
 
