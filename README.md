@@ -77,7 +77,7 @@ import com.iengage.service.InteractionApi;
 public class InteractionExample {
  	public static void main(String[] args) {
     
- 		ApiClient defaultClient = Configuration.getDefaultApiClient();    
+ 		ApiClient defaultClient = Configuration.getDefaultApiClient();
         OAuth oauthToken = (OAuth) defaultClient.getAuthentication("default");
         oauthToken.setAccessToken("YOUR ACCESS TOKEN");
  		
