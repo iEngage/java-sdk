@@ -75,10 +75,10 @@ import com.iengage.service.InteractionApi;
 
 public class InteractionExample {
  	public static void main(String[] args) {
+    
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         OAuth oauthToken = (OAuth) defaultClient.getAuthentication("default");
         oauthToken.setAccessToken("YOUR ACCESS TOKEN");
- 		
  		InteractionApi apiInstance = new InteractionApi(defaultClient);
  		String loggedInUserId = "requesterId_example"; // String | User id of logged / authenticated user
  		String accessToken = null; // String | Unique session token for user. To get access token user will have to authenticate
