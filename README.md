@@ -6,7 +6,7 @@ Building the API client library requires [Maven](https://maven.apache.org/) to b
 
 ## Installation
 
-Download the   
+Download the  xyz 
 
 To install the API client library to your local Maven repository, simply execute:
 
