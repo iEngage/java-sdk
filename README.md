@@ -69,34 +69,30 @@ Please follow the [installation](#installation) instruction and execute the foll
 
 import com.iengage.*;
 import com.iengage.auth.*;
-import com.iengage.client.model.VerveResponseTextClassificationList;
-import com.iengage.service.AugmentedIntelligenceApi;
-
+import com.iengage.client.model.*;
+import com.iengage.service.InteractionApi;
 import java.io.File;
 import java.util.*;
 
-public class AugmentedIntelligenceApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        
-        // Configure OAuth2 access token for authorization: default
-        OAuth def = (OAuth) defaultClient.getAuthentication("default");
-        def.setAccessToken("YOUR ACCESS TOKEN");
-
-        AugmentedIntelligenceApi apiInstance = new AugmentedIntelligenceApi();
-        String text = "text_example"; // String | Text you want classified
-        Long id = 789L; // Long | Classifier ID from the Admin Panel
-        String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
-        try {
-            VerveResponseTextClassificationList result = apiInstance.classify(text, id, clientToken);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AugmentedIntelligenceApi#classify");
-            e.printStackTrace();
-        }
-    }
-}
+public class Example {
+ 	public static void main(String[] args) {
+ 		ApiClient defaultClient = Configuration.getDefaultApiClient();
+ 		defaultClient.setAccessToken("YOUR ACCESS TOKEN");
+ 		InteractionApi apiInstance = new InteractionApi(defaultClient);
+ 		String loggedInUserId = "requesterId_example"; // String | User id of logged / authenticated user
+ 		String accessToken = null; // String | Unique session token for user. To get access token user will have to authenticate
+ 		String clientToken = "clientToken_example"; // String | Use the Client Token. Please generate it from the Applications section under the Production & Sandbox tabs
+ 		try {
+ 			InteractionInputModel body = new InteractionInputModel();
+ 			body.setInteractionTitle("Your message goes here"); //Change this
+ 			VerveResponseInteraction result = apiInstance.addInteraction(loggedInUserId, clientToken, body, accessToken);
+ 			System.out.println(result);
+ 		} catch (ApiException e) {
+ 			System.err.println("Exception when calling InteractionApi#addInteraction");
+ 			e.printStackTrace();
+ 		}
+ 	}
+ }
 
 ```
 
