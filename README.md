@@ -71,8 +71,6 @@ import com.iengage.*;
 import com.iengage.auth.*;
 import com.iengage.client.model.*;
 import com.iengage.service.InteractionApi;
-import java.io.File;
-import java.util.*;
 
 public class Example {
  	public static void main(String[] args) {
