@@ -6,6 +6,8 @@ Building the API client library requires [Maven](https://maven.apache.org/) to b
 
 ## Installation
 
+Download the   
+
 To install the API client library to your local Maven repository, simply execute:
 
 ```shell
@@ -72,10 +74,13 @@ import com.iengage.auth.*;
 import com.iengage.client.model.*;
 import com.iengage.service.InteractionApi;
 
-public class Example {
+public class InteractionExample {
  	public static void main(String[] args) {
- 		ApiClient defaultClient = Configuration.getDefaultApiClient();
- 		defaultClient.setAccessToken("YOUR ACCESS TOKEN");
+    
+ 		ApiClient defaultClient = Configuration.getDefaultApiClient();    
+        OAuth oauthToken = (OAuth) defaultClient.getAuthentication("default");
+        oauthToken.setAccessToken("YOUR ACCESS TOKEN");
+ 		
  		InteractionApi apiInstance = new InteractionApi(defaultClient);
  		String loggedInUserId = "requesterId_example"; // String | User id of logged / authenticated user
  		String accessToken = null; // String | Unique session token for user. To get access token user will have to authenticate
