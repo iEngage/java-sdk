@@ -6,11 +6,12 @@ Building the API client library requires [Maven](https://maven.apache.org/) to b
 
 ## Installation
 
+[Download](https://github.com/iEngage/java-sdk/blob/2.1/jar/iengage_java_sdk.jar?raw=true) the iEngage SDK jar.
 
 To install the API client library to your local Maven repository, simply execute:
 
 ```shell
-mvn install
+mvn install:install-file -Dfile="<Path to iengage_java_sdk.jar>" -DgroupId="io.iengage" -DartifactId=iengage-java-client -Dversion="1.0.0" -Dpackaging=jar -DgeneratePom=true
 ```
 
 To deploy it to a remote Maven repository instead, configure the settings of the repository and execute:
@@ -29,7 +30,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.iengage</groupId>
     <artifactId>iengage-java-client</artifactId>
-    <version>2.1.0</version>
+    <version>1.0.0</version>
     <scope>compile</scope>
 </dependency>
 <dependency>
@@ -54,7 +55,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.iengage:iengage-java-client:2.1.0"
+compile "io.iengage:iengage-java-client:1.0.0"
 compile "com.squareup.okhttp:okhttp:2.7.5"
 compile "com.squareup.okhttp:logging-interceptor:2.7.5"
 compile "com.google.code.gson:gson:2.6.2"
